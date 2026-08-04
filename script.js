@@ -389,8 +389,9 @@ renderizarProductos(resultado);
 
 
 
-});
+  });
 
+});    
 
 const modal = document.getElementById("modal");
 const imagenModal = document.getElementById("imagenModal");
