@@ -254,12 +254,12 @@ const subcategorias3 = {
         "Acerola",
         "Cereza"
     ],
-    "Kaiak":[
+    Kaiak:[
         "Masculino",
         "Femenino"
     ],
 
-    "Body Splash":[
+    BodySplash:[
         "Todos",
         "Algodón",
         "Acerola"
