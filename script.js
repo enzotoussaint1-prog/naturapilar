@@ -34,7 +34,9 @@ const productos = [
 ];
 const contenedorProductos = document.getElementById("contenedor-productos");
 console.log(contenedorProductos);
+
 function renderizarProductos(lista) {
+     console.log(lista);
 
     contenedorProductos.innerHTML = "";
 
