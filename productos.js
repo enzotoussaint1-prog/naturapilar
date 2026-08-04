@@ -77,6 +77,7 @@ const productos = [
         descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
         categoria: "Perfumes",
         subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
         precio: 20000,
         imagen: "img/kaiak.jpg",
         imagen2: "img/kaiak2.jpg",
