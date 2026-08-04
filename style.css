@@ -205,6 +205,52 @@ gap:35px;
     color:white;
 
 }
+/* SUBFILTROS */
+
+.subfiltros{
+
+display:flex;
+
+justify-content:center;
+
+gap:12px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+
+}
+
+
+.subfiltro{
+
+border:1px solid #d45f93;
+
+background:white;
+
+color:#8d4b62;
+
+padding:10px 20px;
+
+border-radius:25px;
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+
+.subfiltro:hover,
+.subfiltro.activo{
+
+background:#d45f93;
+
+color:white;
+
+}
 
 #buscador:focus{
 
