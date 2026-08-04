@@ -244,6 +244,28 @@ const subcategorias = {
 
 };
 
+const subcategorias3 = {
+
+    Cremas:[
+        "Todos",
+        "Algodón",
+        "Acerola",
+        "Cereza"
+    ],
+
+    "Body Splash":[
+        "Todos",
+        "Algodón",
+        "Acerola"
+    ],
+
+    Jabones:[
+        "Todos",
+        "Algodón",
+        "Maracuyá"
+    ]
+
+};
 
 
 function mostrarSubfiltros(categoria){
