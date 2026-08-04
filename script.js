@@ -262,7 +262,7 @@ botonesFiltro.forEach(boton => {
 
 
     boton.addEventListener("click",()=>{
-
+console.log("Filtro seleccionado:", boton.dataset.categoria);
 
         botonesFiltro.forEach(btn=>{
             btn.classList.remove("activo");
