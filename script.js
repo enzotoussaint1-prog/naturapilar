@@ -361,7 +361,56 @@ renderizarProductos(resultado);
 
 }
 
+function activarSubfiltros3(){
 
+
+const botones3 = document.querySelectorAll(".subfiltro3");
+
+
+botones3.forEach(boton=>{
+
+
+boton.addEventListener("click",()=>{
+
+
+botones3.forEach(btn=>
+btn.classList.remove("activo")
+);
+
+
+boton.classList.add("activo");
+
+
+const sub3 = boton.dataset.subcategoria3;
+
+
+if(sub3==="Todos"){
+
+renderizarProductos(productos);
+
+}else{
+
+
+const resultado = productos.filter(producto=>
+
+producto.subcategoria3 === sub3
+
+);
+
+
+renderizarProductos(resultado);
+
+
+}
+
+
+});
+
+
+});
+
+
+}
 
 
 
