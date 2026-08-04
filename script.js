@@ -1,3 +1,5 @@
+console.log("script.js cargado");
+console.log(productos);
 const contenedorProductos = document.getElementById("contenedor-productos");
 
 function renderizarProductos(lista) {
