@@ -252,6 +252,34 @@ color:white;
 
 }
 
+.subfiltro3{
+
+border:1px solid #8d4b62;
+
+background:white;
+
+color:#8d4b62;
+
+padding:10px 20px;
+
+border-radius:25px;
+
+cursor:pointer;
+
+margin-bottom:20px;
+
+}
+
+
+.subfiltro3.activo,
+.subfiltro3:hover{
+
+background:#8d4b62;
+
+color:white;
+
+}
+
 #buscador:focus{
 
     border-color:#d45f93;
