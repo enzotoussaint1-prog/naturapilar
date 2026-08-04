@@ -64,6 +64,7 @@ function renderizarProductos(lista) {
     });
 
 }
+renderizarProductos(productos);
 // -----------------------------
 // SCROLL SUAVE DEL MENÚ
 // -----------------------------
@@ -123,25 +124,27 @@ observador.observe(producto);
 // BOTÓN COMPRAR
 // -----------------------------
 
-document.querySelectorAll(".producto a").forEach((boton)=>{
+document.addEventListener("click", (e) => {
 
-boton.addEventListener("click",function(e){
+    if (!e.target.classList.contains("btn-comprar")) return;
 
-e.preventDefault();
+    e.preventDefault();
 
-const producto = this.parentElement.querySelector("h3").innerText;
+    const producto = e.target.dataset.producto;
 
-const mensaje =
-"Hola 😊 Me interesa comprar el producto: " +
-producto +
-". ¿Podrías pasarme más información?";
+    const mensaje = `Hola 😊
+Me interesa comprar:
 
-const telefono = "5491150241149";
+${producto}
 
-window.open(
-"https://wa.me/"+telefono+"?text="+encodeURIComponent(mensaje),
-"_blank"
-);
+¿Podrías pasarme más información?`;
+
+    const telefono = "5491150241149";
+
+    window.open(
+        `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`,
+        "_blank"
+    );
 
 });
 
