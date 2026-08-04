@@ -1,3 +1,37 @@
+const productos = [
+    {
+        id: 1,
+        nombre: "Kit Tododia Algodón",
+        descripcion: "Crema hidratante 400 ml + Body Splash 200 ml",
+        categoria: "Tododia",
+        precio: 31900,
+        imagen: "img/algodon.jpeg"
+    },
+    {
+        id: 2,
+        nombre: "Kit Tododia Acerola",
+        descripcion: "Crema hidratante + Body Splash",
+        categoria: "Tododia",
+        precio: 31900,
+        imagen: "img/acerola.jpeg"
+    },
+    {
+        id: 3,
+        nombre: "Pitanga Preta",
+        descripcion: "Perfume Ekos 150 ml",
+        categoria: "Perfumes",
+        precio: 30000,
+        imagen: "img/pitanga.jpeg"
+    },
+    {
+        id: 4,
+        nombre: "Kit Humor Rojo",
+        descripcion: "Labial + Esmalte + Perfume",
+        categoria: "Maquillaje",
+        precio: 20000,
+        imagen: "img/humor.png"
+    }
+];
 // -----------------------------
 // SCROLL SUAVE DEL MENÚ
 // -----------------------------
