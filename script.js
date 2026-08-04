@@ -337,11 +337,42 @@ boton.classList.add("activo");
 const sub = boton.dataset.subcategoria;
 
 
-if(sub==="Todos"){
+// limpiar tercer nivel
+contenedorSubfiltros3.innerHTML="";
 
-renderizarProductos(productos);
 
-}else{
+// crear tercer nivel si existe
+
+if(subcategorias3[sub]){
+
+
+subcategorias3[sub].forEach(nivel3=>{
+
+
+contenedorSubfiltros3.innerHTML += `
+
+<button 
+class="subfiltro3 ${nivel3==="Todos" ? "activo":""}"
+data-subcategoria3="${nivel3}">
+
+${nivel3}
+
+</button>
+
+`;
+
+});
+
+
+activarSubfiltros3();
+
+
+}
+
+
+// si no tiene tercer nivel filtra normal
+
+else{
 
 
 const resultado = productos.filter(producto=>
