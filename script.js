@@ -226,4 +226,20 @@ boton.style.transform="scale(1)";
 
 });
 
+const buscador = document.getElementById("buscador");
+
+buscador.addEventListener("input", () => {
+
+    const texto = buscador.value.toLowerCase();
+
+    const resultado = productos.filter(producto =>
+
+        producto.nombre.toLowerCase().includes(texto) ||
+        producto.descripcion.toLowerCase().includes(texto) ||
+        producto.categoria.toLowerCase().includes(texto)
+
+    );
+
+    renderizarProductos(resultado);
+
 });
