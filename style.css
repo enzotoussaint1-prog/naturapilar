@@ -162,6 +162,50 @@ gap:35px;
 
 }
 
+/* ==========================
+   FILTROS DE PRODUCTOS
+========================== */
+
+.filtros{
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+
+}
+
+
+.filtro{
+
+    border:none;
+    background:white;
+    color:#8d4b62;
+
+    padding:12px 25px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+
+.filtro:hover,
+.filtro.activo{
+
+    background:#d45f93;
+    color:white;
+
+}
+
 #buscador:focus{
 
     border-color:#d45f93;
