@@ -46,5 +46,29 @@ const productos = [
         oferta: true,
         destacado: true,
         stock: 8
+    },
+    {
+        id: 5,
+        nombre: "pitanga",
+        descripcion: "Labial + Esmalte + Perfume",
+        categoria: "Cuidado diario",
+        subcategoria:"Humor",
+        precio: 20000,
+        imagen: "img/humor.png",
+        oferta: true,
+        destacado: true,
+        stock: 8
+    },
+    {
+        id: 6,
+        nombre: "Shampoo",
+        descripcion: "Labial + Esmalte + Perfume",
+        categoria: "Infantil",
+        subcategoria:"Humor",
+        precio: 20000,
+        imagen: "img/humor.png",
+        oferta: true,
+        destacado: true,
+        stock: 8
     }
 ];
