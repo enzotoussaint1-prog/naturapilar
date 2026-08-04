@@ -5,7 +5,10 @@ const productos = [
         descripcion: "Crema hidratante 400 ml + Body Splash 200 ml",
         categoria: "Tododia",
         precio: 31900,
-        imagen: "img/algodon.jpeg"
+        imagen: "img/algodon.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
     },
     {
         id: 2,
@@ -13,7 +16,10 @@ const productos = [
         descripcion: "Crema hidratante + Body Splash",
         categoria: "Tododia",
         precio: 31900,
-        imagen: "img/acerola.jpeg"
+        imagen: "img/acerola.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
     },
     {
         id: 3,
@@ -21,7 +27,10 @@ const productos = [
         descripcion: "Perfume Ekos 150 ml",
         categoria: "Perfumes",
         precio: 30000,
-        imagen: "img/pitanga.jpeg"
+        imagen: "img/pitanga.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
     },
     {
         id: 4,
@@ -29,7 +38,10 @@ const productos = [
         descripcion: "Labial + Esmalte + Perfume",
         categoria: "Maquillaje",
         precio: 20000,
-        imagen: "img/humor.png"
+        imagen: "img/humor.png",
+        oferta: true,
+        destacado: true,
+        stock: 8
     }
 ];
 const contenedorProductos = document.getElementById("contenedor-productos");
