@@ -392,4 +392,56 @@ renderizarProductos(resultado);
 });
 
 
+const modal = document.getElementById("modal");
+const imagenModal = document.getElementById("imagenModal");
+
+let imagenesActuales = [];
+let indice = 0;
+
+document.addEventListener("click",(e)=>{
+
+    if(!e.target.classList.contains("imagen-producto")) return;
+
+    imagenesActuales = JSON.parse(e.target.dataset.imagenes);
+
+    indice = 0;
+
+    imagenModal.src = imagenesActuales[indice];
+
+    modal.style.display="flex";
+
 });
+
+document.getElementById("cerrar").onclick=()=>{
+
+    modal.style.display="none";
+
+};
+
+document.getElementById("siguiente").onclick=()=>{
+
+    indice++;
+
+    if(indice>=imagenesActuales.length){
+
+        indice=0;
+
+    }
+
+    imagenModal.src=imagenesActuales[indice];
+
+};
+
+document.getElementById("anterior").onclick=()=>{
+
+    indice--;
+
+    if(indice<0){
+
+        indice=imagenesActuales.length-1;
+
+    }
+
+    imagenModal.src=imagenesActuales[indice];
+
+};
