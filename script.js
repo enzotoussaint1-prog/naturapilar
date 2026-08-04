@@ -230,6 +230,14 @@ const subcategorias = {
         "Hidratantes"
     ],
 
+     Infantil:[
+        "Todos",
+        "Cremas",
+        "Jabones",
+        "Desodorantes",
+        "Hidratantes"
+    ],
+
     Maquillaje:[
         "Todos"
     ]
