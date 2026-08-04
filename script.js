@@ -210,6 +210,8 @@ const botonesCategoria = document.querySelectorAll(".filtro");
 
 const contenedorSubfiltros = document.getElementById("subfiltros");
 
+const contenedorSubfiltros3 =
+document.getElementById("subfiltros3");
 
 const subcategorias = {
 
