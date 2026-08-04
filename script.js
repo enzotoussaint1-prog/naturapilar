@@ -90,7 +90,7 @@ behavior:'smooth'
 // ANIMACIÓN DE PRODUCTOS
 // -----------------------------
 
-const productos = document.querySelectorAll(".producto");
+const tarjetasProducto = document.querySelectorAll(".producto");
 
 const observador = new IntersectionObserver((entradas)=>{
 
@@ -109,8 +109,7 @@ entrada.target.style.transform="translateY(0px)";
 threshold:0.2
 });
 
-productos.forEach((producto)=>{
-
+tarjetasProducto.forEach((producto)=>{
 producto.style.opacity="0";
 producto.style.transform="translateY(40px)";
 producto.style.transition=".6s";
@@ -148,7 +147,6 @@ ${producto}
 
 });
 
-});
 
 
 // -----------------------------
