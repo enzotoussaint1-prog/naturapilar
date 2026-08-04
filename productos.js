@@ -70,5 +70,20 @@ const productos = [
         oferta: true,
         destacado: true,
         stock: 8
+    },
+    {
+        id: 7,
+        nombre: "Kaiak Clasico",
+        descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        precio: 20000,
+        oferta: true,
+        destacado: true,
+        stock: 8,
+        imagenes:[
+        "img/kaiak.jpeg",
+        "img/kaiak2.jpeg"
+    ],
     }
 ];
