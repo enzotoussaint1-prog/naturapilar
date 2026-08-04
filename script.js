@@ -250,3 +250,48 @@ buscador.addEventListener("input", () => {
     renderizarProductos(resultado);
 
 });
+
+// -----------------------------
+// FILTROS POR CATEGORIA
+// -----------------------------
+
+const botonesFiltro = document.querySelectorAll(".filtro");
+
+
+botonesFiltro.forEach(boton => {
+
+
+    boton.addEventListener("click",()=>{
+
+
+        botonesFiltro.forEach(btn=>{
+            btn.classList.remove("activo");
+        });
+
+
+        boton.classList.add("activo");
+
+
+        const categoria = boton.dataset.categoria;
+
+
+        if(categoria === "Todos"){
+
+            renderizarProductos(productos);
+
+        }else{
+
+            const filtrados = productos.filter(producto =>
+                producto.categoria === categoria
+            );
+
+
+            renderizarProductos(filtrados);
+
+        }
+
+
+    });
+
+
+});
