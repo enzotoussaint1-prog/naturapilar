@@ -82,8 +82,8 @@ const productos = [
         destacado: true,
         stock: 8,
         imagenes:[
-        "img/kaiak.jpeg",
-        "img/kaiak2.jpeg"
+        "img/kaiak.jpg",
+        "img/kaiak2.jpg"
     ],
     }
 ];
