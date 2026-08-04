@@ -137,6 +137,36 @@ display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:35px;
 }
+.barra-busqueda{
+
+    display:flex;
+    justify-content:center;
+    margin-bottom:40px;
+
+}
+
+#buscador{
+
+    width:100%;
+    max-width:450px;
+
+    padding:14px 20px;
+
+    border-radius:30px;
+
+    border:1px solid #ddd;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+#buscador:focus{
+
+    border-color:#d45f93;
+
+}
 
 .producto{
 background:white;
