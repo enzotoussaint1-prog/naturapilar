@@ -225,6 +225,13 @@ boton.addEventListener("mouseleave",()=>{
 boton.style.transform="scale(1)";
 
 });
+    
+});
+
+
+// -----------------------------
+// BUSCADOR DE PRODUCTOS
+// -----------------------------
 
 const buscador = document.getElementById("buscador");
 
