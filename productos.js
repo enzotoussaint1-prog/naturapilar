@@ -78,12 +78,9 @@ const productos = [
         categoria: "Perfumes",
         subcategoria:"Kaiak",
         precio: 20000,
+        imagen: "img/kaiak.jpg",
         oferta: true,
         destacado: true,
-        stock: 8,
-        imagenes:[
-        "img/kaiak.jpg",
-        "img/kaiak2.jpg"
-    ],
+        stock: 8
     }
 ];
