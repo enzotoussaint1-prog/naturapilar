@@ -221,7 +221,7 @@ const subcategorias = {
         "Humor",
         "Luna",
         "Essencial",
-        "Homem"
+        "Homen"
     ],
 
     Tododia:[
@@ -255,6 +255,7 @@ const subcategorias3 = {
         "Cereza"
     ],
     Kaiak:[
+        "Todos",
         "Masculino",
         "Femenino"
     ],
