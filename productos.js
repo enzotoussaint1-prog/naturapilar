@@ -79,6 +79,7 @@ const productos = [
         subcategoria:"Kaiak",
         precio: 20000,
         imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
         oferta: true,
         destacado: true,
         stock: 8
