@@ -32,6 +32,38 @@ const productos = [
         imagen: "img/humor.png"
     }
 ];
+const contenedorProductos = document.getElementById("contenedor-productos");
+
+function renderizarProductos(lista) {
+
+    contenedorProductos.innerHTML = "";
+
+    lista.forEach(producto => {
+
+        contenedorProductos.innerHTML += `
+            <article class="producto">
+
+                <img src="${producto.imagen}"
+                     alt="${producto.nombre}">
+
+                <h3>${producto.nombre}</h3>
+
+                <p>${producto.descripcion}</p>
+
+                <span>$${producto.precio.toLocaleString("es-AR")}</span>
+
+                <a href="#"
+                   class="btn-comprar"
+                   data-producto="${producto.nombre}">
+                    Comprar
+                </a>
+
+            </article>
+        `;
+
+    });
+
+}
 // -----------------------------
 // SCROLL SUAVE DEL MENÚ
 // -----------------------------
