@@ -11,6 +11,7 @@ function renderizarProductos(lista) {
 
         <img src="${producto.imagen}"
      alt="${producto.nombre}">
+     
                 <h3>${producto.nombre}</h3>
 
                 <p>${producto.descripcion}</p>
