@@ -48,3 +48,5 @@ const productos = [
         stock: 8
     }
 ];
+console.log("productos.js cargado");
+console.log(productos)
