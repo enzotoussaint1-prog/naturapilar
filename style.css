@@ -396,3 +396,68 @@ width:100%;
 .beneficios{
 grid-template-columns:1fr 1fr;
 }
+.destacados{
+
+padding:80px 8%;
+
+background:white;
+
+text-align:center;
+
+}
+
+.destacados h2{
+
+font-size:40px;
+
+color:#8d4b62;
+
+margin-bottom:50px;
+
+}
+
+.destacados-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+gap:30px;
+
+}
+
+.destacado{
+
+background:#fff8f8;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.destacado:hover{
+
+transform:translateY(-8px);
+
+}
+
+.destacado h3{
+
+margin:15px 0;
+
+color:#8d4b62;
+
+}
+
+.destacado p{
+
+color:#666;
+
+line-height:1.6;
+
+}
