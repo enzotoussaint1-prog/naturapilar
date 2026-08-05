@@ -569,8 +569,8 @@ const productos = [
         subcategoria:"Luna",
         subcategoria3:"75ml",
         precio: 20000,
-        imagen: "img/kaiak.jpg",
-        imagen2: "img/kaiak2.jpg",
+        imagen: "img/luna clasico 75ml.jpg",
+        imagen2: "img/luna clasico 75ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 0
@@ -584,8 +584,8 @@ const productos = [
         subcategoria:"Luna",
         subcategoria3:"75ml",
         precio: 20000,
-        imagen: "img/kaiak.jpg",
-        imagen2: "img/kaiak2.jpg",
+        imagen: "img/luna radiante 75ml.jpg",
+        imagen2: "img/luna radiante 75ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 1
@@ -599,8 +599,8 @@ const productos = [
         subcategoria:"Luna",
         subcategoria3:"75ml",
         precio: 20000,
-        imagen: "img/kaiak.jpg",
-        imagen2: "img/kaiak2.jpg",
+        imagen: "img/luna absoluta 75ml.jpg",
+        imagen2: "img/luna absoluta 75ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 1
@@ -614,8 +614,8 @@ const productos = [
         subcategoria:"Luna",
         subcategoria3:"75ml",
         precio: 20000,
-        imagen: "img/kaiak.jpg",
-        imagen2: "img/kaiak2.jpg",
+        imagen: "img/luna coraje 75ml.jpg",
+        imagen2: "img/luna coraje75ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 0
