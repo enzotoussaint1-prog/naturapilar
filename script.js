@@ -615,10 +615,35 @@ detalle.innerHTML = `
 
 <h2>${producto.nombre}</h2>
 
-<img src="${producto.imagen}" width="250">
+
+<div class="galeria-detalle">
+
+<img 
+id="imagen-detalle"
+src="${producto.imagen}"
+alt="${producto.nombre}">
+
+</div>
 
 
 <p>${producto.descripcion}</p>
+
+
+<div class="precios-detalle">
+
+${producto.oferta && producto.precioAnterior ? `
+
+<span class="precio-anterior">
+$${producto.precioAnterior.toLocaleString("es-AR")}
+</span>
+
+<span class="descuento">
+-${Math.round(
+100 - (producto.precio * 100 / producto.precioAnterior)
+)}% OFF
+</span>
+
+` : ""}
 
 
 <h3>
@@ -626,8 +651,11 @@ $${producto.precio.toLocaleString("es-AR")}
 </h3>
 
 
+</div>
+
+
 <p>
-Stock disponible: ${producto.stock}
+📦 Stock disponible: ${producto.stock}
 </p>
 
 
