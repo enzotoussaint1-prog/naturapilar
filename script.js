@@ -409,7 +409,7 @@ const subcategorias3 = {
      Essencial:[
         "Todos",
         "Masculino",
-        "Femenimo"
+        "Femenino"
     ],
     
      Humor:[
