@@ -416,18 +416,6 @@ const subcategorias3 = {
         "Todos",
         "Masculino",
         "Femenimo"
-    ],
-    
-    BodySplash:[
-        "Todos",
-        "Algodón",
-        "Acerola"
-    ],
-
-    Jabones:[
-        "Todos",
-        "Algodón",
-        "Maracuyá"
     ]
 
 };
