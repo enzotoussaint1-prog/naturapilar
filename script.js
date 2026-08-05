@@ -35,6 +35,51 @@ function renderizarProductos(lista) {
 }
 renderizarProductos(productos);
 // -----------------------------
+// PROMOCIONES
+// -----------------------------
+
+const contenedorPromociones = document.getElementById("contenedor-promociones");
+
+function renderizarPromociones() {
+
+    if (!contenedorPromociones) return;
+
+    contenedorPromociones.innerHTML = "";
+
+    const promociones = productos.filter(producto => producto.oferta);
+
+    promociones.forEach(producto => {
+
+        contenedorPromociones.innerHTML += `
+
+        <article class="producto">
+
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+
+            <h3>${producto.nombre}</h3>
+
+            <p>${producto.descripcion}</p>
+
+            <span>$${producto.precio.toLocaleString("es-AR")}</span>
+
+            <a href="#"
+               class="btn-comprar"
+               data-producto="${producto.nombre}">
+
+                Comprar
+
+            </a>
+
+        </article>
+
+        `;
+
+    });
+
+}
+
+renderizarPromociones();
+// -----------------------------
 // SCROLL SUAVE DEL MENÚ
 // -----------------------------
 
