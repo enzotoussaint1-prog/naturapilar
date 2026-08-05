@@ -679,5 +679,33 @@ const productos = [
         oferta: false,
         destacado: true,
         stock: 1
+        },
+    {
+        id: 48,
+        codigo: "Nat0007",
+        nombre: "Ilia Secreto",
+        descripcion: "Secreto",
+        categoria: "Perfumes",
+        subcategoria:"Ilia",
+        precio: 20000,
+        imagen: "img/luna radiante 50ml.jpg",
+        imagen2: "img/luna radiante 50ml2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 3
+        },
+    {
+        id: 49,
+        codigo: "Nat0007",
+        nombre: "Ilia Clasico",
+        descripcion: "Clasico",
+        categoria: "Perfumes",
+        subcategoria:"Ilia",
+        precio: 20000,
+        imagen: "img/luna radiante 50ml.jpg",
+        imagen2: "img/luna radiante 50ml2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 4
         }
 ];
