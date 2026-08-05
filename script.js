@@ -9,6 +9,16 @@ function renderizarProductos(lista) {
         contenedorProductos.innerHTML += `
             <article class="producto">
 
+${producto.oferta ?
+
+`<div class="etiqueta-oferta">
+
+🔥 OFERTA
+
+</div>`
+
+: ""}
+
        <img
     src="${producto.imagen}"
     alt="${producto.nombre}"
