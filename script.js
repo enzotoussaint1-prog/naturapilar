@@ -591,3 +591,79 @@ renderizarProductos(resultado);
   });
 
 });    
+const modal = document.getElementById("modal-producto");
+
+const detalle = document.getElementById("detalle-producto");
+
+const cerrar = document.querySelector(".cerrar-modal");
+
+
+document.addEventListener("click", function(e){
+
+if(e.target.classList.contains("btn-detalle")){
+
+
+const id = e.target.dataset.id;
+
+
+const producto = productos.find(p => p.id == id);
+
+
+
+detalle.innerHTML = `
+
+<h2>${producto.nombre}</h2>
+
+<img src="${producto.imagen}" width="250">
+
+
+<p>${producto.descripcion}</p>
+
+
+<h3>
+$${producto.precio.toLocaleString("es-AR")}
+</h3>
+
+
+<p>
+Stock disponible: ${producto.stock}
+</p>
+
+
+<a class="btn-comprar"
+href="https://wa.me/5491150241149?text=Hola%20me%20interesa%20${producto.nombre}"
+target="_blank">
+
+Comprar por WhatsApp
+
+</a>
+
+`;
+
+
+modal.style.display="block";
+
+
+}
+
+});
+
+
+
+cerrar.onclick=function(){
+
+modal.style.display="none";
+
+}
+
+
+
+window.onclick=function(e){
+
+if(e.target==modal){
+
+modal.style.display="none";
+
+}
+
+}
