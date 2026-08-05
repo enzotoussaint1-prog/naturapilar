@@ -7,8 +7,8 @@ const productos = [
         subcategoria:"Cremas",
         precio: 31900,
         imagen: "img/algodon.jpeg",
-        oferta: true,
-        destacado: false,
+        oferta: false,
+        destacado: true,
         stock: 8
     },
     {
@@ -31,8 +31,8 @@ const productos = [
         subcategoria:"Ekos",
         precio: 30000,
         imagen: "img/pitanga.jpeg",
-        oferta: true,
-        destacado: false,
+        oferta: false,
+        destacado: true,
         stock: 8
     },
     {
@@ -78,6 +78,7 @@ const productos = [
         categoria: "Perfumes",
         subcategoria:"Kaiak",
         subcategoria3:"Masculino",
+        precioAnterior: 30000,
         precio: 20000,
         imagen: "img/kaiak.jpg",
         imagen2: "img/kaiak2.jpg",
@@ -92,6 +93,7 @@ const productos = [
         categoria: "Perfumes",
         subcategoria:"Kaiak",
         subcategoria3:"Masculino",
+        precioAnterior: 30000,
         precio: 20000,
         imagen: "img/kaiak oceano.jpeg",
         imagen2: "img/kaiak oceano2.jpeg",
@@ -131,6 +133,7 @@ const productos = [
         descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
+        precioAnterior: 30000,
         precio: 20000,
         imagen: "img/Frescor Ekos Cacau.jpeg",
         oferta: true,
@@ -143,6 +146,7 @@ const productos = [
         descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
+        precioAnterior: 30000,
         precio: 20000,
         imagen: "img/Frescor Ekos Frutal.jpeg",
         oferta: true,
@@ -155,6 +159,7 @@ const productos = [
         descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
+        precioAnterior: 30000,
         precio: 20000,
         imagen: "img/Frescor Ekos Floral.jpeg",
         imagen2: "img/Frescor Ekos Floral2.jpeg",
@@ -170,7 +175,7 @@ const productos = [
         subcategoria:"Frescor Ekos",
         precio: 20000,
         imagen: "img/Frescor Ekos Pitanga.jpeg",
-        oferta: true,
+        oferta: false,
         destacado: true,
         stock: 8
     }
