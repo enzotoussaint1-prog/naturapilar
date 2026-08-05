@@ -848,3 +848,37 @@ grid-template-columns:1fr;
 }
 
 }
+/* =========================
+   SECCION PROMOCIONES
+========================= */
+
+
+.promociones{
+
+padding:80px 8%;
+background:white;
+
+}
+
+
+.promociones h2{
+
+text-align:center;
+font-size:40px;
+color:#8d4b62;
+margin-bottom:20px;
+
+}
+
+
+.texto-promociones{
+
+text-align:center;
+max-width:700px;
+margin:0 auto 50px;
+
+font-size:18px;
+color:#666;
+line-height:1.6;
+
+}
