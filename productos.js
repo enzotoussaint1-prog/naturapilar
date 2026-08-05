@@ -84,5 +84,19 @@ const productos = [
         oferta: true,
         destacado: true,
         stock: 8
+    },
+     {
+        id: 8,
+        nombre: "Kaiak Oceano",
+        descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak oceano.jpeg",
+        imagen2: "img/kaiak oceano2.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
     }
 ];
