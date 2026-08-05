@@ -371,6 +371,7 @@ const subcategorias = {
         "Desodorantes",
         "Hidratantes",
         "Mascara concentrada",
+        "Trio",
         "BodySplash",
         "Cabello",
         "Varios"
