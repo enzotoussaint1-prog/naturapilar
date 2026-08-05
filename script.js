@@ -19,7 +19,23 @@ function renderizarProductos(lista) {
 
                 <p>${producto.descripcion}</p>
 
-                <span>$${producto.precio.toLocaleString("es-AR")}</span>
+               <div class="precios">
+
+${producto.oferta && producto.precioAnterior ?
+
+`<span class="precio-anterior">
+$${producto.precioAnterior.toLocaleString("es-AR")}
+</span>`
+
+: ""}
+
+<span class="precio-actual">
+
+$${producto.precio.toLocaleString("es-AR")}
+
+</span>
+
+</div>
 
                 <a href="#"
                    class="btn-comprar"
