@@ -613,3 +613,32 @@ cursor:pointer;
 font-weight:bold;
 
 }
+.galeria-detalle{
+
+text-align:center;
+
+}
+
+
+.galeria-detalle img{
+
+width:300px;
+
+height:300px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+}
+
+
+.precios-detalle h3{
+
+font-size:30px;
+
+color:#d45f93;
+
+margin-top:10px;
+
+}
