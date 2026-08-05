@@ -688,8 +688,8 @@ const productos = [
         categoria: "Perfumes",
         subcategoria:"Ilia",
         precio: 20000,
-        imagen: "img/luna radiante 50ml.jpg",
-        imagen2: "img/luna radiante 50ml2.jpg",
+        imagen: "img/ilia secreto 50ml.jpg",
+        imagen2: "img/ilia secreto 50ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 3
@@ -702,8 +702,8 @@ const productos = [
         categoria: "Perfumes",
         subcategoria:"Ilia",
         precio: 20000,
-        imagen: "img/luna radiante 50ml.jpg",
-        imagen2: "img/luna radiante 50ml2.jpg",
+        imagen: "img/ilia clasico 50ml.jpg",
+        imagen2: "img/ilia clasico 50ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 4
