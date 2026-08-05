@@ -324,6 +324,8 @@ boton.style.transform="scale(1)";
 
 const buscador = document.getElementById("buscador");
 
+if(buscador){
+
 buscador.addEventListener("input", () => {
 
     const texto = buscador.value.toLowerCase();
@@ -339,6 +341,8 @@ buscador.addEventListener("input", () => {
     renderizarProductos(resultado);
 
 });
+
+}
 // -----------------------------
 // FILTROS DINAMICOS
 // -----------------------------
