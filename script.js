@@ -565,19 +565,46 @@ boton.classList.add("activo");
 const sub3 = boton.dataset.subcategoria3;
 
 
-// obtener la subcategoria padre actual
+// toma la subcategoría anterior (Kaiak, Essencial, Humor)
 
 const subPadre = document.querySelector(".subfiltro.activo")
 .dataset.subcategoria;
 
 
 
-const resultado = productos.filter(producto =>
+let resultado;
+
+
+
+// SI ELIGE TODOS
+
+if(sub3 === "Todos"){
+
+
+resultado = productos.filter(producto =>
+
+producto.subcategoria === subPadre
+
+);
+
+
+}
+
+
+// SI ELIGE Masculino/Femenino
+
+else{
+
+
+resultado = productos.filter(producto =>
 
 producto.subcategoria === subPadre &&
 producto.subcategoria3 === sub3
 
 );
+
+
+}
 
 
 renderizarProductos(resultado);
