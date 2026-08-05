@@ -329,8 +329,8 @@ const productos = [
         subcategoria3:"Femenino",
         precioAnterior: 30000,
         precio: 20000,
-        imagen: "img/kaiak oceanoF.jpeg",
-        imagen2: "img/kaiak oceanoF2.jpeg",
+        imagen: "img/kaiak oceanoF.jpg",
+        imagen2: "img/kaiak oceanoF2.jpg",
         oferta: false,
         destacado: true,
         stock: 4
