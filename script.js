@@ -728,8 +728,9 @@ $${producto.precio.toLocaleString("es-AR")}
 </p>
 
 
-<a class="btn-comprar"
-href="https://wa.me/5491150241149?text=Hola%20me%20interesa%20${producto.nombre}"
+<a 
+class="btn-comprar"
+href="https://wa.me/5491150241149?text=Hola%20Natura%20Pilar%20me%20interesa%20${producto.nombre}"
 target="_blank">
 
 Comprar por WhatsApp
