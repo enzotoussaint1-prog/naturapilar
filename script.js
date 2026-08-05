@@ -57,6 +57,11 @@ $${producto.precio.toLocaleString("es-AR")}
 
 </div>
 
+<button 
+class="btn-detalle"
+data-id="${producto.id}">
+Ver detalle
+</button>
                 <a href="#"
                    class="btn-comprar"
                    data-producto="${producto.nombre}">
