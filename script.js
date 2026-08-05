@@ -623,6 +623,17 @@ id="imagen-detalle"
 src="${producto.imagen}"
 alt="${producto.nombre}">
 
+
+${producto.imagen2 ? `
+
+<img 
+class="imagen-secundaria"
+src="${producto.imagen2}"
+alt="${producto.nombre}">
+
+` : ""}
+
+
 </div>
 
 
