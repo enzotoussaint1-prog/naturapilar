@@ -100,11 +100,37 @@ function renderizarPromociones() {
 
             <h3>${producto.nombre}</h3>
 
-            <p>${producto.descripcion}</p>
+           <p>${producto.descripcion}</p>
 
-            <span>$${producto.precio.toLocaleString("es-AR")}</span>
+<div class="precios">
 
-            <a href="#"
+${producto.precioAnterior ? `
+
+<span class="precio-anterior">
+
+$${producto.precioAnterior.toLocaleString("es-AR")}
+
+</span>
+
+<div class="descuento">
+
+-${Math.round(
+100 - (producto.precio * 100 / producto.precioAnterior)
+)}% OFF
+
+</div>
+
+` : ""}
+
+<span class="precio-actual">
+
+$${producto.precio.toLocaleString("es-AR")}
+
+</span>
+
+</div>
+
+<a href="#"
                class="btn-comprar"
                data-producto="${producto.nombre}">
 
