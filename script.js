@@ -626,7 +626,7 @@ if(categoria==="Todos"){
 contenedorSubfiltros.innerHTML="";
 
 renderizarProductos(productos);
-console.log("PRODUCTOS CARGADOS:", productos);
+
 
 }else{
 
