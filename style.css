@@ -882,3 +882,57 @@ color:#666;
 line-height:1.6;
 
 }
+/* =========================
+   GALERIA DETALLE PRODUCTO
+========================= */
+
+
+.galeria-detalle{
+
+text-align:center;
+
+}
+
+
+.imagen-principal-detalle{
+
+width:350px;
+height:350px;
+object-fit:cover;
+border-radius:25px;
+
+}
+
+
+.miniaturas{
+
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+
+}
+
+
+.miniaturas img{
+
+width:80px;
+height:80px;
+object-fit:cover;
+border-radius:15px;
+cursor:pointer;
+
+border:2px solid transparent;
+
+transition:.3s;
+
+}
+
+
+.miniaturas img:hover{
+
+transform:scale(1.1);
+
+border-color:#d45f93;
+
+}
