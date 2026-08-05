@@ -753,3 +753,8 @@ modal.style.display="none";
 }
 
 }
+function cambiarImagen(imagen){
+
+document.getElementById("imagen-detalle").src = imagen;
+
+}
