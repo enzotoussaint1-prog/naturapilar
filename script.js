@@ -372,7 +372,7 @@ const subcategorias = {
         "Hidratantes",
         "BodySplash"
     ],
-     Infantil:[
+     Infantiles:[
         "Todos",
         "Perfume",
         "Shampoo",
