@@ -701,3 +701,78 @@ border:3px solid #d45f93;
     font-size:28px;
     font-weight:700;
 }
+/* =========================
+   SECCION NOSOTROS
+========================= */
+
+
+.nosotros{
+
+padding:80px 8%;
+background:white;
+
+}
+
+
+.nosotros-contenido{
+
+display:flex;
+align-items:center;
+gap:60px;
+
+}
+
+
+.nosotros-texto{
+
+flex:1;
+
+}
+
+
+.nosotros-texto h2{
+
+font-size:40px;
+color:#8d4b62;
+margin-bottom:25px;
+
+}
+
+
+.nosotros-texto p{
+
+font-size:18px;
+line-height:1.7;
+margin-bottom:20px;
+color:#555;
+
+}
+
+
+.nosotros-imagen{
+
+flex:1;
+text-align:center;
+
+}
+
+
+.nosotros-imagen img{
+
+width:280px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+
+@media(max-width:900px){
+
+.nosotros-contenido{
+
+flex-direction:column;
+
+}
+
+
+}
