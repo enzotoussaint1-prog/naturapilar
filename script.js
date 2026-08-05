@@ -9,15 +9,11 @@ function renderizarProductos(lista) {
         contenedorProductos.innerHTML += `
             <article class="producto">
 
-       <div class="imagenes-producto">
-
-    <img src="${producto.imagen}" alt="${producto.nombre}">
-
-    ${producto.imagen2 ? `
-        <img src="${producto.imagen2}" alt="${producto.nombre}">
-    ` : ""}
-
-</div>
+       <img
+    src="${producto.imagen}"
+    alt="${producto.nombre}"
+    onmouseover="this.src='${producto.imagen2 || producto.imagen}'"
+    onmouseout="this.src='${producto.imagen}'">
      
                 <h3>${producto.nombre}</h3>
 
