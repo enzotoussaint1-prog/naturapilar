@@ -233,7 +233,7 @@ const subcategorias = {
         "Jabones",
         "Desodorantes",
         "Hidratantes",
-        "Body Splash"
+        "BodySplash"
     ],
 
      Infantil:[
@@ -258,22 +258,26 @@ const subcategorias3 = {
         "Acerola",
         "Cereza"
     ],
+    
     Kaiak:[
         "Todos",
         "Masculino",
         "Femenino"
     ],
+    
      Essencial:[
         "Todos",
         "Masculino",
         "Femenimo"
     ],
+    
      Humor:[
         "Todos",
         "Masculino",
         "Femenimo"
     ],
-    Body Splash:[
+    
+    BodySplash:[
         "Todos",
         "Algodón",
         "Acerola"
