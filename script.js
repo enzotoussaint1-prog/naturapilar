@@ -222,12 +222,24 @@ document.addEventListener("click", (e) => {
 
     const producto = e.target.dataset.producto;
 
-    const mensaje = `Hola 😊
-Me interesa comprar:
+    const productoSeleccionado = productos.find(
+p => p.nombre === producto
+);
 
-${producto}
 
-¿Podrías pasarme más información?`;
+const mensaje = `Hola Natura Pilar 😊
+
+Me interesa este producto:
+
+🛍️ ${productoSeleccionado.nombre}
+
+💰 Precio:
+$${productoSeleccionado.precio.toLocaleString("es-AR")}
+
+📦 Stock disponible:
+${productoSeleccionado.stock}
+
+¿Podrían brindarme más información?`;
 
     const telefono = "5491150241149";
 
