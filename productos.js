@@ -8,7 +8,7 @@ const productos = [
         precio: 31900,
         imagen: "img/algodon.jpeg",
         oferta: true,
-        destacado: true,
+        destacado: false,
         stock: 8
     },
     {
@@ -19,7 +19,7 @@ const productos = [
         subcategoria:"Cremas",
         precio: 31900,
         imagen: "img/acerola.jpeg",
-        oferta: true,
+        oferta: false,
         destacado: true,
         stock: 8
     },
@@ -32,7 +32,7 @@ const productos = [
         precio: 30000,
         imagen: "img/pitanga.jpeg",
         oferta: true,
-        destacado: true,
+        destacado: false,
         stock: 8
     },
     {
@@ -43,7 +43,7 @@ const productos = [
         subcategoria:"Humor",
         precio: 20000,
         imagen: "img/humor.png",
-        oferta: true,
+        oferta: false,
         destacado: true,
         stock: 8
     },
@@ -55,7 +55,7 @@ const productos = [
         subcategoria:"Humor",
         precio: 20000,
         imagen: "img/humor.png",
-        oferta: true,
+        oferta: false,
         destacado: true,
         stock: 8
     },
@@ -67,7 +67,7 @@ const productos = [
         subcategoria:"Humor",
         precio: 20000,
         imagen: "img/humor.png",
-        oferta: true,
+        oferta: false,
         destacado: true,
         stock: 8
     },
@@ -108,7 +108,7 @@ const productos = [
         precio: 20000,
         imagen: "img/Frescor Ekos Acai2.jpeg",
         imagen2: "img/Frescor Ekos Acai.jpeg",
-        oferta: true,
+        oferta: false,
         destacado: true,
         stock: 8
     },
@@ -121,7 +121,7 @@ const productos = [
         precio: 20000,
         imagen: "img/Frescor Ekos Mara2.jpeg",
         imagen2: "img/Frescor Ekos Mara.jpeg",
-        oferta: true,
+        oferta: false,
         destacado: true,
         stock: 8
     },
