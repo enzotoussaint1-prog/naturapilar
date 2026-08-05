@@ -66,7 +66,7 @@ const productos = [
         nombre: "Shampoo",
         descripcion: "Labial + Esmalte + Perfume",
         categoria: "Infantil",
-        subcategoria:"Humor",
+        subcategoria:"Shampoo",
         precio: 20000,
         imagen: "img/humor.png",
         oferta: false,
