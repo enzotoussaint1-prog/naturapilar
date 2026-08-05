@@ -565,6 +565,49 @@ boton.classList.add("activo");
 const sub3 = boton.dataset.subcategoria3;
 
 
+// obtener la subcategoria padre actual
+
+const subPadre = document.querySelector(".subfiltro.activo")
+.dataset.subcategoria;
+
+
+
+const resultado = productos.filter(producto =>
+
+producto.subcategoria === subPadre &&
+producto.subcategoria3 === sub3
+
+);
+
+
+renderizarProductos(resultado);
+
+
+});
+
+
+});
+
+}
+
+
+botones3.forEach(boton=>{
+
+
+boton.addEventListener("click",()=>{
+
+
+botones3.forEach(btn=>
+btn.classList.remove("activo")
+);
+
+
+boton.classList.add("activo");
+
+
+const sub3 = boton.dataset.subcategoria3;
+
+
 const resultado = productos.filter(producto =>
 
 producto.subcategoria3 === sub3
