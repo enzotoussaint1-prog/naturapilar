@@ -124,5 +124,53 @@ const productos = [
         oferta: true,
         destacado: true,
         stock: 8
+    },
+    {
+        id: 11,
+        nombre: "Frescor Ekos Cacau",
+        descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
+        categoria: "Perfumes",
+        subcategoria:"Frescor Ekos",
+        precio: 20000,
+        imagen: "img/Frescor Ekos Cacau.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
+    },
+    {
+        id: 12,
+        nombre: "Frescor Ekos Frutal",
+        descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
+        categoria: "Perfumes",
+        subcategoria:"Frescor Ekos",
+        precio: 20000,
+        imagen: "img/Frescor Ekos Frutal.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
+    },
+    {
+        id: 13,
+        nombre: "Frescor Ekos Floral",
+        descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
+        categoria: "Perfumes",
+        subcategoria:"Frescor Ekos",
+        precio: 20000,
+        imagen: "img/Frescor Ekos Floral.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
+    },
+     {
+        id: 14,
+        nombre: "Frescor Ekos Pitanga",
+        descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
+        categoria: "Perfumes",
+        subcategoria:"Frescor Ekos",
+        precio: 20000,
+        imagen: "img/Frescor Ekos Pitanga.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
     }
 ];
