@@ -410,7 +410,6 @@ renderizarProductos(resultado);
 
 function activarSubfiltros3(){
 
-
 const botones3 = document.querySelectorAll(".subfiltro3");
 
 
@@ -431,14 +430,7 @@ boton.classList.add("activo");
 const sub3 = boton.dataset.subcategoria3;
 
 
-if(sub3==="Todos"){
-
-renderizarProductos(productos);
-
-}else{
-
-
-const resultado = productos.filter(producto=>
+const resultado = productos.filter(producto =>
 
 producto.subcategoria3 === sub3
 
@@ -448,9 +440,6 @@ producto.subcategoria3 === sub3
 renderizarProductos(resultado);
 
 
-}
-
-
 });
 
 
@@ -458,7 +447,6 @@ renderizarProductos(resultado);
 
 
 }
-
 
 
 botonesCategoria.forEach(boton=>{
