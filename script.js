@@ -653,24 +653,35 @@ detalle.innerHTML = `
 
 <div class="galeria-detalle">
 
+
 <img 
 id="imagen-detalle"
+class="imagen-principal-detalle"
 src="${producto.imagen}"
 alt="${producto.nombre}">
+
+
+<div class="miniaturas">
+
+
+<img 
+src="${producto.imagen}"
+onclick="cambiarImagen('${producto.imagen}')">
 
 
 ${producto.imagen2 ? `
 
 <img 
-class="imagen-secundaria"
 src="${producto.imagen2}"
-alt="${producto.nombre}">
+onclick="cambiarImagen('${producto.imagen2}')">
 
 ` : ""}
 
 
 </div>
 
+
+</div>
 
 <p>${producto.descripcion}</p>
 
