@@ -364,7 +364,7 @@ const subcategorias = {
         "Frescor Ekos"
     ],
 
-    CuidadodiarioTododia:[
+    Tododia:[
         "Todos",
         "Cremas",
         "Jabones",
