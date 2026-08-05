@@ -26,7 +26,7 @@ ${producto.oferta ?
     onmouseout="this.src='${producto.imagen}'">
      
                 <h3>${producto.nombre}</h3>
-
+<h3>PRUEBA</h3>
                 <p>${producto.descripcion}</p>
 
               <div class="precios">
