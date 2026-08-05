@@ -370,6 +370,7 @@ const subcategorias = {
         "Jabones",
         "Desodorantes",
         "Hidratantes",
+        "Mascara concentrada",
         "BodySplash",
         "Cabello",
         "Varios"
@@ -390,11 +391,12 @@ const subcategorias = {
 
 const subcategorias3 = {
 
-    Cremas:[
+    Hidratantes:[
         "Todos",
-        "Algodón",
-        "Acerola",
-        "Cereza"
+        "400ml",
+        "200ml",
+        "100ml",
+        "50ml"
     ],
     
     Kaiak:[
