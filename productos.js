@@ -424,7 +424,7 @@ const productos = [
         oferta: false,
         destacado: true,
         stock: 1
-        },    
+    },    
     {
         id: 31,
         codigo: "Nat0003",
@@ -439,8 +439,8 @@ const productos = [
         oferta: false,
         destacado: true,
         stock: 1
-        },    
-    {
+    },    
+     {
         id: 32,
         codigo: "Nat0003",
         nombre: "Essencial Supreme",
@@ -454,8 +454,8 @@ const productos = [
         oferta: false,
         destacado: true,
         stock: 1
-        },
-    {
+     },
+     {
         id: 33,
         codigo: "Nat0003",
         nombre: "Essencial Palo Santo",
@@ -469,7 +469,7 @@ const productos = [
         oferta: false,
         destacado: true,
         stock: 1
-        },
+    },
     {
         id: 34,
         codigo: "Nat0003",
