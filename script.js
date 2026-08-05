@@ -547,111 +547,47 @@ function activarSubfiltros3(){
 
 const botones3 = document.querySelectorAll(".subfiltro3");
 
-
 botones3.forEach(boton=>{
-
 
 boton.addEventListener("click",()=>{
 
-
-botones3.forEach(btn=>
-btn.classList.remove("activo")
-);
-
+botones3.forEach(btn=>btn.classList.remove("activo"));
 
 boton.classList.add("activo");
 
-
 const sub3 = boton.dataset.subcategoria3;
 
-
-// toma la subcategoría anterior (Kaiak, Essencial, Humor)
-
-const subPadre = document.querySelector(".subfiltro.activo")
-.dataset.subcategoria;
-
-
+const subPadre = document.querySelector(".subfiltro.activo").dataset.subcategoria;
 
 let resultado;
 
+if(sub3==="Todos"){
 
+resultado = productos.filter(producto=>
 
-// SI ELIGE TODOS
-
-if(sub3 === "Todos"){
-
-
-resultado = productos.filter(producto =>
-
-producto.subcategoria === subPadre
+producto.subcategoria===subPadre
 
 );
 
+}else{
 
-}
+resultado = productos.filter(producto=>
 
-
-// SI ELIGE Masculino/Femenino
-
-else{
-
-
-resultado = productos.filter(producto =>
-
-producto.subcategoria === subPadre &&
-producto.subcategoria3 === sub3
+producto.subcategoria===subPadre &&
+producto.subcategoria3===sub3
 
 );
 
-
 }
-
 
 renderizarProductos(resultado);
 
-
 });
-
 
 });
 
 }
 
-
-botones3.forEach(boton=>{
-
-
-boton.addEventListener("click",()=>{
-
-
-botones3.forEach(btn=>
-btn.classList.remove("activo")
-);
-
-
-boton.classList.add("activo");
-
-
-const sub3 = boton.dataset.subcategoria3;
-
-
-const resultado = productos.filter(producto =>
-
-producto.subcategoria3 === sub3
-
-);
-
-
-renderizarProductos(resultado);
-
-
-});
-
-
-});
-
-
-}
 
 
 botonesCategoria.forEach(boton=>{
