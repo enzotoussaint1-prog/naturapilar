@@ -9,8 +9,15 @@ function renderizarProductos(lista) {
         contenedorProductos.innerHTML += `
             <article class="producto">
 
-        <img src="${producto.imagen}"
-     alt="${producto.nombre}">
+       <div class="imagenes-producto">
+
+    <img src="${producto.imagen}" alt="${producto.nombre}">
+
+    ${producto.imagen2 ? `
+        <img src="${producto.imagen2}" alt="${producto.nombre}">
+    ` : ""}
+
+</div>
      
                 <h3>${producto.nombre}</h3>
 
