@@ -221,7 +221,8 @@ const subcategorias = {
         "Humor",
         "Luna",
         "Essencial",
-        "Homen"
+        "Homen",
+        "Ilia"
     ],
 
     Tododia:[
@@ -258,6 +259,16 @@ const subcategorias3 = {
         "Todos",
         "Masculino",
         "Femenino"
+    ],
+     Essencial:[
+        "Todos",
+        "Masculino",
+        "Femenimo"
+    ],
+     Humor:[
+        "Todos",
+        "Masculino",
+        "Femenimo"
     ],
 
     BodySplash:[
