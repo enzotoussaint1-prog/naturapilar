@@ -629,8 +629,8 @@ const productos = [
         subcategoria:"Luna",
         subcategoria3:"50ml",
         precio: 20000,
-        imagen: "img/kaiak.jpg",
-        imagen2: "img/kaiak2.jpg",
+        imagen: "img/luna intenso 50ml.jpg",
+        imagen2: "img/luna intenso 50ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 0
@@ -644,8 +644,8 @@ const productos = [
         subcategoria:"Luna",
         subcategoria3:"50ml",
         precio: 20000,
-        imagen: "img/kaiak.jpg",
-        imagen2: "img/kaiak2.jpg",
+        imagen: "img/luna actitude 50ml.jpg",
+        imagen2: "img/luna actitude 50ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 1
@@ -659,8 +659,8 @@ const productos = [
         subcategoria:"Luna",
         subcategoria3:"50ml",
         precio: 20000,
-        imagen: "img/kaiak.jpg",
-        imagen2: "img/kaiak2.jpg",
+        imagen: "img/luna legado 50ml.jpg",
+        imagen2: "img/luna legado 50ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 1
@@ -674,8 +674,8 @@ const productos = [
         subcategoria:"Luna",
         subcategoria3:"50ml",
         precio: 20000,
-        imagen: "img/kaiak.jpg",
-        imagen2: "img/kaiak2.jpg",
+        imagen: "img/luna radiante 50ml.jpg",
+        imagen2: "img/luna radiante 50ml2.jpg",
         oferta: false,
         destacado: true,
         stock: 1
