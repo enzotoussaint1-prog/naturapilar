@@ -461,3 +461,22 @@ color:#666;
 line-height:1.6;
 
 }
+#promociones{
+
+    padding:80px 8%;
+
+    background:white;
+
+}
+
+#promociones h2{
+
+    text-align:center;
+
+    font-size:40px;
+
+    color:#8d4b62;
+
+    margin-bottom:50px;
+
+}
