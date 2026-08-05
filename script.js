@@ -415,6 +415,11 @@ const subcategorias3 = {
         "Masculino",
         "Femenino"
     ],
+     Luna:[
+        "Todos",
+        "75ml",
+        "50ml"
+    ],
     
      Humor:[
         "Todos",
