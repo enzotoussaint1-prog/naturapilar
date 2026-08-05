@@ -87,7 +87,7 @@ const productos = [
         imagen2: "img/kaiak2.jpg",
         oferta: true,
         destacado: true,
-        stock: 8
+        stock: 4
     },
      {
         id: 8,
@@ -103,7 +103,7 @@ const productos = [
         imagen2: "img/kaiak oceano2.jpeg",
         oferta: true,
         destacado: true,
-        stock: 8
+        stock: 4
     },
     {
         id: 9,
@@ -182,5 +182,125 @@ const productos = [
         oferta: false,
         destacado: true,
         stock: 8
+    },
+    {
+        id: 15,
+        codigo: "Nat0002",
+        nombre: "Kaiak Urbe",
+        descripcion: "Urbe",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 3
+    },
+    {
+        id: 16,
+        codigo: "Nat0002",
+        nombre: "Kaiak Sonar",
+        descripcion: "Sonar",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 5
+    },
+    {
+        id: 17,
+        codigo: "Nat0002",
+        nombre: "Kaiak Aero",
+        descripcion: "Aero",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 1
+    },
+    {
+        id: 18,
+        codigo: "Nat0002",
+        nombre: "Kaiak Aventura",
+        descripcion: "Aventura",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 2
+    },
+    {
+        id: 19,
+        codigo: "Nat0002",
+        nombre: "Kaiak Eau Parfum",
+        descripcion: "Eau Parfum",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 1
+    },
+    {
+        id: 20,
+        codigo: "Nat0002",
+        nombre: "Kaiak Pulso",
+        descripcion: "Pulso",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 5
+    },
+    {
+        id: 21,
+        codigo: "Nat0002",
+        nombre: "Kaiak O2",
+        descripcion: "O2",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 2
+    },
+    {
+        id: 22,
+        codigo: "Nat0002",
+        nombre: "Kaiak Vital",
+        descripcion: "Vital",
+        categoria: "Perfumes",
+        subcategoria:"Kaiak",
+        subcategoria3:"Masculino",
+        precio: 20000,
+        imagen: "img/kaiak.jpg",
+        imagen2: "img/kaiak2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 2
     }
 ];
