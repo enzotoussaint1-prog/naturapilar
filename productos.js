@@ -157,6 +157,7 @@ const productos = [
         subcategoria:"Frescor Ekos",
         precio: 20000,
         imagen: "img/Frescor Ekos Floral.jpeg",
+        imagen2: "img/Frescor Ekos Floral2.jpeg",
         oferta: true,
         destacado: true,
         stock: 8
