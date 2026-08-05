@@ -314,14 +314,6 @@ color:#666;
 min-height:60px;
 }
 
-.producto span{
-display:block;
-padding:20px;
-font-size:24px;
-color:#d45f93;
-font-weight:bold;
-}
-
 .producto a{
 display:block;
 margin:0 20px 20px;
@@ -522,19 +514,19 @@ padding:20px;
 
 .precio-anterior{
 
-display:block;
+display:block !important;
 
-color:#999;
+color:#888 !important;
 
-font-size:18px;
+font-size:18px !important;
 
-font-weight:500;
+font-weight:400 !important;
 
-text-decoration: line-through;
+text-decoration-line: line-through !important;
 
-text-decoration-thickness:3px;
+text-decoration-color: red !important;
 
-text-decoration-color:red;
+text-decoration-thickness: 3px !important;
 
 margin-bottom:6px;
 
