@@ -236,8 +236,8 @@ Me interesa este producto:
 💰 Precio:
 $${productoSeleccionado.precio.toLocaleString("es-AR")}
 
-📦 Stock disponible:
-${productoSeleccionado.stock}
+🔢 Código:
+${productoSeleccionado.id}
 
 ¿Podrían brindarme más información?`;
 
@@ -736,7 +736,7 @@ $${producto.precio.toLocaleString("es-AR")}
 
 
 <p>
-📦 Stock disponible: ${producto.stock}
+🔢 Código del producto: ${producto.id}
 </p>
 
 
