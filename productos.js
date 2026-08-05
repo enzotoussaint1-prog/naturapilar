@@ -1,6 +1,7 @@
 const productos = [
     {
         id: 1,
+        codigo: "Nat0001",
         nombre: "Kit Tododia Algodón",
         descripcion: "Crema hidratante 400 ml + Body Splash 200 ml",
         categoria: "Tododia",
@@ -13,6 +14,7 @@ const productos = [
     },
     {
         id: 2,
+        codigo: "Nat0001",
         nombre: "Kit Tododia Acerola",
         descripcion: "Crema hidratante + Body Splash",
         categoria: "Tododia",
@@ -73,6 +75,7 @@ const productos = [
     },
     {
         id: 7,
+        codigo: "Nat0002",
         nombre: "Kaiak Clasico",
         descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
         categoria: "Perfumes",
@@ -88,6 +91,7 @@ const productos = [
     },
      {
         id: 8,
+        codigo: "Nat0002",
         nombre: "Kaiak Oceano",
         descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
         categoria: "Perfumes",
