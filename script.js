@@ -370,7 +370,9 @@ const subcategorias = {
         "Jabones",
         "Desodorantes",
         "Hidratantes",
-        "BodySplash"
+        "BodySplash",
+        "Cabello",
+        "Varios"
     ],
     
      Infantiles:[
