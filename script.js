@@ -237,7 +237,7 @@ Me interesa este producto:
 $${productoSeleccionado.precio.toLocaleString("es-AR")}
 
 🔢 Código:
-${productoSeleccionado.id}
+${productoSeleccionado.codigo}
 
 ¿Podrían brindarme más información?`;
 
@@ -736,7 +736,7 @@ $${producto.precio.toLocaleString("es-AR")}
 
 
 <p>
-🔢 Código del producto: ${producto.id}
+🔢 Código del producto: ${producto.codigo}
 </p>
 
 
