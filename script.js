@@ -29,15 +29,25 @@ ${producto.oferta ?
 
                 <p>${producto.descripcion}</p>
 
-               <div class="precios">
+              <div class="precios">
 
-${producto.oferta && producto.precioAnterior ?
+${producto.oferta && producto.precioAnterior ? `
 
-`<span class="precio-anterior">
+<span class="precio-anterior">
+
 $${producto.precioAnterior.toLocaleString("es-AR")}
-</span>`
 
-: ""}
+</span>
+
+<div class="descuento">
+
+-${Math.round(
+100 - (producto.precio * 100 / producto.precioAnterior)
+)}% OFF
+
+</div>
+
+` : ""}
 
 <span class="precio-actual">
 
