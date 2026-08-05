@@ -98,5 +98,18 @@ const productos = [
         oferta: true,
         destacado: true,
         stock: 8
+    },
+    {
+        id: 9,
+        nombre: "Frescor Ekos Acai",
+        descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
+        categoria: "Perfumes",
+        subcategoria:"Frescor Ekos",
+        precio: 20000,
+        imagen: "img/Frescor Ekos Acai2.jpeg",
+        imagen2: "img/Frescor Ekos Acai.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
     }
 ];
