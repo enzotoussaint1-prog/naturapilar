@@ -238,10 +238,9 @@ const subcategorias = {
 
      Infantil:[
         "Todos",
-        "Cremas",
-        "Jabones",
-        "Desodorantes",
-        "Hidratantes"
+        "Perfume",
+        "Shampoo",
+        "Acondicionador"
     ],
 
     Maquillaje:[
