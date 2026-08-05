@@ -208,7 +208,7 @@ const productos = [
         subcategoria3:"Masculino",
         precio: 20000,
         imagen: "img/kaiak sonar.jpg",
-        imagen2: "img/kaiak sonar2.jpg",
+        imagen2: "img/kaiak sonar 2.jpg",
         oferta: false,
         destacado: true,
         stock: 5
