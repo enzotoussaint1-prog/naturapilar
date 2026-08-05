@@ -111,5 +111,18 @@ const productos = [
         oferta: true,
         destacado: true,
         stock: 8
+    },
+    {
+        id: 10,
+        nombre: "Frescor Ekos Maracuya",
+        descripcion: "Combinación de notas aromáticas, cítricas y acuosas",
+        categoria: "Perfumes",
+        subcategoria:"Frescor Ekos",
+        precio: 20000,
+        imagen: "img/Frescor Ekos Mara2.jpeg",
+        imagen2: "img/Frescor Ekos Mara.jpeg",
+        oferta: true,
+        destacado: true,
+        stock: 8
     }
 ];
