@@ -222,7 +222,9 @@ const subcategorias = {
         "Luna",
         "Essencial",
         "Homen",
-        "Ilia"
+        "Ilia",
+        "Kriska",
+        "Frescor Ekos"
     ],
 
     Tododia:[
@@ -230,7 +232,8 @@ const subcategorias = {
         "Cremas",
         "Jabones",
         "Desodorantes",
-        "Hidratantes"
+        "Hidratantes",
+        "Body Splash"
     ],
 
      Infantil:[
@@ -270,8 +273,7 @@ const subcategorias3 = {
         "Masculino",
         "Femenimo"
     ],
-
-    BodySplash:[
+    Body Splash:[
         "Todos",
         "Algodón",
         "Acerola"
