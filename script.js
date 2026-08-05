@@ -557,7 +557,11 @@ boton.classList.add("activo");
 
 const sub3 = boton.dataset.subcategoria3;
 
-const subPadre = document.querySelector(".subfiltro.activo").dataset.subcategoria;
+const botonPadre = document.querySelector(".subfiltro.activo");
+
+if(!botonPadre) return;
+
+const subPadre = botonPadre.dataset.subcategoria;
 
 let resultado;
 
