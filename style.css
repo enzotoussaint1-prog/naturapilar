@@ -388,6 +388,8 @@ width:100%;
 .beneficios{
 grid-template-columns:1fr 1fr;
 }
+    
+}   
 .destacados{
 
 padding:80px 8%;
@@ -514,21 +516,21 @@ padding:20px;
 
 .precio-anterior{
 
-display:block !important;
+display:block;
 
-color:#888 !important;
+color:#888;
 
-font-size:18px !important;
+font-size:18px;
 
-font-weight:400 !important;
+font-weight:400;
 
-text-decoration-line: line-through !important;
+text-decoration: line-through;
 
-text-decoration-color: red !important;
+-webkit-text-decoration: line-through;
 
-text-decoration-thickness: 3px !important;
+text-decoration-color:#e53935;
 
-margin-bottom:6px;
+text-decoration-thickness:3px;
 
 }
 .descuento{
