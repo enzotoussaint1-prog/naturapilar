@@ -51,27 +51,31 @@ const productos = [
     },
     {
         id: 5,
-        nombre: "pitanga",
-        descripcion: "Labial + Esmalte + Perfume",
-        categoria: "Tododia",
-        subcategoria:"Cremas",
+        nombre: "Frescor Ekos Ishpink",
+        codigo: "Nat0013",
+        descripción: "Frescor Ekos Ishpink destaca por su aroma fresco y sofisticado con delicadas notas florales y amaderadas. Una fragancia elegante que expresa la riqueza y autenticidad de la naturaleza brasileña.",
+        categoria: "Perfumes",
+        subcategoria:"Frescor Ekos",
         precio: 20000,
-        imagen: "img/humor.png",
+        imagen: "img/Frescor Ekos Ishpink.jpeg",
+        imagen2: "img/Frescor Ekos Ishpink2.jpeg",
         oferta: false,
         destacado: true,
-        stock: 8
+        stock: 3
     },
-    {
+     {
         id: 6,
-        nombre: "Shampoo",
-        descripcion: "Labial + Esmalte + Perfume",
-        categoria: "Infantiles",
-        subcategoria:"Shampoo",
+        nombre: "Frescor Ekos Tucuma",
+        codigo: "Nat0013",
+        descripción: "Frescor Ekos Tucumã combina notas frescas y cremosas inspiradas en la biodiversidad amazónica. Una fragancia moderna, envolvente y llena de vitalidad para acompañarte todos los días.",
+        categoria: "Perfumes",
+        subcategoria:"Frescor Ekos",
         precio: 20000,
-        imagen: "img/humor.png",
+        imagen: "img/Frescor Ekos Tucuma.jpeg",
+        imagen2: "img/Frescor Ekos Tucuma2.jpeg",
         oferta: false,
         destacado: true,
-        stock: 8
+        stock: 1
     },
     {
         id: 7,
@@ -150,7 +154,7 @@ const productos = [
     },
     {
         id: 12,
-        nombre: "Frescor Ekos Pitanga",
+        nombre: "Frescor Ekos Pitanga Clasico",
         codigo: "Nat0013",
         descripcion: "Frescor Ekos Pitanga reúne notas frescas y afrutadas que brindan una sensación de ligereza y frescura en cualquier ocasión.",
         categoria: "Perfumes",
@@ -161,7 +165,7 @@ const productos = [
         imagen2: "img/Frescor Ekos Frutal2.jpeg",
         oferta: true,
         destacado: true,
-        stock: 8
+        stock: 6
     },
     {
         id: 13,
@@ -176,7 +180,7 @@ const productos = [
         imagen2: "img/Frescor Ekos Floral2.jpeg",
         oferta: true,
         destacado: true,
-        stock: 8
+        stock: 7
     },
      {
         id: 14,
