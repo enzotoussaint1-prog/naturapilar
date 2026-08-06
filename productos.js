@@ -245,7 +245,7 @@ const productos = [
         id: 18,
         codigo: "Nat0002",
         nombre: "Kaiak Aventura",
-        descripcion: "Kaiak Aventura Masculino presenta una fragancia fresca y estimulante, creada para quienes disfrutan de nuevos desafíos, el movimiento y el contacto con la naturaleza.",,
+        descripcion: "Kaiak Aventura Masculino presenta una fragancia fresca y estimulante, creada para quienes disfrutan de nuevos desafíos, el movimiento y el contacto con la naturaleza.",
         categoria: "Perfumes",
         subcategoria:"Kaiak",
         subcategoria3:"Masculino",
