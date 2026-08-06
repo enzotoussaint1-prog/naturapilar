@@ -424,7 +424,7 @@ const subcategorias3 = {
      Humor:[
         "Todos",
         "Masculino",
-        "Femenimo",
+        "Femenino",
         "Unisex",
         "Mini 25ml"
     ]
