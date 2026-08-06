@@ -57,8 +57,8 @@ const productos = [
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
         precio: 20000,
-        imagen: "img/Frescor-Ekos-Ishpink.jpeg",
-        imagen2: "img/Frescor-Ekos-Ishpink2.jpeg",
+        imagen: "img/Frescor-Ekos-Ishpink.jpg",
+        imagen2: "img/Frescor-Ekos-Ishpink2.jpg",
         oferta: false,
         destacado: true,
         stock: 3
@@ -71,8 +71,8 @@ const productos = [
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
         precio: 20000,
-        imagen: "img/Frescor-Ekos-Tucuma.jpeg",
-        imagen2: "img/Frescor-Ekos-Tucuma2.jpeg",
+        imagen: "img/Frescor-Ekos-Tucuma.jpg",
+        imagen2: "img/Frescor-Ekos-Tucuma2.jpg",
         oferta: false,
         destacado: true,
         stock: 1
