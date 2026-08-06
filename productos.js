@@ -131,7 +131,7 @@ const productos = [
         imagen2: "img/Frescor Ekos Mara.jpeg",
         oferta: false,
         destacado: true,
-        stock: 8
+        stock: 4
     },
     {
         id: 11,
@@ -143,13 +143,14 @@ const productos = [
         precioAnterior: 30000,
         precio: 20000,
         imagen: "img/Frescor Ekos Cacau.jpeg",
+        imagen2: "img/Frescor Ekos Cacau2.jpeg",
         oferta: true,
         destacado: true,
-        stock: 8
+        stock: 5
     },
     {
         id: 12,
-        nombre: "Frescor Ekos Frutal",
+        nombre: "Frescor Ekos Pitanga",
         codigo: "Nat0013",
         descripcion: "Frescor Ekos Frutal reúne notas frescas y afrutadas que brindan una sensación de ligereza y frescura en cualquier ocasión.",
         categoria: "Perfumes",
@@ -157,13 +158,14 @@ const productos = [
         precioAnterior: 30000,
         precio: 20000,
         imagen: "img/Frescor Ekos Frutal.jpeg",
+        imagen2: "img/Frescor Ekos Frutal2.jpeg",
         oferta: true,
         destacado: true,
         stock: 8
     },
     {
         id: 13,
-        nombre: "Frescor Ekos Floral",
+        nombre: "Frescor Ekos Pitanga Preta",
         codigo: "Nat0013",
         descripcion: "Frescor Ekos Floral combina delicadas notas florales con la frescura natural característica de la línea Ekos, aportando elegancia y suavidad.",
         categoria: "Perfumes",
@@ -178,13 +180,14 @@ const productos = [
     },
      {
         id: 14,
-        nombre: "Frescor Ekos Pitanga",
+        nombre: "Frescor Ekos Castaña",
         codigo: "Nat0013",
         descripcion: "Frescor Ekos Pitanga ofrece una fragancia fresca y frutal inspirada en la pitanga brasileña, ideal para el uso diario.",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
         precio: 20000,
-        imagen: "img/Frescor Ekos Pitanga.jpeg",
+        imagen: "img/Frescor Ekos Castaña.jpeg",
+        imagen2: "img/Frescor Ekos Castaña2.jpeg",
         oferta: false,
         destacado: true,
         stock: 8
