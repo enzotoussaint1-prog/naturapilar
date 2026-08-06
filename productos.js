@@ -1024,8 +1024,8 @@ const productos = [
         subcategoria:"Humor",
         subcategoria3:"Unisex",
         precio: 20000,
-        imagen: "img/homen nos.jpg",
-        imagen2: "img/homen nos2.jpg",
+        imagen: "img/humor libertaU.jpg",
+        imagen2: "img/humor libertaU2.jpg",
         oferta: false,
         destacado: true,
         stock: 4
@@ -1039,8 +1039,8 @@ const productos = [
         subcategoria:"Humor",
         subcategoria3:"Unisex",
         precio: 20000,
-        imagen: "img/homen nos.jpg",
-        imagen2: "img/homen nos2.jpg",
+        imagen: "img/humor transformaU.jpg",
+        imagen2: "img/humor transformaU2.jpg",
         oferta: false,
         destacado: true,
         stock: 4
@@ -1054,8 +1054,8 @@ const productos = [
         subcategoria:"Humor",
         subcategoria3:"Unisex",
         precio: 20000,
-        imagen: "img/homen nos.jpg",
-        imagen2: "img/homen nos2.jpg",
+        imagen: "img/humor envolveU.jpg",
+        imagen2: "img/humor envolveU2.jpg",
         oferta: false,
         destacado: true,
         stock: 3
@@ -1069,8 +1069,7 @@ const productos = [
         subcategoria:"Humor",
         subcategoria3:"Mini 25ml",
         precio: 20000,
-        imagen: "img/homen nos.jpg",
-        imagen2: "img/homen nos2.jpg",
+        imagen: "img/humor meu primeiroMini.jpg",
         oferta: false,
         destacado: true,
         stock: 8
@@ -1084,8 +1083,7 @@ const productos = [
         subcategoria:"Humor",
         subcategoria3:"Mini 25ml",
         precio: 20000,
-        imagen: "img/homen nos.jpg",
-        imagen2: "img/homen nos2.jpg",
+        imagen: "img/humor doseMini.jpg",
         oferta: false,
         destacado: true,
         stock: 4
