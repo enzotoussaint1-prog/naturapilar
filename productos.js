@@ -2056,5 +2056,61 @@ const productos = [
     oferta: false,
     destacado: true,
     stock: 2
+},
+    {
+    id: 142,
+    codigo: "Nat0023",
+    nombre: "Cereza y Avellana",
+    descripcion: "Jabón líquido Tododia Cereza y Avellana. Limpia suavemente la piel mientras proporciona una sensación de frescura y suavidad, dejando una fragancia dulce y cremosa con notas de cereza y avellana.",
+    categoria: "Tododia",
+    subcategoria: "Jabones liquidos",
+    precio: 20000,
+    imagen: "img/tododia-jabon-liquido-cereza-avellana.jpg",
+    imagen2: "img/tododia-jabon-liquido-cereza-avellana2.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 2
+},
+{
+    id: 143,
+    codigo: "Nat0023",
+    nombre: "Frambuesa y Pimienta Roja",
+    descripcion: "Jabón líquido Tododia Frambuesa y Pimienta Roja. Limpia delicadamente la piel dejando una sensación de suavidad y una fragancia frutal intensa que combina la dulzura de la frambuesa con un toque especiado.",
+    categoria: "Tododia",
+    subcategoria: "Jabones liquidos",
+    precio: 20000,
+    imagen: "img/tododia-jabon-liquido-frambuesa-pimienta.jpg",
+    imagen2: "img/tododia-jabon-liquido-frambuesa-pimienta2.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 2
+},
+{
+    id: 144,
+    codigo: "Nat0023",
+    nombre: "Algodón",
+    descripcion: "Jabón líquido Tododia Algodón. Limpia suavemente la piel aportando una sensación de confort, suavidad y frescura con una fragancia delicada inspirada en la pureza del algodón.",
+    categoria: "Tododia",
+    subcategoria: "Jabones liquidos",
+    precio: 20000,
+    imagen: "img/tododia-jabon-liquido-algodon.jpg",
+    imagen2: "img/tododia-jabon-liquido-algodon2.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 5
+},
+{
+    id: 145,
+    codigo: "Nat0023",
+    nombre: "Té de Manzanilla y Lavanda",
+    descripcion: "Jabón líquido Tododia Té de Manzanilla y Lavanda. Limpia delicadamente la piel mientras brinda una sensación relajante y una fragancia suave que combina notas florales de lavanda con la delicadeza de la manzanilla.",
+    categoria: "Tododia",
+    subcategoria: "Jabones liquidos",
+    precio: 20000,
+    imagen: "img/tododia-jabon-liquido-manzanilla-lavanda.jpg",
+    imagen2: "img/tododia-jabon-liquido-manzanilla-lavanda2.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 3
 }
 ];
