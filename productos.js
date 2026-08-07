@@ -16,8 +16,8 @@ const productos = [
     },
     {
         id: 2,
-        nombre: "Ekos RKos",
         codigo: "Nat0013",
+        nombre: "Ekos RKos",
         descripcion: "Frescor Ekos RKos. Fragancia fresca y sofisticada inspirada en la biodiversidad brasileña, con notas aromáticas que transmiten energía, naturalidad y conexión con la naturaleza.",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
@@ -30,8 +30,8 @@ const productos = [
     },
     {
         id: 3,
-        nombre: "Ekos Magia de Amazona",
         codigo: "Nat0013",
+        nombre: "Ekos Magia de Amazona",
         descripcion: "Frescor Ekos Magia de Amazona. Fragancia inspirada en la riqueza de la Amazonia, con un aroma envolvente y exótico que combina notas naturales para expresar misterio, frescura y elegancia.",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
@@ -44,8 +44,8 @@ const productos = [
     },
     {
         id: 4,
-        nombre: "Frescor Ekos 75ml Pitanga Preta",
         codigo: "Nat0013",
+        nombre: "Frescor Ekos 75ml Pitanga Preta",
         descripcion: "Frescor Ekos Pitanga Preta 75 ml. Fragancia fresca y frutal inspirada en la pitanga brasileña, con notas intensas y sofisticadas que transmiten la esencia de la naturaleza y una sensación de vitalidad.",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
@@ -58,8 +58,8 @@ const productos = [
     },
     {
         id: 5,
-        nombre: "Frescor Ekos Ishpink",
         codigo: "Nat0013",
+        nombre: "Frescor Ekos Ishpink",
         descripcion: "Frescor Ekos Ishpink destaca por su aroma fresco y sofisticado con delicadas notas florales y amaderadas. Una fragancia elegante que expresa la riqueza y autenticidad de la naturaleza brasileña.",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
@@ -72,8 +72,8 @@ const productos = [
     },
      {
         id: 6,
-        nombre: "Frescor Ekos Tucuma",
         codigo: "Nat0013",
+        nombre: "Frescor Ekos Tucuma",
         descripcion: "Frescor Ekos Tucumã combina notas frescas y cremosas inspiradas en la biodiversidad amazónica. Una fragancia moderna, envolvente y llena de vitalidad para acompañarte todos los días.",
         categoria: "Perfumes",
         subcategoria:"Frescor Ekos",
