@@ -365,6 +365,7 @@ const subcategorias = {
         "Homen",
         "Ilia",
         "Kriska",
+        "Biografia",
         "Frescor Ekos"
     ],
 
@@ -417,6 +418,11 @@ const subcategorias3 = {
     ],
     
      Essencial:[
+        "Todos",
+        "Masculino",
+        "Femenino"
+    ],
+    Biografia:[
         "Todos",
         "Masculino",
         "Femenino"
