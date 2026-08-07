@@ -402,6 +402,7 @@ const subcategorias3 = {
         "200 ml",
         "100 ml",
         "50 ml"
+        "400 ml Repuesto"
     ],
     
     Kaiak:[
