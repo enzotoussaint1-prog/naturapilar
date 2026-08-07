@@ -372,6 +372,7 @@ const subcategorias = {
         "Todos",
         "Cremas",
         "Jabones",
+        "Jabones Liquidos",
         "Desodorantes",
         "Hidratantes",
         "Mascara concentrada",
