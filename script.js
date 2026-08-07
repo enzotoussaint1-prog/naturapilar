@@ -398,10 +398,10 @@ const subcategorias3 = {
 
     Hidratantes:[
         "Todos",
-        "400ml",
-        "200ml",
-        "100ml",
-        "50ml"
+        "400 ml",
+        "200 ml",
+        "100 ml",
+        "50 ml"
     ],
     
     Kaiak:[
