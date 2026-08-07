@@ -366,6 +366,7 @@ const subcategorias = {
         "Ilia",
         "Kriska",
         "Biografia",
+        "Deos corporales",
         "Frescor Ekos"
     ],
 
@@ -423,6 +424,11 @@ const subcategorias3 = {
         "Femenino"
     ],
     Biografia:[
+        "Todos",
+        "Masculino",
+        "Femenino"
+    ],
+    Deos corporales:[
         "Todos",
         "Masculino",
         "Femenino"
