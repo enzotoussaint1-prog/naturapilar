@@ -392,7 +392,9 @@ const subcategorias = {
     
     Maquillaje:[
         "Todos"
-    ]
+    ],
+    
+    Cuidado linea perfumes:[]
 
 };
 
