@@ -1,16 +1,18 @@
 const productos = [
     {
         id: 1,
-        codigo: "Nat0010",
-        nombre: "Kit Tododia Algodón",
+        codigo: "Nat0028",
+        nombre: "Clasico",
         descripcion: "Crema hidratante 400 ml + Body Splash 200 ml",
-        categoria: "Tododia",
-        subcategoria:"Cremas",
+        categoria: "Perfumes",
+        subcategoria:"Biografia",
+        subcategoria3:"Femenino",
         precio: 31900,
-        imagen: "img/algodon.jpeg",
+        imagen: "img/biografia-clasico.jpeg",
+        imagen2: "img/biografia-clasico2.jpg",
         oferta: false,
         destacado: true,
-        stock: 8
+        stock: 3
     },
     {
         id: 2,
