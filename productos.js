@@ -1387,7 +1387,7 @@ const productos = [
     stock: 8
 },
     {
-    id: 90,
+    id: 95,
     codigo: "Nat0015",
     nombre: "Tododia Flor de Lis",
     descripcion: "Crema hidratante corporal Flor de Lis 200 ml. Nutre profundamente la piel, proporcionando hidratación prolongada, suavidad y un delicado perfume floral.",
@@ -1398,24 +1398,10 @@ const productos = [
     imagen: "img/tododia-flor-de-lis200.jpg",
     oferta: false,
     destacado: true,
-    stock: 2
+    stock: 1
 },
 {
-    id: 93,
-    codigo: "Nat0015",
-    nombre: "Tododia Algodón",
-    descripcion: "Crema hidratante corporal Algodón 200 ml. Proporciona hidratación diaria con una textura ligera y un perfume suave que brinda sensación de confort.",
-    categoria: "Tododia",
-    subcategoria: "Hidratantes",
-    subcategoria3: "200 ml",
-    precio: 20000,
-    imagen: "img/tododia-algodon200.jpg",
-    oferta: false,
-    destacado: true,
-    stock: 2
-},
-{
-    id: 94,
+    id: 96,
     codigo: "Nat0015",
     nombre: "Tododia Cereza y Avellana",
     descripcion: "Crema hidratante corporal Cereza y Avellana 200 ml. Nutre la piel intensamente mientras deja una fragancia dulce y sofisticada durante todo el día.",
@@ -1429,7 +1415,7 @@ const productos = [
     stock: 1
 },
 {
-    id: 95,
+    id: 97,
     codigo: "Nat0015",
     nombre: "Tododia Frutas Rojas",
     descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
