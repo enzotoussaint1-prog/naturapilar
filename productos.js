@@ -2625,5 +2625,35 @@ const productos = [
     oferta: false,
     destacado: true,
     stock: 1
-}
+},
+    {
+        id: 181,
+        codigo: "Nat0029",
+        nombre: "Clasico",
+        descripcion: "Perfume Biografia Clásico Masculino. Fragancia elegante y sofisticada que combina notas amaderadas y aromáticas, transmitiendo personalidad, seguridad y un estilo atemporal para el hombre moderno.",
+        categoria: "Perfumes",
+        subcategoria:"Biografia",
+        subcategoria3:"Masculino",
+        precio: 31900,
+        imagen: "img/biografiaMas-clasico.jpeg",
+        imagen2: "img/biografiaMas-clasico2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 2
+    },
+    {
+        id: 182,
+        codigo: "Nat0029",
+        nombre: "Assignatura",
+        descripcion: "Perfume Biografia Assignatura Masculino. Fragancia marcante y refinada con una combinación de notas frescas y amaderadas, ideal para hombres que buscan un aroma elegante, auténtico y lleno de personalidad.",
+        categoria: "Perfumes",
+        subcategoria:"Biografia",
+        subcategoria3:"Masculino",
+        precio: 31900,
+        imagen: "img/biografiaMas-assignatura.jpeg",
+        imagen2: "img/biografiaMas-assignatura2.jpg",
+        oferta: false,
+        destacado: true,
+        stock: 1
+    }
 ];
