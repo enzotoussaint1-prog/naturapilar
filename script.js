@@ -399,12 +399,12 @@ const subcategorias3 = {
     Hidratantes:[
         "Todos",
         "400 ml",
+        "Rep.400ml",
         "200 ml",
         "100 ml",
         "50 ml"
-        "400 ml repuesto"
     ],
-    
+
     Kaiak:[
         "Todos",
         "Masculino",
@@ -421,8 +421,7 @@ const subcategorias3 = {
         "75ml",
         "50ml"
     ],
-    
-     Humor:[
+    Humor:[
         "Todos",
         "Masculino",
         "Femenino",
