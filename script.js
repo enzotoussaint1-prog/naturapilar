@@ -394,7 +394,7 @@ const subcategorias = {
         "Todos"
     ],
     
-    Cuidado linea perfumes:[]
+    "Cuidado linea perfumes":[]
 
 };
 
@@ -430,7 +430,7 @@ const subcategorias3 = {
         "Masculino",
         "Femenino"
     ],
-    Deos corporales:[
+    "Deos corporales":[
         "Todos",
         "Masculino",
         "Femenino"
