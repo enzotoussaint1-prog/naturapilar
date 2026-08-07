@@ -1608,5 +1608,47 @@ const productos = [
     oferta: false,
     destacado: true,
     stock: 1
-}
+},
+    {
+    id: 110,
+    codigo: "Nat0020",
+    nombre: "Mascara Cereza y Avellana",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Mascara concentrada",
+    precio: 20000,
+    imagen: "img/tododia-mas-cereza-avellana.jpg",
+    imagen2: "img/tododia-mas-cereza-avellana2.jpg",    
+    oferta: false,
+    destacado: true,
+    stock: 3
+},
+    {
+    id: 111,
+    codigo: "Nat0020",
+    nombre: "Mascara Pera y Flor de Loto",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Mascara concentrada",
+    precio: 20000,
+    imagen: "img/tododia-mas-pera-loto.jpg",
+    imagen2: "img/tododia-mas-pera-loto2.jpg",    
+    oferta: false,
+    destacado: true,
+    stock: 3
+},
+ {
+    id: 112,
+    codigo: "Nat0020",
+    nombre: "Mascara Cereza Negra y Plaline",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Mascara concentrada",
+    precio: 20000,
+    imagen: "img/tododia-mas-cereza-praline.jpg",
+    imagen2: "img/tododia-mas-cereza-praline2.jpg",    
+    oferta: false,
+    destacado: true,
+    stock: 0
+}   
 ];
