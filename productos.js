@@ -2122,7 +2122,7 @@ const productos = [
 },
  {
     id: 146,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Cereza y Avellana",
     descripcion: "Desodorante corporal Tododia Cereza y Avellana. Brinda protección y una agradable sensación de frescura durante el día, dejando una fragancia dulce y cremosa que combina notas de cereza y avellana.",
     categoria: "Tododia",
@@ -2137,7 +2137,7 @@ const productos = [
 },
 {
     id: 147,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Mora Roja y Jabuticaba",
     descripcion: "Desodorante corporal Tododia Mora Roja y Jabuticaba. Ayuda a mantener la sensación de frescura y bienestar, envolviendo la piel con una fragancia frutal intensa y delicada.",
     categoria: "Tododia",
@@ -2152,7 +2152,7 @@ const productos = [
 },
 {
     id: 148,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Pera y Flor de Loto",
     descripcion: "Desodorante corporal Tododia Pera y Flor de Loto. Proporciona protección diaria y una fragancia fresca y delicada que combina la dulzura de la pera con suaves notas florales.",
     categoria: "Tododia",
@@ -2167,7 +2167,7 @@ const productos = [
 },
 {
     id: 149,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Flor de Cerezo y Ciruela",
     descripcion: "Desodorante corporal Tododia Flor de Cerezo y Ciruela. Ofrece frescura y protección con una fragancia floral y frutal que combina la suavidad de las flores de cerezo con la dulzura de la ciruela.",
     categoria: "Tododia",
@@ -2182,7 +2182,7 @@ const productos = [
 },
 {
     id: 150,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Hoja de Limón y Guanábana",
     descripcion: "Desodorante corporal Tododia Hoja de Limón y Guanábana. Aporta frescura y protección diaria con una fragancia tropical que combina notas cítricas de limón con la dulzura exótica de la guanábana.",
     categoria: "Tododia",
@@ -2197,7 +2197,7 @@ const productos = [
 },
 {
     id: 151,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Ciruela y Flor de Vainilla",
     descripcion: "Desodorante corporal Tododia Ciruela y Flor de Vainilla. Protege la piel dejando una fragancia dulce y envolvente que combina el aroma frutal de la ciruela con delicadas notas de vainilla.",
     categoria: "Tododia",
@@ -2212,7 +2212,7 @@ const productos = [
 },
 {
     id: 152,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Erva Doce",
     descripcion: "Desodorante corporal Tododia Erva Doce. Brinda protección y sensación de frescura con una fragancia suave y relajante inspirada en las notas naturales del hinojo dulce.",
     categoria: "Tododia",
@@ -2227,7 +2227,7 @@ const productos = [
 },
 {
     id: 153,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Avellana y Casis",
     descripcion: "Desodorante corporal Tododia Avellana y Casis. Proporciona frescura y protección diaria con una fragancia cálida y envolvente que combina notas dulces de avellana con frutos rojos.",
     categoria: "Tododia",
@@ -2242,7 +2242,7 @@ const productos = [
 },
 {
     id: 154,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Flor de Liz",
     descripcion: "Desodorante corporal Tododia Flor de Liz. Brinda protección y una sensación de frescura prolongada con una fragancia floral elegante y delicada para el cuidado diario.",
     categoria: "Tododia",
@@ -2257,7 +2257,7 @@ const productos = [
 },
 {
     id: 155,
-    codigo: "NAT0024",
+    codigo: "Nat0024",
     nombre: "Sin Aroma",
     descripcion: "Desodorante corporal Tododia Sin Aroma. Brinda protección diaria sin fragancia, ideal para quienes prefieren una sensación limpia y fresca manteniendo el cuidado de la piel.",
     categoria: "Tododia",
@@ -2272,7 +2272,7 @@ const productos = [
 },
     {
     id: 156,
-    codigo: "NAT0025",
+    codigo: "Nat0025",
     nombre: "Homem",
     descripcion: "Desodorante corporal Natura Homem. Fragancia masculina elegante y sofisticada, con notas marcantes que brindan frescura y protección durante el día.",
     categoria: "Tododia",
@@ -2287,7 +2287,7 @@ const productos = [
 },
 {
     id: 157,
-    codigo: "NAT0025",
+    codigo: "Nat0025",
     nombre: "Kaiak Aventura",
     descripcion: "Desodorante corporal Kaiak Aventura. Fragancia masculina fresca y vibrante inspirada en la energía de la naturaleza, ideal para acompañar el día con sensación de libertad y proteção prolongada.",
     categoria: "Tododia",
@@ -2302,7 +2302,7 @@ const productos = [
 },
 {
     id: 158,
-    codigo: "NAT0025",
+    codigo: "Nat0025",
     nombre: "Kaiak Urbe",
     descripcion: "Desodorante corporal Kaiak Urbe. Fragancia masculina moderna y urbana que combina frescura y personalidad, brindando protección y una sensación agradable durante todo el día.",
     categoria: "Tododia",
@@ -2317,7 +2317,7 @@ const productos = [
 },
 {
     id: 159,
-    codigo: "NAT0025",
+    codigo: "Nat0025",
     nombre: "Kaiak Clásico (Masculino)",
     descripcion: "Desodorante corporal Kaiak Clásico Masculino. Fragancia fresca y atemporal con notas acuáticas y aromáticas que aportan energía, protección y confianza para el uso diario.",
     categoria: "Tododia",
@@ -2332,7 +2332,7 @@ const productos = [
 },
 {
     id: 160,
-    codigo: "NAT0025",
+    codigo: "Nat0025",
     nombre: "Erva Doce Crema",
     descripcion: "Desodorante corporal en crema Erva Doce. Fórmula suave que ayuda a proteger la piel y mantener una sensación de frescura, con una fragancia delicada y relajante de erva doce.",
     categoria: "Tododia",
@@ -2347,7 +2347,7 @@ const productos = [
 },
     {
     id: 161,
-    codigo: "NAT0025",
+    codigo: "Nat0025",
     nombre: "Kaiak Clásico (Femenino)",
     descripcion: "Desodorante corporal Kaiak Clásico Femenino. Fragancia fresca y femenina inspirada en la naturaleza, con notas acuáticas y florales que brindan una sensación de libertad, energía y protección durante todo el día.",
     categoria: "Tododia",
@@ -2362,7 +2362,7 @@ const productos = [
 },
     {
     id: 162,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Hoja de Limón y Guanábana",
     descripcion: "Body Splash Tododia Hoja de Limón y Guanábana. Fragancia refrescante y tropical que combina notas cítricas de limón con la dulzura exótica de la guanábana, dejando una sensación de frescura durante todo el día.",
     categoria: "Tododia",
@@ -2376,7 +2376,7 @@ const productos = [
 },
 {
     id: 163,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Mora Roja y Jabuticaba",
     descripcion: "Body Splash Tododia Mora Roja y Jabuticaba. Fragancia frutal intensa y envolvente que combina frutos rojos con el toque exótico de la jabuticaba, aportando frescura y suavidad.",
     categoria: "Tododia",
@@ -2390,7 +2390,7 @@ const productos = [
 },
 {
     id: 164,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Limón Siciliano y Flor de Gardenia",
     descripcion: "Body Splash Tododia Limón Siciliano y Flor de Gardenia. Combina la frescura cítrica del limón con delicadas notas florales, creando una fragancia elegante y revitalizante.",
     categoria: "Tododia",
@@ -2404,7 +2404,7 @@ const productos = [
 },
 {
     id: 165,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Flor de Jengibre y Mandarina",
     descripcion: "Body Splash Tododia Flor de Jengibre y Mandarina. Fragancia fresca y vibrante que une notas cítricas de mandarina con la delicadeza floral del jengibre.",
     categoria: "Tododia",
@@ -2418,7 +2418,7 @@ const productos = [
 },
 {
     id: 166,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Cereza y Avellana",
     descripcion: "Body Splash Tododia Cereza y Avellana. Fragancia dulce y cremosa que combina notas de cereza y avellana, dejando la piel perfumada con una sensación cálida y envolvente.",
     categoria: "Tododia",
@@ -2432,7 +2432,7 @@ const productos = [
 },
 {
     id: 167,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Avellana y Casis",
     descripcion: "Body Splash Tododia Avellana y Casis. Fragancia dulce y sofisticada que combina notas de avellana con frutos rojos, brindando una sensación de frescura y bienestar.",
     categoria: "Tododia",
@@ -2446,7 +2446,7 @@ const productos = [
 },
 {
     id: 168,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Frutas Rojas",
     descripcion: "Body Splash Tododia Frutas Rojas. Fragancia frutal vibrante con notas dulces de frutos rojos que aporta frescura y una agradable sensación de perfumación en la piel.",
     categoria: "Tododia",
@@ -2460,7 +2460,7 @@ const productos = [
 },
 {
     id: 169,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Hierba, Limón y Menta",
     descripcion: "Body Splash Tododia Hierba, Limón y Menta. Fragancia fresca y revitalizante que combina notas verdes, cítricas y refrescantes para una sensación de energía y bienestar.",
     categoria: "Tododia",
@@ -2474,7 +2474,7 @@ const productos = [
 },
 {
     id: 170,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Frutilla y Vainilla Dorada",
     descripcion: "Body Splash Tododia Frutilla y Vainilla Dorada. Fragancia dulce y cremosa que combina la frescura de la frutilla con suaves notas de vainilla, dejando la piel delicadamente perfumada.",
     categoria: "Tododia",
@@ -2488,7 +2488,7 @@ const productos = [
 },
 {
     id: 171,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Acerola e Hibisco",
     descripcion: "Body Splash Tododia Acerola e Hibisco. Fragancia frutal y floral que combina la energía de la acerola con la delicadeza del hibisco para una perfumación fresca y femenina.",
     categoria: "Tododia",
@@ -2502,7 +2502,7 @@ const productos = [
 },
 {
     id: 172,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Ciruela y Flor de Jengibre",
     descripcion: "Body Splash Tododia Ciruela y Flor de Jengibre. Fragancia dulce y floral que combina la intensidad de la ciruela con la frescura delicada de las flores de jengibre.",
     categoria: "Tododia",
@@ -2516,7 +2516,7 @@ const productos = [
 },
 {
     id: 173,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Ciruela y Flor de Vainilla",
     descripcion: "Body Splash Tododia Ciruela y Flor de Vainilla. Fragancia dulce y envolvente que combina notas frutales de ciruela con la suavidad cálida de la vainilla.",
     categoria: "Tododia",
@@ -2530,7 +2530,7 @@ const productos = [
 },
 {
     id: 174,
-    codigo: "NAT0026",
+    codigo: "Nat0026",
     nombre: "Frambuesa y Pimienta Rosa",
     descripcion: "Body Splash Tododia Frambuesa y Pimienta Rosa. Fragancia frutal sofisticada que combina la dulzura de la frambuesa con un toque delicadamente especiado.",
     categoria: "Tododia",
@@ -2544,7 +2544,7 @@ const productos = [
 },
     {
     id: 175,
-    codigo: "NAT0027",
+    codigo: "Nat0027",
     nombre: "Kriska Shock",
     descripcion: "Perfume Kriska Shock. Fragancia femenina intensa y vibrante que combina notas dulces y frutales con un toque moderno, ideal para mujeres con personalidad y energía.",
     categoria: "Perfumes",
@@ -2558,7 +2558,7 @@ const productos = [
 },
 {
     id: 176,
-    codigo: "NAT0027",
+    codigo: "Nat0027",
     nombre: "Kriska Jeans",
     descripcion: "Perfume Kriska Jeans. Fragancia femenina fresca y juvenil con una combinación equilibrada de notas frutales y dulces, transmitiendo libertad, alegría y estilo casual.",
     categoria: "Perfumes",
@@ -2572,7 +2572,7 @@ const productos = [
 },
 {
     id: 177,
-    codigo: "NAT0027",
+    codigo: "Nat0027",
     nombre: "Kriska Drama",
     descripcion: "Perfume Kriska Drama. Fragancia femenina sofisticada e intensa, con notas envolventes y dulces que resaltan una personalidad fuerte, elegante y auténtica.",
     categoria: "Perfumes",
@@ -2586,7 +2586,7 @@ const productos = [
 },
 {
     id: 178,
-    codigo: "NAT0027",
+    codigo: "Nat0027",
     nombre: "Kriska Clásico",
     descripcion: "Perfume Kriska Clásico. Fragancia femenina tradicional y delicada que combina notas dulces y florales, creando un aroma elegante para acompañar todos los momentos del día.",
     categoria: "Perfumes",
@@ -2600,7 +2600,7 @@ const productos = [
 },
 {
     id: 179,
-    codigo: "NAT0027",
+    codigo: "Nat0027",
     nombre: "Kriska Romance",
     descripcion: "Perfume Kriska Romance. Fragancia femenina romántica y delicada con notas dulces y envolventes que transmiten suavidad, feminidad y encanto.",
     categoria: "Perfumes",
@@ -2614,7 +2614,7 @@ const productos = [
 },
 {
     id: 180,
-    codigo: "NAT0027",
+    codigo: "Nat0027",
     nombre: "Kriska Sonhos",
     descripcion: "Perfume Kriska Sonhos. Fragancia femenina dulce y envolvente que combina notas suaves y delicadas, ideal para quienes buscan un aroma cálido y soñador.",
     categoria: "Perfumes",
@@ -2658,7 +2658,7 @@ const productos = [
     },
     {
     id: 183,
-    codigo: "NAT0030",
+    codigo: "Nat0030",
     nombre: "Humor Próprio",
     descripcion: "Desodorante corporal Humor Próprio. Fragancia femenina alegre, fresca y divertida, ideal para acompañar el día a día con una sensación de frescura y una personalidad auténtica.",
     categoria: "Perfumes",
@@ -2673,7 +2673,7 @@ const productos = [
 },
 {
     id: 184,
-    codigo: "NAT0030",
+    codigo: "Nat0030",
     nombre: "Humor Próprio Repuesto",
     descripcion: "Repuesto de desodorante corporal Humor Próprio. Fragancia femenina fresca, alegre y divertida que proporciona una agradable sensación de frescura para el uso diario.",
     categoria: "Perfumes",
@@ -2688,7 +2688,7 @@ const productos = [
 },
 {
     id: 185,
-    codigo: "NAT0030",
+    codigo: "Nat0030",
     nombre: "Meu Primeiro",
     descripcion: "Desodorante corporal Meu Primeiro. Fragancia suave, fresca y delicada, ideal para el uso diario y para quienes buscan una perfumación ligera y agradable.",
     categoria: "Perfumes",
@@ -2703,7 +2703,7 @@ const productos = [
 },
 {
     id: 186,
-    codigo: "NAT0030",
+    codigo: "Nat0030",
     nombre: "Meu Primeiro Repuesto",
     descripcion: "Repuesto de desodorante corporal Meu Primeiro. Fragancia suave y delicada que aporta frescura y una perfumación agradable para acompañar la rutina diaria.",
     categoria: "Perfumes",
@@ -2718,7 +2718,7 @@ const productos = [
 },
 {
     id: 187,
-    codigo: "NAT0030",
+    codigo: "Nat0030",
     nombre: "Kaiak Clásico",
     descripcion: "Desodorante corporal Kaiak Clásico. Fragancia fresca y femenina inspirada en la naturaleza, con notas acuáticas y florales que transmiten energía, libertad y frescura.",
     categoria: "Perfumes",
@@ -2733,7 +2733,7 @@ const productos = [
 },
 {
     id: 188,
-    codigo: "NAT0030",
+    codigo: "Nat0030",
     nombre: "Kaiak Oceano",
     descripcion: "Desodorante corporal Kaiak Oceano. Fragancia fresca y acuática inspirada en la inmensidad del océano, con un aroma revitalizante que transmite libertad y energía.",
     categoria: "Perfumes",
@@ -2763,7 +2763,7 @@ const productos = [
 },
 {
     id: 190,
-    codigo: "NAT0030",
+    codigo: "Nat0030",
     nombre: "Kriska Alegría",
     descripcion: "Desodorante corporal Kriska Alegría. Fragancia femenina alegre y envolvente, con un aroma dulce y vibrante que transmite optimismo, frescura y personalidad.",
     categoria: "Perfumes",
@@ -2778,7 +2778,7 @@ const productos = [
 },
 {
     id: 191,
-    codigo: "NAT0030",
+    codigo: "Nat0030",
     nombre: "Kriska Shock",
     descripcion: "Desodorante corporal Kriska Shock. Fragancia femenina intensa, dulce y vibrante, ideal para quienes buscan un aroma marcante y una sensación de frescura durante el día.",
     categoria: "Perfumes",
@@ -2793,7 +2793,7 @@ const productos = [
 },
     {
     id: 192,
-    codigo: "NAT0031",
+    codigo: "Nat0031",
     nombre: "Kaiak Clásico",
     descripcion: "Desodorante corporal Kaiak Clásico Masculino. Fragancia fresca y masculina con notas acuáticas y aromáticas que transmiten energía, libertad y una sensación de frescura para el día a día.",
     categoria: "Perfumes",
@@ -2808,7 +2808,7 @@ const productos = [
 },
 {
     id: 193,
-    codigo: "NAT0031",
+    codigo: "Nat0031",
     nombre: "Kaiak Urbe",
     descripcion: "Desodorante corporal Kaiak Urbe Masculino. Fragancia moderna y urbana que combina frescura y personalidad, ideal para acompañar al hombre activo durante todo el día.",
     categoria: "Perfumes",
@@ -2823,7 +2823,7 @@ const productos = [
 },
 {
     id: 194,
-    codigo: "NAT0031",
+    codigo: "Nat0031",
     nombre: "Kaiak Urbe Repuesto",
     descripcion: "Repuesto de desodorante corporal Kaiak Urbe Masculino. Fragancia fresca y urbana que proporciona una agradable sensación de frescura y perfumación para el uso diario.",
     categoria: "Perfumes",
@@ -2838,7 +2838,7 @@ const productos = [
 },
 {
     id: 195,
-    codigo: "NAT0031",
+    codigo: "Nat0031",
     nombre: "Kaiak Oceano",
     descripcion: "Desodorante corporal Kaiak Oceano Masculino. Fragancia fresca y acuática inspirada en la fuerza y amplitud del océano, transmitiendo energía, libertad y vitalidad.",
     categoria: "Perfumes",
@@ -2853,7 +2853,7 @@ const productos = [
 },
 {
     id: 196,
-    codigo: "NAT0031",
+    codigo: "Nat0031",
     nombre: "Humor a Dois",
     descripcion: "Desodorante corporal Humor a Dois. Fragancia masculina divertida y envolvente que combina frescura y personalidad, ideal para acompañar momentos especiales con un aroma agradable y marcante.",
     categoria: "Perfumes",
@@ -2868,7 +2868,7 @@ const productos = [
 },
 {
     id: 197,
-    codigo: "NAT0031",
+    codigo: "Nat0031",
     nombre: "Humor Beijo",
     descripcion: "Desodorante corporal Humor Beijo. Fragancia masculina fresca, alegre y envolvente que aporta personalidad y una agradable sensación de frescura durante el día.",
     categoria: "Perfumes",
@@ -2883,7 +2883,7 @@ const productos = [
 },
 {
     id: 198,
-    codigo: "NAT0031",
+    codigo: "Nat0031",
     nombre: "Humor Transforma",
     descripcion: "Desodorante corporal Humor Transforma. Fragancia masculina moderna y vibrante que combina frescura y notas marcantes, transmitiendo energía, autenticidad y personalidad.",
     categoria: "Perfumes",
@@ -2913,7 +2913,7 @@ const productos = [
 },
     {
     id: 200,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Jabón x1 Ilía Secreto",
     descripcion: "Jabón corporal Ilía Secreto. Limpia suavemente la piel dejando una agradable sensación de frescura y una delicada fragancia femenina.",
     categoria: "Cuidado linea perfumes",
@@ -2926,7 +2926,7 @@ const productos = [
 },
 {
     id: 201,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Jabones x2 Kaiak Clásico Masculino",
     descripcion: "Kit de 2 jabones Kaiak Clásico Masculino. Limpian suavemente la piel y dejan una sensación refrescante con la característica fragancia fresca y acuática de Kaiak.",
     categoria: "Cuidado linea perfumes",
@@ -2939,7 +2939,7 @@ const productos = [
 },
 {
     id: 202,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Jabones x3 Homem Clásico",
     descripcion: "Kit de 3 jabones Natura Homem Clásico. Proporcionan una limpieza suave y una agradable sensación de frescura, acompañadas por una fragancia masculina elegante y marcante.",
     categoria: "Cuidado linea perfumes",
@@ -2965,7 +2965,7 @@ const productos = [
 },
 {
     id: 204,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Jabón Líquido Exclusivo Clásico",
     descripcion: "Jabón líquido corporal Exclusivo Clásico. Limpia suavemente la piel mientras deja una sensación de frescura y una fragancia elegante y sofisticada.",
     categoria: "Cuidado linea perfumes",
@@ -2978,7 +2978,7 @@ const productos = [
 },
 {
     id: 205,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Hidratante 125ml Exclusivo Femenino",
     descripcion: "Hidratante corporal Exclusivo Femenino 125 ml. Ayuda a mantener la piel suave e hidratada mientras la envuelve con la elegante y delicada fragancia de la línea Exclusivo.",
     categoria: "Cuidado linea perfumes",
@@ -2991,7 +2991,7 @@ const productos = [
 },
 {
     id: 206,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Hidratante 40ml Exclusivo Femenino",
     descripcion: "Hidratante corporal Exclusivo Femenino 40 ml. Fórmula práctica para mantener la piel suave, hidratada y delicadamente perfumada con la sofisticada fragancia de Exclusivo.",
     categoria: "Cuidado linea perfumes",
@@ -3004,7 +3004,7 @@ const productos = [
 },
 {
     id: 207,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Hidratante 100ml Essencial Oud Femenino",
     descripcion: "Hidratante corporal Essencial Oud Femenino 100 ml. Ayuda a hidratar y suavizar la piel, dejando una fragancia intensa, sofisticada y envolvente inspirada en la esencia del oud.",
     categoria: "Cuidado linea perfumes",
@@ -3017,7 +3017,7 @@ const productos = [
 },
 {
     id: 208,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Hidratante 40ml Ilía Secreto",
     descripcion: "Hidratante corporal Ilía Secreto 40 ml. Ayuda a mantener la piel hidratada y suave mientras deja una fragancia femenina delicada, envolvente y sofisticada.",
     categoria: "Cuidado linea perfumes",
@@ -3030,7 +3030,7 @@ const productos = [
 },
 {
     id: 209,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Hidratante 200ml Kaiak Clásico",
     descripcion: "Hidratante corporal Kaiak Clásico 200 ml. Ayuda a mantener la piel suave e hidratada mientras deja la característica fragancia fresca y acuática de Kaiak.",
     categoria: "Cuidado linea perfumes",
@@ -3043,7 +3043,7 @@ const productos = [
 },
 {
     id: 210,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Hidratante 100ml Homem Coraggio",
     descripcion: "Hidratante corporal Natura Homem Coraggio 100 ml. Ayuda a hidratar y suavizar la piel dejando una fragancia masculina marcante y sofisticada.",
     categoria: "Cuidado linea perfumes",
@@ -3056,7 +3056,7 @@ const productos = [
 },
 {
     id: 211,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Hidratante 300ml Homem Clásico",
     descripcion: "Hidratante corporal Natura Homem Clásico 300 ml. Proporciona hidratación y suavidad a la piel mientras deja una elegante fragancia masculina para acompañar la rutina diaria.",
     categoria: "Cuidado linea perfumes",
@@ -3069,7 +3069,7 @@ const productos = [
 },
 {
     id: 212,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Gel de Baño 75ml Essencial Exclusivo Masculino",
     descripcion: "Gel de baño Essencial Exclusivo Masculino 75 ml. Limpia suavemente la piel y proporciona una sensación refrescante, dejando una fragancia masculina intensa, elegante y sofisticada.",
     categoria: "Cuidado linea perfumes",
@@ -3082,7 +3082,7 @@ const productos = [
 },
 {
     id: 213,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Gel de Baño Kaiak Urbe",
     descripcion: "Gel de baño Kaiak Urbe. Limpia suavemente la piel dejando una agradable sensación de frescura y la característica fragancia moderna y urbana de Kaiak.",
     categoria: "Cuidado linea perfumes",
@@ -3095,7 +3095,7 @@ const productos = [
 },
 {
     id: 214,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Crema para Afeitar Homem",
     descripcion: "Crema para afeitar Natura Homem. Ayuda a preparar la piel para el afeitado, facilitando el deslizamiento de la afeitadora y proporcionando una sensación de suavidad y confort.",
     categoria: "Cuidado linea perfumes",
@@ -3108,7 +3108,7 @@ const productos = [
 },
 {
     id: 215,
-    codigo: "NAT0032",
+    codigo: "Nat0032",
     nombre: "Shampoo Kaiak Océano Masculino",
     descripcion: "Shampoo Kaiak Océano Masculino. Limpia suavemente el cabello y aporta una sensación refrescante, acompañado por la fragancia fresca y acuática característica de Kaiak Océano.",
     categoria: "Cuidado linea perfumes",
