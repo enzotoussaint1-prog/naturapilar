@@ -1114,7 +1114,7 @@ const productos = [
     imagen2: "img/tododia-cereza-avellana2.jpg",
     oferta: false,
     destacado: true,
-    stock: 3
+    stock: 6
 },
 {
     id: 77,
@@ -1264,7 +1264,7 @@ const productos = [
     imagen2: "img/tododia-avellana-casis2.jpg",
     oferta: false,
     destacado: true,
-    stock: 2
+    stock: 3
 },
 {
     id: 87,
@@ -1279,7 +1279,7 @@ const productos = [
     imagen2: "img/tododia-nuez-pecan-cacao2.jpg",
     oferta: false,
     destacado: true,
-    stock: 5
+    stock: 0
 },
 {
     id: 88,
@@ -1294,7 +1294,7 @@ const productos = [
     imagen2: "img/tododia-flor-lis2.jpg",
     oferta: false,
     destacado: true,
-    stock: 3
+    stock: 1
 },
 {
     id: 89,
@@ -1309,7 +1309,7 @@ const productos = [
     imagen2: "img/tododia-flor-durazno-jazmin2.jpg",
     oferta: false,
     destacado: true,
-    stock: 4
+    stock: 2
 },
 {
     id: 90,
@@ -1339,7 +1339,7 @@ const productos = [
     imagen2: "img/tododia-jengibre-tangerina2.jpg",
     oferta: false,
     destacado: true,
-    stock: 2
+    stock: 5
 },
 {
     id: 92,
@@ -1354,7 +1354,7 @@ const productos = [
     imagen2: "img/tododia-acerola-hibisco2.jpg",
     oferta: false,
     destacado: true,
-    stock: 6
+    stock: 1
 },
 {
     id: 93,
@@ -1369,7 +1369,7 @@ const productos = [
     imagen2: "img/tododia-manzanilla-lavanda2.jpg",
     oferta: false,
     destacado: true,
-    stock: 3
+    stock: 0
 },
 {
     id: 94,
@@ -1396,34 +1396,6 @@ const productos = [
     subcategoria3: "200 ml",
     precio: 20000,
     imagen: "img/tododia-flor-de-lis200.jpg",
-    oferta: false,
-    destacado: true,
-    stock: 2
-},
-{
-    id: 91,
-    codigo: "Nat0015",
-    nombre: "Tododia Ciruela y Flor de Vainilla",
-    descripcion: "Crema hidratante corporal Ciruela y Flor de Vainilla 200 ml. Deja la piel intensamente hidratada con una fragancia dulce, envolvente y de larga duración.",
-    categoria: "Tododia",
-    subcategoria: "Hidratantes",
-    subcategoria3: "200 ml",
-    precio: 20000,
-    imagen: "img/tododia-ciruela-vainilla200.jpg",
-    oferta: false,
-    destacado: true,
-    stock: 3
-},
-{
-    id: 92,
-    codigo: "Nat0015",
-    nombre: "Tododia Macadamia",
-    descripcion: "Crema hidratante corporal Macadamia 200 ml. Fórmula nutritiva que hidrata profundamente la piel, aportando elasticidad, suavidad y un aroma cálido.",
-    categoria: "Tododia",
-    subcategoria: "Hidratantes",
-    subcategoria3: "200 ml",
-    precio: 20000,
-    imagen: "img/tododia-macadamia200.jpg",
     oferta: false,
     destacado: true,
     stock: 2
