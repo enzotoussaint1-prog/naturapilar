@@ -1396,6 +1396,7 @@ const productos = [
     subcategoria3: "200 ml",
     precio: 20000,
     imagen: "img/tododia-flor-de-lis200.jpg",
+    imagen2: "img/tododia-flor-de-lis2002.jpg",    
     oferta: false,
     destacado: true,
     stock: 1
@@ -1410,6 +1411,7 @@ const productos = [
     subcategoria3: "200 ml",
     precio: 20000,
     imagen: "img/tododia-cereza-avellana200.jpg",
+    imagen2: "img/tododia-cereza-avellana2002.jpg",
     oferta: false,
     destacado: true,
     stock: 1
@@ -1424,6 +1426,7 @@ const productos = [
     subcategoria3: "200 ml",
     precio: 20000,
     imagen: "img/tododia-frutas-rojas200.jpg",
+    imagen2: "img/tododia-frutas-rojas2002.jpg",
     oferta: false,
     destacado: true,
     stock: 2
@@ -1438,6 +1441,7 @@ const productos = [
     subcategoria3: "100 ml",
     precio: 20000,
     imagen: "img/tododia-avellana-casis100.jpg",
+    imagen2: "img/tododia-avellana-casis1002.jpg",    
     oferta: false,
     destacado: true,
     stock: 2
@@ -1452,6 +1456,7 @@ const productos = [
     subcategoria3: "50 ml",
     precio: 20000,
     imagen: "img/tododia-durazno-jazmin50.jpg",
+    imagen2: "img/tododia-durazno-jazmin502.jpg",    
     oferta: false,
     destacado: true,
     stock: 7
@@ -1466,6 +1471,7 @@ const productos = [
     subcategoria3: "50 ml",
     precio: 20000,
     imagen: "img/tododia-cereza-avellana50.jpg",
+    imagen2: "img/tododia-cereza-avellana502.jpg",    
     oferta: false,
     destacado: true,
     stock: 3
@@ -1480,6 +1486,7 @@ const productos = [
     subcategoria3: "50 ml",
     precio: 20000,
     imagen: "img/tododia-ciruela-vainilla50.jpg",
+    imagen2: "img/tododia-ciruela-vainilla502.jpg",    
     oferta: false,
     destacado: true,
     stock: 2
@@ -1494,6 +1501,7 @@ const productos = [
     subcategoria3: "Rep.400ml",
     precio: 20000,
     imagen: "img/tododia-frambuesa-pimientarep400.jpg",
+    imagen2: "img/tododia-frambuesa-pimientarep4002.jpg",    
     oferta: false,
     destacado: true,
     stock: 9
@@ -1508,6 +1516,7 @@ const productos = [
     subcategoria3: "Rep.400ml",
     precio: 20000,
     imagen: "img/tododia-cereza-avellanarep400.jpg",
+    imagen2: "img/tododia-cereza-avellanarep4002.jpg",    
     oferta: false,
     destacado: true,
     stock: 3
@@ -1522,6 +1531,7 @@ const productos = [
     subcategoria3: "Rep.400ml",
     precio: 20000,
     imagen: "img/tododia-frutas-rojasrep400.jpg",
+    imagen2: "img/tododia-frutas-rojasrep4002.jpg",    
     oferta: false,
     destacado: true,
     stock: 1
@@ -1536,6 +1546,7 @@ const productos = [
     subcategoria3: "Rep.400ml",
     precio: 20000,
     imagen: "img/tododia-limon-guanabanarep400.jpg",
+    imagen2: "img/tododia-limon-guanabanarep4002.jpg",    
     oferta: false,
     destacado: true,
     stock: 3
@@ -1550,6 +1561,7 @@ const productos = [
     subcategoria3: "Rep.400ml",
     precio: 20000,
     imagen: "img/tododia-pera-lotorep400.jpg",
+    imagen2: "img/tododia-pera-lotorep4002.jpg",    
     oferta: false,
     destacado: true,
     stock: 5
@@ -1564,6 +1576,35 @@ const productos = [
     subcategoria3: "Rep.400ml",
     precio: 20000,
     imagen: "img/tododia-mora-jabuticabarep400.jpg",
+    imagen2: "img/tododia-mora-jabuticabarep4002.jpg",    
+    oferta: false,
+    destacado: true,
+    stock: 1
+},
+    {
+    id: 108,
+    codigo: "Nat0019",
+    nombre: "Trio Celeste",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Trio",
+    precio: 20000,
+    imagen: "img/tododia-trio-celeste.jpg",
+    imagen2: "img/tododia-trio-celeste2.jpg",    
+    oferta: false,
+    destacado: true,
+    stock: 2
+},
+    {
+    id: 109,
+    codigo: "Nat0019",
+    nombre: "Trio Corazon",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Trio",
+    precio: 20000,
+    imagen: "img/tododia-trio-corazon.jpg",
+    imagen2: "img/tododia-trio-corazon2.jpg",    
     oferta: false,
     destacado: true,
     stock: 1
