@@ -370,7 +370,6 @@ const subcategorias = {
 
     Tododia:[
         "Todos",
-        "Cremas",
         "Jabones",
         "Jabones liquidos",
         "Desodorantes",
