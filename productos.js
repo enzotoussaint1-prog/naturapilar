@@ -1483,5 +1483,19 @@ const productos = [
     oferta: false,
     destacado: true,
     stock: 2
+},
+    {
+    id: 102,
+    codigo: "Nat0018",
+    nombre: "Tododia Frambuesa y Pimienta Rosa",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Hidratantes",
+    subcategoria3: "Rep. 400ml",
+    precio: 20000,
+    imagen: "img/tododia-frambuesa-pimientarep400.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 1
 }
 ];
