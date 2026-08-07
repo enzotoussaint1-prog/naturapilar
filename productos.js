@@ -1427,5 +1427,61 @@ const productos = [
     oferta: false,
     destacado: true,
     stock: 2
+},
+    {
+    id: 98,
+    codigo: "Nat0016",
+    nombre: "Tododia Avellana y Casis",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Hidratantes",
+    subcategoria3: "100 ml",
+    precio: 20000,
+    imagen: "img/tododia-avellana-casis100.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 2
+},
+    {
+    id: 99,
+    codigo: "Nat0017",
+    nombre: "Tododia Flor de Durazno y Jazmin",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Hidratantes",
+    subcategoria3: "50 ml",
+    precio: 20000,
+    imagen: "img/tododia-durazno-jazmin50.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 7
+},
+    {
+    id: 100,
+    codigo: "Nat0017",
+    nombre: "Tododia Cereza y Avellana",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Hidratantes",
+    subcategoria3: "50 ml",
+    precio: 20000,
+    imagen: "img/tododia-cereza-avellana50.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 3
+},
+    {
+    id: 101,
+    codigo: "Nat0017",
+    nombre: "Tododia Ciruela y Flor de Vainilla",
+    descripcion: "Crema hidratante corporal Frutas Rojas 200 ml. Hidrata profundamente la piel mientras envuelve el cuerpo con una fragancia frutal fresca y vibrante.",
+    categoria: "Tododia",
+    subcategoria: "Hidratantes",
+    subcategoria3: "50 ml",
+    precio: 20000,
+    imagen: "img/tododia-ciruela-vainilla50.jpg",
+    oferta: false,
+    destacado: true,
+    stock: 2
 }
 ];
