@@ -451,39 +451,25 @@ const subcategorias3 = {
 
 function mostrarSubfiltros(categoria){
 
-
-    contenedorSubfiltros.innerHTML="";
-
+    contenedorSubfiltros.innerHTML = "";
+    contenedorSubfiltros3.innerHTML = "";
 
     if(!subcategorias[categoria]){
-
         return;
-
     }
 
-
-    subcategorias[categoria].forEach(sub =>{
-
+    subcategorias[categoria].forEach(sub => {
 
         contenedorSubfiltros.innerHTML += `
-
-        <button 
-        class="subfiltro ${sub==="Todos" ? "activo":""}"
-        data-subcategoria="${sub}">
-
-        ${sub}
-
-        </button>
-
+            <button 
+                class="subfiltro ${sub === "Todos" ? "activo" : ""}"
+                data-subcategoria="${sub}">
+                ${sub}
+            </button>
         `;
-
-
     });
 
-
-
     activarSubfiltros();
-
 }
 
 
