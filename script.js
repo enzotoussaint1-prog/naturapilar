@@ -404,6 +404,11 @@ const subcategorias3 = {
         "100 ml",
         "50 ml"
     ],
+    Desodorantes:[
+        "Todos",
+        "Linea tododia",
+        "Linea perfumes"
+    ],
 
     Kaiak:[
         "Todos",
