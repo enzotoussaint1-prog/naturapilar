@@ -101,7 +101,6 @@ async function cargarProductosDesdeSupabase() {
         // utilizando los datos reales de Supabase.
 
         renderizarProductos(productos);
-        cargarProductosDesdeSupabase();
 
         renderizarPromociones();
 
@@ -122,6 +121,7 @@ async function cargarProductosDesdeSupabase() {
     }
 
 }
+cargarProductosDesdeSupabase();
 const contenedorProductos = document.getElementById("contenedor-productos");
 
 function renderizarProductos(lista) {
