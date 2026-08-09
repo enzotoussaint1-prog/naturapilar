@@ -210,45 +210,437 @@ observador.observe(producto);
 });
 
 
-// -----------------------------
-// BOTÓN COMPRAR
-// -----------------------------
+// =========================================
+// CARRITO DE COMPRAS
+// =========================================
 
-document.addEventListener("click", (e) => {
+let carrito = JSON.parse(
+    localStorage.getItem("carritoNaturaPilar")
+) || [];
 
-    if (!e.target.classList.contains("btn-comprar")) return;
+
+// ELEMENTOS DEL CARRITO
+
+const carritoElemento =
+    document.getElementById("carrito");
+
+const overlayCarrito =
+    document.getElementById("carrito-overlay");
+
+const abrirCarrito =
+    document.getElementById("abrir-carrito");
+
+const cerrarCarrito =
+    document.getElementById("cerrar-carrito");
+
+const productosCarrito =
+    document.getElementById("carrito-productos");
+
+const totalCarrito =
+    document.getElementById("carrito-total");
+
+const contadorCarrito =
+    document.getElementById("contador-carrito");
+
+const continuarCompra =
+    document.getElementById("continuar-compra");
+
+
+// =========================================
+// GUARDAR CARRITO
+// =========================================
+
+function guardarCarrito() {
+
+    localStorage.setItem(
+        "carritoNaturaPilar",
+        JSON.stringify(carrito)
+    );
+
+}
+
+
+// =========================================
+// ABRIR CARRITO
+// =========================================
+
+function abrirPanelCarrito() {
+
+    carritoElemento.classList.add("abierto");
+
+    overlayCarrito.classList.add("activo");
+
+}
+
+
+// =========================================
+// CERRAR CARRITO
+// =========================================
+
+function cerrarPanelCarrito() {
+
+    carritoElemento.classList.remove("abierto");
+
+    overlayCarrito.classList.remove("activo");
+
+}
+
+
+// =========================================
+// AGREGAR PRODUCTO
+// =========================================
+
+function agregarAlCarrito(id) {
+
+    const producto =
+        productos.find(p => p.id == id);
+
+    if (!producto) return;
+
+
+    const productoExistente =
+        carrito.find(item => item.id == producto.id);
+
+
+    if (productoExistente) {
+
+        productoExistente.cantidad++;
+
+    } else {
+
+        carrito.push({
+
+            id: producto.id,
+
+            nombre: producto.nombre,
+
+            precio: producto.precio,
+
+            imagen: producto.imagen,
+
+            codigo: producto.codigo,
+
+            cantidad: 1
+
+        });
+
+    }
+
+
+    guardarCarrito();
+
+    renderizarCarrito();
+
+    abrirPanelCarrito();
+
+}
+
+
+// =========================================
+// MOSTRAR CARRITO
+// =========================================
+
+function renderizarCarrito() {
+
+    productosCarrito.innerHTML = "";
+
+
+    if (carrito.length === 0) {
+
+        productosCarrito.innerHTML = `
+            <p class="carrito-vacio">
+                Tu carrito está vacío.
+            </p>
+        `;
+
+        totalCarrito.textContent = "$0";
+
+        contadorCarrito.textContent = "0";
+
+        continuarCompra.disabled = true;
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+    let cantidadTotal = 0;
+
+
+    carrito.forEach(item => {
+
+        const subtotal =
+            item.precio * item.cantidad;
+
+        total += subtotal;
+
+        cantidadTotal += item.cantidad;
+
+
+        productosCarrito.innerHTML += `
+
+            <div class="item-carrito">
+
+                <img
+                    src="${item.imagen}"
+                    alt="${item.nombre}">
+
+                <div>
+
+                    <h3>
+                        ${item.nombre}
+                    </h3>
+
+                    <div class="item-precio">
+                        $${item.precio.toLocaleString("es-AR")}
+                    </div>
+
+                    <div class="controles-cantidad">
+
+                        <button
+                            class="btn-cantidad"
+                            data-accion="restar"
+                            data-id="${item.id}">
+                            −
+                        </button>
+
+                        <span class="cantidad">
+                            ${item.cantidad}
+                        </span>
+
+                        <button
+                            class="btn-cantidad"
+                            data-accion="sumar"
+                            data-id="${item.id}">
+                            +
+                        </button>
+
+                        <button
+                            class="btn-eliminar"
+                            data-accion="eliminar"
+                            data-id="${item.id}">
+                            Eliminar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    totalCarrito.textContent =
+        "$" + total.toLocaleString("es-AR");
+
+
+    contadorCarrito.textContent =
+        cantidadTotal;
+
+
+    continuarCompra.disabled = false;
+
+}
+
+
+// =========================================
+// CAMBIAR CANTIDAD
+// =========================================
+
+function cambiarCantidad(id, cambio) {
+
+    const item =
+        carrito.find(producto => producto.id == id);
+
+    if (!item) return;
+
+
+    item.cantidad += cambio;
+
+
+    if (item.cantidad <= 0) {
+
+        carrito =
+            carrito.filter(
+                producto => producto.id != id
+            );
+
+    }
+
+
+    guardarCarrito();
+
+    renderizarCarrito();
+
+}
+
+
+// =========================================
+// ELIMINAR PRODUCTO
+// =========================================
+
+function eliminarDelCarrito(id) {
+
+    carrito =
+        carrito.filter(
+            producto => producto.id != id
+        );
+
+
+    guardarCarrito();
+
+    renderizarCarrito();
+
+}
+
+
+// =========================================
+// BOTONES COMPRAR
+// =========================================
+
+document.addEventListener("click", function(e) {
+
+    const boton =
+        e.target.closest(".btn-comprar");
+
+    if (!boton) return;
 
     e.preventDefault();
 
-    const producto = e.target.dataset.producto;
 
-    const productoSeleccionado = productos.find(
-p => p.nombre === producto
+    const idProducto = boton.dataset.id;
+
+const nombreProducto = boton.dataset.producto;
+
+let producto;
+
+if (idProducto) {
+
+    producto = productos.find(
+        p => p.id == idProducto
+    );
+
+} else {
+
+    producto = productos.find(
+        p => p.nombre === nombreProducto
+    );
+
+}
+
+
+    if (!producto) {
+
+        console.error(
+            "No se encontró el producto:",
+            nombreProducto
+        );
+
+        return;
+
+    }
+
+
+    agregarAlCarrito(producto.id);
+
+});
+
+
+// =========================================
+// CONTROLES DEL CARRITO
+// =========================================
+
+document.addEventListener("click", function(e) {
+
+    const boton =
+        e.target.closest("[data-accion]");
+
+    if (!boton) return;
+
+
+    const id =
+        boton.dataset.id;
+
+    const accion =
+        boton.dataset.accion;
+
+
+    if (accion === "sumar") {
+
+        cambiarCantidad(id, 1);
+
+    }
+
+
+    if (accion === "restar") {
+
+        cambiarCantidad(id, -1);
+
+    }
+
+
+    if (accion === "eliminar") {
+
+        eliminarDelCarrito(id);
+
+    }
+
+});
+
+
+// =========================================
+// ABRIR Y CERRAR CARRITO
+// =========================================
+
+abrirCarrito.addEventListener(
+    "click",
+    abrirPanelCarrito
 );
 
 
-const mensaje = `Hola Natura Pilar 😊
+cerrarCarrito.addEventListener(
+    "click",
+    cerrarPanelCarrito
+);
 
-Me interesa este producto:
 
-🛍️ ${productoSeleccionado.nombre}
+overlayCarrito.addEventListener(
+    "click",
+    cerrarPanelCarrito
+);
 
-💰 Precio:
-$${productoSeleccionado.precio.toLocaleString("es-AR")}
 
-🔢 Código:
-${productoSeleccionado.codigo}
+// =========================================
+// CONTINUAR COMPRA
+// =========================================
 
-¿Podrían brindarme más información?`;
+continuarCompra.addEventListener(
+    "click",
+    function() {
 
-    const telefono = "5491150241149";
+        if (carrito.length === 0) {
+            return;
+        }
 
-    window.open(
-        `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`,
-        "_blank"
-    );
 
-});
+        alert(
+            "Siguiente paso: completar los datos de compra."
+        );
+
+    }
+);
+
+
+// =========================================
+// INICIAR CARRITO
+// =========================================
+
+renderizarCarrito();
 
 
 
@@ -747,14 +1139,13 @@ $${producto.precio.toLocaleString("es-AR")}
 </p>
 
 
-<a 
-class="btn-comprar"
-href="https://wa.me/5491150241149?text=Hola%20Natura%20Pilar%20me%20interesa%20${producto.nombre}"
-target="_blank">
+<button
+    class="btn-comprar"
+    data-id="${producto.id}">
 
-Comprar por WhatsApp
+    Agregar al carrito
 
-</a>
+</button>
 
 `;
 
