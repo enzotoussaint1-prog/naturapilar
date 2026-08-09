@@ -1,3 +1,127 @@
+// =========================================
+// CONEXIÓN CON SUPABASE
+// =========================================
+
+const SUPABASE_URL =
+    "https://nmsschnmwmssoqywquru.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_LIMcZZCX_nzQWB2kdp8N3A_BTFCLPAb";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+// =========================================
+// CARGAR PRODUCTOS DESDE SUPABASE
+// =========================================
+
+async function cargarProductosDesdeSupabase() {
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("productos")
+                .select("*")
+                .eq("activo", true)
+                .order("id", { ascending: true });
+
+
+        if (error) {
+
+            console.error(
+                "Error cargando productos desde Supabase:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        if (!data || data.length === 0) {
+
+            console.warn(
+                "Supabase no devolvió productos."
+            );
+
+            return;
+
+        }
+
+
+        // Reemplazamos los productos locales
+        // por los productos de Supabase.
+
+        productos.splice(
+            0,
+            productos.length,
+            ...data.map(producto => ({
+
+                id: producto.id,
+
+                codigo: producto.codigo,
+
+                nombre: producto.nombre,
+
+                descripcion: producto.descripcion,
+
+                categoria: producto.categoria,
+
+                subcategoria: producto.subcategoria,
+
+                subcategoria3: producto.subcategoria3,
+
+                precio: Number(producto.precio),
+
+                precioAnterior:
+                    producto.precio_anterior !== null
+                        ? Number(producto.precio_anterior)
+                        : null,
+
+                imagen: producto.imagen,
+
+                imagen2: producto.imagen2,
+
+                oferta: producto.oferta,
+
+                destacado: producto.destacado,
+
+                stock: producto.stock
+
+            }))
+        );
+
+
+        // Volvemos a dibujar la tienda
+        // utilizando los datos reales de Supabase.
+
+        renderizarProductos(productos);
+        cargarProductosDesdeSupabase();
+
+        renderizarPromociones();
+
+
+        console.log(
+            "Productos cargados desde Supabase:",
+            productos.length
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Error inesperado conectando con Supabase:",
+            error
+        );
+
+    }
+
+}
 const contenedorProductos = document.getElementById("contenedor-productos");
 
 function renderizarProductos(lista) {
