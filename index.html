@@ -44,11 +44,10 @@
 
 </nav>
 
-<a class="boton-header" href="https://wa.me/5491150241149" target="_blank">
-
-Comprar por WhatsApp
-
-</a>
+<button class="boton-carrito" id="abrir-carrito">
+    🛒 Carrito
+    <span id="contador-carrito">0</span>
+</button>
 
 </header>
 
@@ -372,7 +371,61 @@ WhatsApp: 11 5024-1149
 
 </a>
 
+<!-- =========================
+     CARRITO DE COMPRAS
+========================= -->
 
+<div id="carrito-overlay" class="carrito-overlay"></div>
+
+<aside id="carrito" class="carrito">
+
+    <div class="carrito-header">
+
+        <h2>🛒 Tu carrito</h2>
+
+        <button id="cerrar-carrito" class="cerrar-carrito">
+            ×
+        </button>
+
+    </div>
+
+    <div id="carrito-productos" class="carrito-productos">
+
+        <p class="carrito-vacio">
+            Tu carrito está vacío.
+        </p>
+
+    </div>
+
+    <div class="carrito-footer">
+
+        <div class="carrito-total">
+
+            <span>Total</span>
+
+            <strong id="carrito-total">
+                $0
+            </strong>
+
+        </div>
+
+        <button
+            id="continuar-compra"
+            class="boton-continuar"
+            disabled>
+            Continuar con la compra
+        </button>
+
+        <a
+            href="https://wa.me/5491150241149"
+            target="_blank"
+            class="boton-whatsapp-carrito">
+            Consultar por WhatsApp
+        </a>
+
+    </div>
+
+</aside>
 <!-- MODAL DETALLE PRODUCTO -->
 
 <div id="modal-producto" class="modal">
