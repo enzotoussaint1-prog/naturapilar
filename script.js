@@ -1501,3 +1501,198 @@ function cambiarImagen(imagen){
 document.getElementById("imagen-detalle").src = imagen;
 
 }
+// =========================================
+// CARRUSEL DE BANNERS
+// =========================================
+
+const banners = [
+    "img/banner1.jpg",
+    "img/banner2.jpg",
+    "img/banner3.jpg",
+    "img/banner4.jpg"
+];
+
+const carruselSlides =
+    document.getElementById("carrusel-slides");
+
+const carruselIndicadores =
+    document.getElementById("carrusel-indicadores");
+
+const botonAnterior =
+    document.getElementById("carrusel-anterior");
+
+const botonSiguiente =
+    document.getElementById("carrusel-siguiente");
+
+let bannerActual = 0;
+
+
+// =========================================
+// CREAR BANNERS
+// =========================================
+
+banners.forEach((banner, indice) => {
+
+    carruselSlides.innerHTML += `
+
+        <div class="carrusel-slide">
+
+            <img
+                src="${banner}"
+                alt="Banner Natura ${indice + 1}">
+
+        </div>
+
+    `;
+
+});
+
+
+// =========================================
+// CREAR INDICADORES
+// =========================================
+
+banners.forEach((banner, indice) => {
+
+    carruselIndicadores.innerHTML += `
+
+        <button
+            class="carrusel-indicador ${
+                indice === 0 ? "activo" : ""
+            }"
+            data-slide="${indice}">
+        </button>
+
+    `;
+
+});
+
+
+// =========================================
+// MOSTRAR BANNER
+// =========================================
+
+function mostrarBanner(indice) {
+
+    bannerActual = indice;
+
+    carruselSlides.style.transform =
+        `translateX(-${bannerActual * 100}%)`;
+
+
+    const indicadores =
+        document.querySelectorAll(
+            ".carrusel-indicador"
+        );
+
+
+    indicadores.forEach(indicador => {
+
+        indicador.classList.remove("activo");
+
+    });
+
+
+    if (indicadores[bannerActual]) {
+
+        indicadores[bannerActual]
+            .classList.add("activo");
+
+    }
+
+}
+
+
+// =========================================
+// SIGUIENTE
+// =========================================
+
+botonSiguiente.addEventListener(
+    "click",
+    function() {
+
+        bannerActual++;
+
+        if (bannerActual >= banners.length) {
+
+            bannerActual = 0;
+
+        }
+
+        mostrarBanner(bannerActual);
+
+    }
+);
+
+
+// =========================================
+// ANTERIOR
+// =========================================
+
+botonAnterior.addEventListener(
+    "click",
+    function() {
+
+        bannerActual--;
+
+        if (bannerActual < 0) {
+
+            bannerActual =
+                banners.length - 1;
+
+        }
+
+        mostrarBanner(bannerActual);
+
+    }
+);
+
+
+// =========================================
+// INDICADORES
+// =========================================
+
+document.addEventListener(
+    "click",
+    function(e) {
+
+        if (
+            !e.target.classList.contains(
+                "carrusel-indicador"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        const indice =
+            Number(
+                e.target.dataset.slide
+            );
+
+
+        mostrarBanner(indice);
+
+    }
+);
+
+
+// =========================================
+// CAMBIO AUTOMÁTICO
+// =========================================
+
+setInterval(function() {
+
+    bannerActual++;
+
+    if (bannerActual >= banners.length) {
+
+        bannerActual = 0;
+
+    }
+
+    mostrarBanner(bannerActual);
+
+}, 5000);
