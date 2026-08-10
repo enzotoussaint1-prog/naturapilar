@@ -411,7 +411,7 @@ function cerrarPanelCarrito() {
 
 
 // =========================================
-// AGREGAR PRODUCTO
+// AGREGAR PRODUCTO AL CARRITO
 // =========================================
 
 function agregarAlCarrito(id) {
@@ -422,15 +422,63 @@ function agregarAlCarrito(id) {
     if (!producto) return;
 
 
+    // =========================================
+    // VERIFICAR STOCK
+    // =========================================
+
+    if (producto.stock <= 0) {
+
+        alert(
+            "Este producto está agotado."
+        );
+
+        return;
+
+    }
+
+
     const productoExistente =
         carrito.find(item => item.id == producto.id);
 
 
+    // =========================================
+    // SI YA ESTÁ EN EL CARRITO
+    // =========================================
+
     if (productoExistente) {
+
+        // No permitir superar el stock disponible
+
+        if (
+            productoExistente.cantidad >=
+            producto.stock
+        ) {
+
+            alert(
+                `Solo hay ${producto.stock} unidad${
+                    producto.stock === 1 ? "" : "es"
+                } disponible${
+                    producto.stock === 1 ? "" : "s"
+                }.`
+            );
+
+            renderizarCarrito();
+
+            return;
+
+        }
+
 
         productoExistente.cantidad++;
 
-    } else {
+    }
+
+
+    // =========================================
+    // SI ES UN PRODUCTO NUEVO
+    // =========================================
+
+    else {
 
         carrito.push({
 
@@ -584,8 +632,42 @@ function cambiarCantidad(id, cambio) {
     if (!item) return;
 
 
+    const producto =
+        productos.find(p => p.id == id);
+
+    if (!producto) return;
+
+
+    // =========================================
+    // AUMENTAR CANTIDAD
+    // =========================================
+
+    if (cambio > 0) {
+
+        if (item.cantidad >= producto.stock) {
+
+            alert(
+                `No podés agregar más unidades. ` +
+                `Hay ${producto.stock} disponible${
+                    producto.stock === 1 ? "" : "s"
+                }.`
+            );
+
+            renderizarCarrito();
+
+            return;
+
+        }
+
+    }
+
+
     item.cantidad += cambio;
 
+
+    // =========================================
+    // ELIMINAR SI LLEGA A 0
+    // =========================================
 
     if (item.cantidad <= 0) {
 
