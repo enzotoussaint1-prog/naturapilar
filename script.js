@@ -1118,7 +1118,7 @@ const subcategorias3 = {
         "200 ml",
         "100 ml",
         "50 ml",
-        "Mascara concentrada"
+        "Concentrada"
     ],
     Desodorantes:[
         "Todos",
