@@ -96,17 +96,38 @@ async function cargarProductosDesdeSupabase() {
             }))
         );
 
-
+sincronizarCarritoConStock();
         // Volvemos a dibujar la tienda
         // utilizando los datos reales de Supabase.
-     // =========================================
+    
+        renderizarProductos(productos);
+
+        renderizarPromociones();
+
+
+        console.log(
+            "Productos cargados desde Supabase:",
+            productos.length
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Error inesperado conectando con Supabase:",
+            error
+        );
+
+    }
+
+}
+// =========================================
 // SINCRONIZAR CARRITO CON STOCK REAL
 // =========================================
 
 function sincronizarCarritoConStock() {
 
     let carritoModificado = false;
-
 
     carrito = carrito.filter(item => {
 
@@ -178,29 +199,7 @@ function sincronizarCarritoConStock() {
     }
 
 }
-sincronizarCarritoConStock();
-        renderizarProductos(productos);
 
-        renderizarPromociones();
-
-
-        console.log(
-            "Productos cargados desde Supabase:",
-            productos.length
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "Error inesperado conectando con Supabase:",
-            error
-        );
-
-    }
-
-}
-cargarProductosDesdeSupabase();
 const contenedorProductos = document.getElementById("contenedor-productos");
 
 function renderizarProductos(lista) {
@@ -937,7 +936,7 @@ continuarCompra.addEventListener(
 // =========================================
 
 renderizarCarrito();
-
+cargarProductosDesdeSupabase();
 
 
 // -----------------------------
