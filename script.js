@@ -99,6 +99,85 @@ async function cargarProductosDesdeSupabase() {
 
         // Volvemos a dibujar la tienda
         // utilizando los datos reales de Supabase.
+     // =========================================
+// SINCRONIZAR CARRITO CON STOCK REAL
+// =========================================
+
+function sincronizarCarritoConStock() {
+
+    let carritoModificado = false;
+
+
+    carrito = carrito.filter(item => {
+
+        const producto =
+            productos.find(p => p.id == item.id);
+
+
+        // Si el producto ya no existe
+        // o está inactivo
+
+        if (!producto) {
+
+            carritoModificado = true;
+
+            return false;
+
+        }
+
+
+        // Si quedó sin stock
+
+        if (producto.stock <= 0) {
+
+            carritoModificado = true;
+
+            return false;
+
+        }
+
+
+        // Si el carrito tiene más unidades
+        // que el stock disponible
+
+        if (item.cantidad > producto.stock) {
+
+            item.cantidad =
+                producto.stock;
+
+            carritoModificado = true;
+
+        }
+
+
+        // Actualizar precio e imagen
+        // por si fueron modificados
+
+        item.precio =
+            producto.precio;
+
+        item.imagen =
+            producto.imagen;
+
+        item.nombre =
+            producto.nombre;
+
+        item.codigo =
+            producto.codigo;
+
+
+        return true;
+
+    });
+
+
+    if (carritoModificado) {
+
+        guardarCarrito();
+
+    }
+
+}
 
         renderizarProductos(productos);
 
@@ -583,11 +662,22 @@ function renderizarCarrito() {
                         </span>
 
                         <button
-                            class="btn-cantidad"
-                            data-accion="sumar"
-                            data-id="${item.id}">
-                            +
-                        </button>
+    class="btn-cantidad"
+    data-accion="sumar"
+    data-id="${item.id}"
+    ${(() => {
+
+        const producto =
+            productos.find(p => p.id == item.id);
+
+        return producto &&
+               item.cantidad >= producto.stock
+            ? "disabled"
+            : "";
+
+    })()}>
+    +
+</button>
 
                         <button
                             class="btn-eliminar"
