@@ -1198,14 +1198,19 @@ border-color:#d45f93;
 ========================================= */
 
 .banner-carrusel {
+    display: block;
     width: 100%;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
     overflow: hidden;
 }
 
 .carrusel-contenedor {
     position: relative;
     width: 100%;
+    max-width: 100%;
     overflow: hidden;
 }
 
@@ -1217,25 +1222,31 @@ border-color:#d45f93;
 
 .carrusel-slide {
     min-width: 100%;
-    position: relative;
+    width: 100%;
+    flex: 0 0 100%;
 }
 
 .carrusel-slide img {
     display: block;
     width: 100%;
     height: auto;
+    max-width: 100%;
     object-fit: cover;
 }
 
-/* BOTONES */
+
+/* =========================================
+   BOTONES
+========================================= */
 
 .carrusel-btn {
     position: absolute;
+
     top: 50%;
     transform: translateY(-50%);
 
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
 
     border: none;
     border-radius: 50%;
@@ -1246,7 +1257,7 @@ border-color:#d45f93;
 
     font-size: 24px;
 
-    z-index: 5;
+    z-index: 10;
 
     transition: 0.3s;
 }
@@ -1256,14 +1267,17 @@ border-color:#d45f93;
 }
 
 .carrusel-anterior {
-    left: 20px;
+    left: 25px;
 }
 
 .carrusel-siguiente {
-    right: 20px;
+    right: 25px;
 }
 
-/* INDICADORES */
+
+/* =========================================
+   INDICADORES
+========================================= */
 
 .carrusel-indicadores {
     position: absolute;
@@ -1278,18 +1292,19 @@ border-color:#d45f93;
 
     gap: 8px;
 
-    z-index: 5;
+    z-index: 10;
 }
 
 .carrusel-indicador {
     width: 10px;
     height: 10px;
 
-    border-radius: 50%;
+    padding: 0;
 
     border: none;
+    border-radius: 50%;
 
-    background: rgba(255,255,255,0.6);
+    background: rgba(255, 255, 255, 0.6);
 
     cursor: pointer;
 
@@ -1298,7 +1313,6 @@ border-color:#d45f93;
 
 .carrusel-indicador.activo {
     background: white;
-
     transform: scale(1.25);
 }
 
@@ -1309,10 +1323,19 @@ border-color:#d45f93;
 
 @media (max-width: 768px) {
 
-    .carrusel-btn {
-        width: 35px;
-        height: 35px;
+    .banner-carrusel {
+        width: 100%;
+        margin-top: 0;
+    }
 
+    .carrusel-slide img {
+        width: 100%;
+        height: auto;
+    }
+
+    .carrusel-btn {
+        width: 36px;
+        height: 36px;
         font-size: 18px;
     }
 
@@ -1322,6 +1345,10 @@ border-color:#d45f93;
 
     .carrusel-siguiente {
         right: 10px;
+    }
+
+    .carrusel-indicadores {
+        bottom: 10px;
     }
 
 }
