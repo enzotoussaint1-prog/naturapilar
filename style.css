@@ -1329,9 +1329,10 @@ border-color:#d45f93;
     }
 
     .carrusel-slide img {
-        width: 100%;
-        height: auto;
-    }
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
 
     .carrusel-btn {
         width: 36px;
