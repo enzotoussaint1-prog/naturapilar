@@ -96,10 +96,10 @@ async function cargarProductosDesdeSupabase() {
             }))
         );
 
-sincronizarCarritoConStock();
+
         // Volvemos a dibujar la tienda
         // utilizando los datos reales de Supabase.
-    
+    sincronizarCarritoConStock();
         renderizarProductos(productos);
 
         renderizarPromociones();
@@ -660,7 +660,7 @@ function renderizarCarrito() {
                             ${item.cantidad}
                         </span>
 
-                        <button
+                       <button
     class="btn-cantidad"
     data-accion="sumar"
     data-id="${item.id}"
@@ -676,7 +676,7 @@ function renderizarCarrito() {
 
     })()}>
     +
-</button>
+    </button>
 
                         <button
                             class="btn-eliminar"
@@ -936,8 +936,11 @@ continuarCompra.addEventListener(
 // =========================================
 
 renderizarCarrito();
-cargarProductosDesdeSupabase();
+// =========================================
+// CARGAR PRODUCTOS DESDE SUPABASE
+// =========================================
 
+cargarProductosDesdeSupabase();
 
 // -----------------------------
 // MENÚ ACTIVO
