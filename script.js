@@ -58,7 +58,6 @@ async function cargarProductosDesdeSupabase() {
         // por los productos de Supabase.
 
         productos.splice(
-            sincronizarCarritoConStock();
             0,
             productos.length,
             ...data.map(producto => ({
