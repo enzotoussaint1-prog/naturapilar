@@ -178,7 +178,7 @@ function sincronizarCarritoConStock() {
     }
 
 }
-
+sincronizarCarritoConStock();
         renderizarProductos(productos);
 
         renderizarPromociones();
