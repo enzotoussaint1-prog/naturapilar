@@ -1088,7 +1088,6 @@ const subcategorias = {
         "Jabones liquidos",
         "Desodorantes",
         "Hidratantes",
-        "Mascara concentrada",
         "Trio",
         "BodySplash",
         "Cabello",
@@ -1118,7 +1117,8 @@ const subcategorias3 = {
         "Rep.400ml",
         "200 ml",
         "100 ml",
-        "50 ml"
+        "50 ml",
+        "Mascara concentrada"
     ],
     Desodorantes:[
         "Todos",
