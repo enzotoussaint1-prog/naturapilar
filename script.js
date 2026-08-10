@@ -657,8 +657,30 @@ function renderizarCarrito() {
                         </button>
 
                         <span class="cantidad">
-                            ${item.cantidad}
-                        </span>
+    ${item.cantidad}
+</span>
+
+${(() => {
+
+    const producto =
+        productos.find(p => p.id == item.id);
+
+    if (
+        producto &&
+        item.cantidad >= producto.stock
+    ) {
+
+        return `
+            <small class="limite-stock">
+                Límite de stock disponible
+            </small>
+        `;
+
+    }
+
+    return "";
+
+})()}
 
                        <button
     class="btn-cantidad"
