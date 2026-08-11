@@ -956,7 +956,7 @@ continuarCompra.addEventListener(
             // Enviar carrito a Supabase
             const { data, error } =
                 await supabaseClient.functions.invoke(
-                    "crear-preferencia",
+    "hyper-action",
                     {
                         body: {
                             carrito: carrito
