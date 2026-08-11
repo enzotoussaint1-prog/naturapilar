@@ -1096,9 +1096,7 @@ const subcategorias = {
     
      Infantiles:[],
     
-    Maquillaje:[
-        "Todos"
-    ],
+    "Linea Avon":[],
     
     "Cuidado linea perfumes":[]
 
