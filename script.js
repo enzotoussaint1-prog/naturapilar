@@ -1152,6 +1152,13 @@ const subcategorias3 = {
         "75ml",
         "50ml"
     ],
+    Cabello:[
+        "Shampoo y acondicionador",
+        "Repuesto 300ml",
+        "Mascara concentrada 250ml",
+        "Repuesto mascara 250ml",
+        "Crema para peinar 180ml"
+    ],
     Humor:[
         "Todos",
         "Masculino",
