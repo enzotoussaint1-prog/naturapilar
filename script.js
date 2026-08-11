@@ -933,25 +933,107 @@ overlayCarrito.addEventListener(
 
 
 // =========================================
-// CONTINUAR COMPRA
+// CONTINUAR COMPRA → MERCADO PAGO
 // =========================================
 
 continuarCompra.addEventListener(
     "click",
-    function() {
+    async function() {
 
         if (carrito.length === 0) {
+            alert("Tu carrito está vacío.");
             return;
         }
 
+        try {
 
-        alert(
-            "Siguiente paso: completar los datos de compra."
-        );
+            continuarCompra.disabled = true;
+
+            continuarCompra.textContent =
+                "Preparando pago...";
+
+
+            // Enviar carrito a Supabase
+            const { data, error } =
+                await supabaseClient.functions.invoke(
+                    "crear-preferencia",
+                    {
+                        body: {
+                            carrito: carrito
+                        }
+                    }
+                );
+
+
+            if (error) {
+
+                console.error(
+                    "Error llamando a Supabase:",
+                    error
+                );
+
+                throw new Error(
+                    "No se pudo conectar con Mercado Pago."
+                );
+
+            }
+
+
+            if (!data || !data.init_point) {
+
+                console.error(
+                    "Respuesta recibida:",
+                    data
+                );
+
+                throw new Error(
+                    "Mercado Pago no devolvió el checkout."
+                );
+
+            }
+
+
+            console.log(
+                "Preferencia creada:",
+                data
+            );
+
+
+            // Guardamos temporalmente el carrito
+            // por si necesitamos recuperarlo
+            localStorage.setItem(
+                "carritoAntesDelPago",
+                JSON.stringify(carrito)
+            );
+
+
+            // Ir al checkout de Mercado Pago
+            window.location.href =
+                data.init_point;
+
+
+        } catch (error) {
+
+            console.error(
+                "Error iniciando checkout:",
+                error
+            );
+
+            alert(
+                "No pudimos iniciar el pago. " +
+                "Por favor intentá nuevamente."
+            );
+
+
+            continuarCompra.disabled = false;
+
+            continuarCompra.textContent =
+                "Continuar compra";
+
+        }
 
     }
 );
-
 
 // =========================================
 // INICIAR CARRITO
