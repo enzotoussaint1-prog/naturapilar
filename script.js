@@ -1094,12 +1094,7 @@ const subcategorias = {
         "Varios"
     ],
     
-     Infantiles:[
-        "Todos",
-        "Perfume",
-        "Shampoo",
-        "Acondicionador"
-    ],
+     Infantiles:[],
     
     Maquillaje:[
         "Todos"
