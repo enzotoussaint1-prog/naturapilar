@@ -205,6 +205,20 @@ const contenedorProductos = document.getElementById("contenedor-productos");
 function renderizarProductos(lista) {
 
     contenedorProductos.innerHTML = "";
+    if (!lista || lista.length === 0) {
+
+    contenedorProductos.innerHTML = `
+        <div class="sin-resultados">
+            <h3>No encontramos productos</h3>
+            <p>
+                Probá con otra búsqueda o categoría.
+            </p>
+        </div>
+    `;
+
+    return;
+
+}
 
     lista.forEach(producto => {
 
@@ -266,15 +280,16 @@ Ver detalle
 </button>
 
 <a href="#"
-class="btn-comprar"
-data-producto="${producto.nombre}">
- Comprar
+   class="btn-comprar"
+   data-id="${producto.id}">
+   Comprar
 </a>
 
             </article>
         `;
 
     });
+ activarAnimacionesProductos();   
 
 }
 renderizarProductos(productos);
@@ -342,12 +357,12 @@ $${producto.precio.toLocaleString("es-AR")}
 </div>
 
 <a href="#"
-               class="btn-comprar"
-               data-producto="${producto.nombre}">
+   class="btn-comprar"
+   data-id="${producto.id}">
 
-                Comprar
+    Comprar
 
-            </a>
+</a>
 
         </article>
 
@@ -383,33 +398,53 @@ behavior:'smooth'
 // ANIMACIÓN DE PRODUCTOS
 // -----------------------------
 
-const tarjetasProducto = document.querySelectorAll(".producto");
+function activarAnimacionesProductos() {
 
-const observador = new IntersectionObserver((entradas)=>{
+    const tarjetasProducto =
+        document.querySelectorAll(".producto");
 
-entradas.forEach((entrada)=>{
+    const observador =
+        new IntersectionObserver(
+            (entradas) => {
 
-if(entrada.isIntersecting){
+                entradas.forEach((entrada) => {
 
-entrada.target.style.opacity="1";
-entrada.target.style.transform="translateY(0px)";
+                    if (entrada.isIntersecting) {
+
+                        entrada.target.style.opacity = "1";
+
+                        entrada.target.style.transform =
+                            "translateY(0px)";
+
+                        observador.unobserve(
+                            entrada.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+    tarjetasProducto.forEach((producto) => {
+
+        producto.style.opacity = "0";
+
+        producto.style.transform =
+            "translateY(40px)";
+
+        producto.style.transition =
+            "opacity .6s ease, transform .6s ease";
+
+        observador.observe(producto);
+
+    });
 
 }
-
-});
-
-},{
-threshold:0.2
-});
-
-tarjetasProducto.forEach((producto)=>{
-producto.style.opacity="0";
-producto.style.transform="translateY(40px)";
-producto.style.transition=".6s";
-
-observador.observe(producto);
-
-});
 
 
 // =========================================
@@ -822,46 +857,38 @@ function eliminarDelCarrito(id) {
 
 document.addEventListener("click", function(e) {
 
-    const boton =
-        e.target.closest(".btn-comprar");
+    const boton = e.target.closest(".btn-comprar");
 
     if (!boton) return;
 
     e.preventDefault();
 
-
     const idProducto = boton.dataset.id;
 
-const nombreProducto = boton.dataset.producto;
-
-let producto;
-
-if (idProducto) {
-
-    producto = productos.find(
-        p => p.id == idProducto
-    );
-
-} else {
-
-    producto = productos.find(
-        p => p.nombre === nombreProducto
-    );
-
-}
-
-
-    if (!producto) {
+    if (!idProducto) {
 
         console.error(
-            "No se encontró el producto:",
-            nombreProducto
+            "El botón Comprar no tiene data-id."
         );
 
         return;
 
     }
 
+    const producto = productos.find(
+        p => p.id == idProducto
+    );
+
+    if (!producto) {
+
+        console.error(
+            "No se encontró el producto con ID:",
+            idProducto
+        );
+
+        return;
+
+    }
 
     agregarAlCarrito(producto.id);
 
@@ -1124,13 +1151,32 @@ buscador.addEventListener("input", () => {
 
     const texto = buscador.value.toLowerCase();
 
-    const resultado = productos.filter(producto =>
+    const resultado = productos.filter(producto => {
 
-        producto.nombre.toLowerCase().includes(texto) ||
-        producto.descripcion.toLowerCase().includes(texto) ||
-        producto.categoria.toLowerCase().includes(texto)
+    const nombre =
+        (producto.nombre || "").toLowerCase();
 
+    const descripcion =
+        (producto.descripcion || "").toLowerCase();
+
+    const categoria =
+        (producto.categoria || "").toLowerCase();
+
+    const subcategoria =
+        (producto.subcategoria || "").toLowerCase();
+
+    const subcategoria3 =
+        (producto.subcategoria3 || "").toLowerCase();
+
+    return (
+        nombre.includes(texto) ||
+        descripcion.includes(texto) ||
+        categoria.includes(texto) ||
+        subcategoria.includes(texto) ||
+        subcategoria3.includes(texto)
     );
+
+});
 
     renderizarProductos(resultado);
 
@@ -1329,18 +1375,16 @@ activarSubfiltros3();
 
 // si no tiene tercer nivel filtra normal
 
-else{
+else {
 
+    contenedorSubfiltros3.innerHTML = "";
 
-const resultado = productos.filter(producto=>
+    const resultado = productos.filter(
+        producto =>
+            producto.subcategoria === sub
+    );
 
-producto.subcategoria === sub
-
-);
-
-
-renderizarProductos(resultado);
-
+    renderizarProductos(resultado);
 
 }
 
@@ -1422,12 +1466,13 @@ const categoria = boton.dataset.categoria;
 
 
 
-if(categoria==="Todos"){
+if(categoria === "Todos") {
 
-contenedorSubfiltros.innerHTML="";
+    contenedorSubfiltros.innerHTML = "";
 
-renderizarProductos(productos);
+    contenedorSubfiltros3.innerHTML = "";
 
+    renderizarProductos(productos);
 
 }else{
 
