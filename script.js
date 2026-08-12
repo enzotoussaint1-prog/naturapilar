@@ -1318,83 +1318,133 @@ function mostrarSubfiltros(categoria){
 
 
 
-function activarSubfiltros(){
+function activarSubfiltros() {
+
+    const botonesSub =
+        document.querySelectorAll(".subfiltro");
+
+    botonesSub.forEach(boton => {
+
+        boton.addEventListener("click", () => {
+
+            // Quitar activo de todos los subfiltros
+            botonesSub.forEach(btn =>
+                btn.classList.remove("activo")
+            );
+
+            // Activar el seleccionado
+            boton.classList.add("activo");
+
+            const sub =
+                boton.dataset.subcategoria;
 
 
-const botonesSub = document.querySelectorAll(".subfiltro");
+            // =========================================
+            // OBTENER LA CATEGORÍA PRINCIPAL ACTIVA
+            // =========================================
+
+            const botonCategoria =
+                document.querySelector(".filtro.activo");
+
+            if (!botonCategoria) return;
+
+            const categoria =
+                botonCategoria.dataset.categoria;
 
 
-botonesSub.forEach(boton=>{
+            // =========================================
+            // LIMPIAR TERCER NIVEL
+            // =========================================
+
+            contenedorSubfiltros3.innerHTML = "";
 
 
-boton.addEventListener("click",()=>{
+            // =========================================
+            // SI SE SELECCIONA "TODOS"
+            // =========================================
+
+            if (sub === "Todos") {
+
+                // Mostrar todos los productos
+                // de la categoría principal
+
+                const resultado =
+                    productos.filter(producto =>
+                        producto.categoria === categoria
+                    );
+
+                renderizarProductos(resultado);
+
+                return;
+
+            }
 
 
-botonesSub.forEach(btn=>
-btn.classList.remove("activo")
-);
+            // =========================================
+            // SI EXISTE TERCER NIVEL
+            // =========================================
+
+            if (subcategorias3[sub]) {
+
+                // Primero mostrar inmediatamente
+                // TODOS los productos de esta
+                // subcategoría.
+
+                const resultado =
+                    productos.filter(producto =>
+                        producto.categoria === categoria &&
+                        producto.subcategoria === sub
+                    );
+
+                renderizarProductos(resultado);
 
 
-boton.classList.add("activo");
+                // Crear los botones del tercer nivel
+
+                subcategorias3[sub].forEach(nivel3 => {
+
+                    contenedorSubfiltros3.innerHTML += `
+
+                        <button
+                            class="subfiltro3 ${
+                                nivel3 === "Todos"
+                                    ? "activo"
+                                    : ""
+                            }"
+                            data-subcategoria3="${nivel3}">
+
+                            ${nivel3}
+
+                        </button>
+
+                    `;
+
+                });
 
 
-const sub = boton.dataset.subcategoria;
+                activarSubfiltros3();
+
+                return;
+
+            }
 
 
-// limpiar tercer nivel
-contenedorSubfiltros3.innerHTML="";
+            // =========================================
+            // SUBCATEGORÍA SIN TERCER NIVEL
+            // =========================================
+
+            const resultado =
+                productos.filter(producto =>
+                    producto.categoria === categoria &&
+                    producto.subcategoria === sub
+                );
 
 
-// crear tercer nivel si existe
+            renderizarProductos(resultado);
 
-if(subcategorias3[sub]){
+        });
 
-
-subcategorias3[sub].forEach(nivel3=>{
-
-
-contenedorSubfiltros3.innerHTML += `
-
-<button 
-class="subfiltro3 ${nivel3==="Todos" ? "activo":""}"
-data-subcategoria3="${nivel3}">
-
-${nivel3}
-
-</button>
-
-`;
-
-});
-
-
-activarSubfiltros3();
-
-
-}
-
-
-// si no tiene tercer nivel filtra normal
-
-else {
-
-    contenedorSubfiltros3.innerHTML = "";
-
-    const resultado = productos.filter(
-        producto =>
-            producto.subcategoria === sub
-    );
-
-    renderizarProductos(resultado);
-
-}
-
-
-});
-
-
-});
-
+    });
 
 }
 
