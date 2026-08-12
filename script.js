@@ -1274,6 +1274,7 @@ const subcategorias3 = {
         "50ml"
     ],
     Cabello:[
+        "Todos",
         "Shampoo y acondicionador",
         "Repuesto 300ml",
         "Mascara concentrada 250ml",
