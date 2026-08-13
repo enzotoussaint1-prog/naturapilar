@@ -1214,8 +1214,8 @@ formularioDatosCompra.addEventListener(
             // =========================================
 
             const respuesta =
-                await fetch(
-                    `${SUPABASE_URL}/functions/v1/crear-preferencia`,
+    await fetch(
+        `${SUPABASE_URL}/functions/v1/hyper-action`,
                     {
 
                         method: "POST",
