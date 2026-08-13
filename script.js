@@ -481,6 +481,161 @@ const contadorCarrito =
 
 const continuarCompra =
     document.getElementById("continuar-compra");
+// =========================================
+// FORMULARIO DE DATOS DE COMPRA
+// =========================================
+
+const formularioCompraOverlay =
+    document.getElementById(
+        "formulario-compra-overlay"
+    );
+
+const formularioDatosCompra =
+    document.getElementById(
+        "formulario-datos-compra"
+    );
+
+const cerrarFormularioCompra =
+    document.getElementById(
+        "cerrar-formulario-compra"
+    );
+
+const tipoEntrega =
+    document.getElementById(
+        "tipo-entrega"
+    );
+
+const datosEnvio =
+    document.getElementById(
+        "datos-envio"
+    );
+
+const direccionCliente =
+    document.getElementById(
+        "direccion-cliente"
+    );
+
+const localidadCliente =
+    document.getElementById(
+        "localidad-cliente"
+    );
+
+const totalFormulario =
+    document.getElementById(
+        "total-formulario"
+    );
+
+
+// =========================================
+// MOSTRAR FORMULARIO
+// =========================================
+
+function abrirFormularioCompra() {
+
+    formularioCompraOverlay.classList.add(
+        "activo"
+    );
+
+    // Mostrar total actual
+
+    const total = carrito.reduce(
+        (acumulado, item) =>
+            acumulado +
+            (item.precio * item.cantidad),
+        0
+    );
+
+    totalFormulario.textContent =
+        "$" +
+        total.toLocaleString("es-AR");
+
+}
+
+
+// =========================================
+// CERRAR FORMULARIO
+// =========================================
+
+function cerrarFormulario() {
+
+    formularioCompraOverlay.classList.remove(
+        "activo"
+    );
+
+}
+
+
+// =========================================
+// CAMBIAR TIPO DE ENTREGA
+// =========================================
+
+tipoEntrega.addEventListener(
+    "change",
+    function() {
+
+        if (this.value === "envio") {
+
+            datosEnvio.style.display =
+                "block";
+
+            direccionCliente.required =
+                true;
+
+            localidadCliente.required =
+                true;
+
+        } else {
+
+            datosEnvio.style.display =
+                "none";
+
+            direccionCliente.required =
+                false;
+
+            localidadCliente.required =
+                false;
+
+            direccionCliente.value =
+                "";
+
+            localidadCliente.value =
+                "";
+
+        }
+
+    }
+);
+
+
+// =========================================
+// CERRAR FORMULARIO
+// =========================================
+
+cerrarFormularioCompra.addEventListener(
+    "click",
+    cerrarFormulario
+);
+
+
+// =========================================
+// CERRAR HACIENDO CLICK AFUERA
+// =========================================
+
+formularioCompraOverlay.addEventListener(
+    "click",
+    function(e) {
+
+        if (
+            e.target ===
+            formularioCompraOverlay
+        ) {
+
+            cerrarFormulario();
+
+        }
+
+    }
+);
 const formularioPedido =
     document.getElementById("formulario-pedido");
 
@@ -992,31 +1147,22 @@ overlayCarrito.addEventListener(
 
 continuarCompra.addEventListener(
     "click",
-    async function() {
+    function() {
 
         if (carrito.length === 0) {
-            alert("Tu carrito está vacío.");
+
+            alert(
+                "Tu carrito está vacío."
+            );
+
             return;
+
         }
 
-        try {
+        abrirFormularioCompra();
 
-            continuarCompra.disabled = true;
-
-            continuarCompra.textContent =
-                "Preparando pago...";
-
-
-            // Enviar carrito a Supabase
-            const { data, error } =
-                await supabaseClient.functions.invoke(
-    "hyper-action",
-                    {
-                        body: {
-                            carrito: carrito
-                        }
-                    }
-                );
+    }
+);
 
 
             if (error) {
