@@ -481,6 +481,33 @@ const contadorCarrito =
 
 const continuarCompra =
     document.getElementById("continuar-compra");
+const formularioPedido =
+    document.getElementById("formulario-pedido");
+
+const confirmarPedido =
+    document.getElementById("confirmar-pedido");
+
+const volverCarrito =
+    document.getElementById("volver-carrito");
+
+const tipoEntrega =
+    document.getElementById("tipo-entrega");
+
+const datosEnvio =
+    document.getElementById("datos-envio");
+tipoEntrega.addEventListener("change", function() {
+
+    if (this.value === "envio") {
+
+        datosEnvio.style.display = "block";
+
+    } else {
+
+        datosEnvio.style.display = "none";
+
+    }
+
+});
 
 
 // =========================================
