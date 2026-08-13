@@ -419,6 +419,186 @@ WhatsApp: 11 5024-1149
         <button id="cerrar-carrito" class="cerrar-carrito">
             ×
         </button>
+        <!-- =========================================
+     FORMULARIO DE DATOS DE COMPRA
+========================================= -->
+
+<div id="formulario-compra-overlay" class="formulario-overlay">
+
+    <div id="formulario-compra" class="formulario-compra">
+
+        <button
+            type="button"
+            id="cerrar-formulario-compra"
+            class="cerrar-formulario">
+            ×
+        </button>
+
+        <h2>Datos de compra</h2>
+
+        <p class="texto-formulario">
+            Completá tus datos para continuar con el pago.
+        </p>
+
+        <form id="formulario-datos-compra">
+
+            <div class="campo-formulario">
+
+                <label for="nombre-cliente">
+                    Nombre completo *
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre-cliente"
+                    name="nombre_cliente"
+                    required
+                    autocomplete="name"
+                    placeholder="Tu nombre y apellido">
+
+            </div>
+
+
+            <div class="campo-formulario">
+
+                <label for="telefono-cliente">
+                    Teléfono *
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefono-cliente"
+                    name="telefono"
+                    required
+                    autocomplete="tel"
+                    placeholder="Ej: 11 1234-5678">
+
+            </div>
+
+
+            <div class="campo-formulario">
+
+                <label for="email-cliente">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email-cliente"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="tuemail@ejemplo.com">
+
+            </div>
+
+
+            <div class="campo-formulario">
+
+                <label for="tipo-entrega">
+                    Tipo de entrega *
+                </label>
+
+                <select
+                    id="tipo-entrega"
+                    name="tipo_entrega"
+                    required>
+
+                    <option value="">
+                        Seleccioná una opción
+                    </option>
+
+                    <option value="retiro">
+                        Retiro
+                    </option>
+
+                    <option value="envio">
+                        Envío
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="datos-envio"
+                class="datos-envio"
+                style="display:none;">
+
+                <div class="campo-formulario">
+
+                    <label for="direccion-cliente">
+                        Dirección *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="direccion-cliente"
+                        name="direccion"
+                        autocomplete="street-address"
+                        placeholder="Calle y número">
+
+                </div>
+
+
+                <div class="campo-formulario">
+
+                    <label for="localidad-cliente">
+                        Localidad *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="localidad-cliente"
+                        name="localidad"
+                        autocomplete="address-level2"
+                        placeholder="Ej: Pilar">
+
+                </div>
+
+            </div>
+
+
+            <div class="campo-formulario">
+
+                <label for="notas-cliente">
+                    Notas
+                </label>
+
+                <textarea
+                    id="notas-cliente"
+                    name="notas"
+                    rows="3"
+                    placeholder="Alguna indicación adicional..."></textarea>
+
+            </div>
+
+
+            <div class="resumen-formulario">
+
+                <span>Total:</span>
+
+                <strong id="total-formulario">
+                    $0
+                </strong>
+
+            </div>
+
+
+            <button
+                type="submit"
+                id="confirmar-datos-compra"
+                class="btn-confirmar-compra">
+
+                Continuar al pago
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
 
     </div>
 
