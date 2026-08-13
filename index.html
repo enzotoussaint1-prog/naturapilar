@@ -448,6 +448,112 @@ WhatsApp: 11 5024-1149
             disabled>
             Continuar con la compra
         </button>
+        <!-- =========================================
+     FORMULARIO DATOS DEL CLIENTE
+========================================= -->
+
+<div id="formulario-pedido" class="formulario-pedido" style="display:none;">
+
+    <h2>Datos para tu pedido</h2>
+
+    <label for="nombre-cliente">
+        Nombre y apellido
+    </label>
+
+    <input
+        type="text"
+        id="nombre-cliente"
+        placeholder="Ej: Juan Pérez"
+        required
+    >
+
+    <label for="telefono-cliente">
+        Teléfono
+    </label>
+
+    <input
+        type="tel"
+        id="telefono-cliente"
+        placeholder="Ej: 11 1234-5678"
+        required
+    >
+
+    <label for="email-cliente">
+        Email
+    </label>
+
+    <input
+        type="email"
+        id="email-cliente"
+        placeholder="Ej: cliente@email.com"
+    >
+
+    <label for="tipo-entrega">
+        ¿Cómo querés recibir tu pedido?
+    </label>
+
+    <select id="tipo-entrega">
+
+        <option value="envio">
+            Envío
+        </option>
+
+        <option value="retiro">
+            Retiro
+        </option>
+
+    </select>
+
+    <div id="datos-envio">
+
+        <label for="direccion-cliente">
+            Dirección
+        </label>
+
+        <input
+            type="text"
+            id="direccion-cliente"
+            placeholder="Calle y número"
+        >
+
+        <label for="localidad-cliente">
+            Localidad
+        </label>
+
+        <input
+            type="text"
+            id="localidad-cliente"
+            placeholder="Ej: Pilar"
+        >
+
+    </div>
+
+    <label for="notas-pedido">
+        Notas del pedido
+    </label>
+
+    <textarea
+        id="notas-pedido"
+        placeholder="Información adicional..."
+    ></textarea>
+
+    <button
+        type="button"
+        id="confirmar-pedido">
+
+        Confirmar pedido y pagar
+
+    </button>
+
+    <button
+        type="button"
+        id="volver-carrito">
+
+        Volver al carrito
+
+    </button>
+
+</div>
 
         <a
             href="https://wa.me/5491150241149"
