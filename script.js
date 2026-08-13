@@ -1117,7 +1117,7 @@ overlayCarrito.addEventListener(
 
 
 // =========================================
-// CONTINUAR COMPRA → MERCADO PAGO
+// CONTINUAR COMPRA
 // =========================================
 
 continuarCompra.addEventListener(
@@ -1135,6 +1135,234 @@ continuarCompra.addEventListener(
         }
 
         abrirFormularioCompra();
+
+    }
+);
+
+
+// =========================================
+// CONFIRMAR DATOS Y CREAR CHECKOUT
+// =========================================
+
+formularioDatosCompra.addEventListener(
+    "submit",
+    async function(e) {
+
+        e.preventDefault();
+
+
+        // =========================================
+        // EVITAR DOBLE CLICK
+        // =========================================
+
+        confirmarPedido.disabled = true;
+
+        confirmarPedido.textContent =
+            "Preparando pago...";
+
+
+        try {
+
+            // =========================================
+            // OBTENER DATOS DEL CLIENTE
+            // =========================================
+
+            const formData =
+                new FormData(
+                    formularioDatosCompra
+                );
+
+
+            const nombre =
+                formData.get("nombre");
+
+            const telefono =
+                formData.get("telefono");
+
+            const email =
+                formData.get("email");
+
+            const tipoEntregaValor =
+                formData.get("tipo-entrega");
+
+
+            const direccion =
+                formData.get("direccion-cliente");
+
+            const localidad =
+                formData.get("localidad-cliente");
+
+
+            // =========================================
+            // VERIFICAR CARRITO
+            // =========================================
+
+            if (
+                !carrito ||
+                carrito.length === 0
+            ) {
+
+                throw new Error(
+                    "El carrito está vacío."
+                );
+
+            }
+
+
+            // =========================================
+            // LLAMAR A SUPABASE
+            // =========================================
+
+            const respuesta =
+                await fetch(
+                    `${SUPABASE_URL}/functions/v1/crear-preferencia`,
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json",
+
+                            "apikey":
+                                SUPABASE_KEY
+
+                        },
+
+                        body: JSON.stringify({
+
+                            carrito: carrito,
+
+                            cliente: {
+
+                                nombre:
+                                    nombre,
+
+                                telefono:
+                                    telefono,
+
+                                email:
+                                    email,
+
+                                tipoEntrega:
+                                    tipoEntregaValor,
+
+                                direccion:
+                                    direccion,
+
+                                localidad:
+                                    localidad
+
+                            }
+
+                        })
+
+                    }
+                );
+
+
+            // =========================================
+            // LEER RESPUESTA
+            // =========================================
+
+            const data =
+                await respuesta.json();
+
+
+            console.log(
+                "Respuesta crear-preferencia:",
+                data
+            );
+
+
+            // =========================================
+            // VERIFICAR ERROR
+            // =========================================
+
+            if (!respuesta.ok) {
+
+                console.error(
+                    "Error llamando a Supabase:",
+                    data
+                );
+
+                throw new Error(
+                    data?.error ||
+                    "No se pudo crear la preferencia de pago."
+                );
+
+            }
+
+
+            // =========================================
+            // VERIFICAR CHECKOUT
+            // =========================================
+
+            if (
+                !data ||
+                !data.init_point
+            ) {
+
+                console.error(
+                    "Mercado Pago no devolvió init_point:",
+                    data
+                );
+
+                throw new Error(
+                    "Mercado Pago no devolvió el checkout."
+                );
+
+            }
+
+
+            // =========================================
+            // GUARDAR CARRITO TEMPORALMENTE
+            // =========================================
+
+            localStorage.setItem(
+                "carritoAntesDelPago",
+                JSON.stringify(carrito)
+            );
+
+
+            // =========================================
+            // IR A MERCADO PAGO
+            // =========================================
+
+            console.log(
+                "Redirigiendo a Mercado Pago:",
+                data.init_point
+            );
+
+
+            window.location.href =
+                data.init_point;
+
+
+        } catch (error) {
+
+            console.error(
+                "Error iniciando checkout:",
+                error
+            );
+
+
+            alert(
+                error.message ||
+                "No pudimos iniciar el pago. " +
+                "Por favor intentá nuevamente."
+            );
+
+
+            confirmarPedido.disabled =
+                false;
+
+
+            confirmarPedido.textContent =
+                "Continuar con el pago";
+
+        }
 
     }
 );
