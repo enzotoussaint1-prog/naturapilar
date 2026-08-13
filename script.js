@@ -1177,25 +1177,26 @@ formularioDatosCompra.addEventListener(
                 );
 
 
-            const nombre =
-                formData.get("nombre");
+           const nombre =
+    formData.get("nombre_cliente");
 
-            const telefono =
-                formData.get("telefono");
+const telefono =
+    formData.get("telefono");
 
-            const email =
-                formData.get("email");
+const email =
+    formData.get("email");
 
-            const tipoEntregaValor =
-                formData.get("tipo-entrega");
+const tipoEntregaValor =
+    formData.get("tipo_entrega");
 
+const direccion =
+    formData.get("direccion");
 
-            const direccion =
-                formData.get("direccion-cliente");
+const localidad =
+    formData.get("localidad");
 
-            const localidad =
-                formData.get("localidad-cliente");
-
+const notas =
+    formData.get("notas");
 
             // =========================================
             // VERIFICAR CARRITO
@@ -1256,7 +1257,8 @@ formularioDatosCompra.addEventListener(
                                     direccion,
 
                                 localidad:
-                                    localidad
+                                    localidad,
+                                notas: notas
 
                             }
 
