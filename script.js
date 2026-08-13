@@ -499,6 +499,10 @@ const cerrarFormularioCompra =
     document.getElementById(
         "cerrar-formulario-compra"
     );
+const confirmarPedido =
+    document.getElementById(
+        "confirmar-pedido"
+    );
 
 const tipoEntrega =
     document.getElementById(
