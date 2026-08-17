@@ -1417,6 +1417,56 @@ border-color:#d45f93;
 }
 
 
+/* =========================================
+   RESULTADO DE PAGO
+========================================= */
+
+.resultado-pago {
+
+    text-align: center;
+
+}
+
+
+.resultado-pago-icono {
+
+    font-size: 48px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.resultado-pago #resultado-pago-boton {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+}
+
+
+.resultado-pago.exito h2 {
+
+    color: #8d4b62;
+
+}
+
+
+.resultado-pago.rechazado h2 {
+
+    color: #b94778;
+
+}
+
+
+.resultado-pago.pendiente h2 {
+
+    color: #b98b47;
+
+}
+
+
 .texto-formulario {
 
     margin-bottom: 25px;
