@@ -1711,3 +1711,14 @@ border-color:#d45f93;
     }
 
 }
+.red-social img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+}
+
+.red-social.whatsapp img {
+    width: 32px;
+    height: 32px;
+}
