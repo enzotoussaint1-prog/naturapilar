@@ -339,21 +339,132 @@ width:120px;
 margin-bottom:20px;
 }
 
-.whatsapp{
-position:fixed;
-right:25px;
-bottom:25px;
-width:65px;
-height:65px;
-border-radius:50%;
-background:#25D366;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-text-decoration:none;
-font-size:32px;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
+/* =========================================
+   REDES SOCIALES FLOTANTES
+========================================= */
+
+.redes-flotantes{
+
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+    z-index:9998;
+
+}
+
+
+/* BOTÓN GENERAL */
+
+.red-social{
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:27px;
+
+    font-weight:700;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.22);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/* EFECTO AL PASAR EL MOUSE */
+
+.red-social:hover{
+
+    transform:scale(1.12);
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.30);
+
+}
+
+
+/* INSTAGRAM */
+
+.red-social.instagram{
+
+    background:linear-gradient(
+        135deg,
+        #833ab4,
+        #e1306c,
+        #fd1d1d,
+        #fcb045
+    );
+
+}
+
+
+/* FACEBOOK */
+
+.red-social.facebook{
+
+    background:#1877F2;
+
+    font-family:Arial,sans-serif;
+
+}
+
+
+/* WHATSAPP */
+
+.red-social.whatsapp{
+
+    background:#25D366;
+
+}
+
+
+/* =========================================
+   REDES SOCIALES - CELULAR
+========================================= */
+
+@media(max-width:600px){
+
+    .redes-flotantes{
+
+        right:15px;
+
+        bottom:18px;
+
+        gap:9px;
+
+    }
+
+
+    .red-social{
+
+        width:48px;
+
+        height:48px;
+
+        font-size:22px;
+
+    }
+
 }
 
 @media(max-width:900px){
