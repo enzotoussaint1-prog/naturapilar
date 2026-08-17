@@ -360,7 +360,28 @@ margin-bottom:20px;
 }
 
 
-/* BOTÓN GENERAL */
+/* =========================================
+   REDES SOCIALES FLOTANTES
+========================================= */
+
+.redes-flotantes{
+
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+    z-index:9998;
+
+}
+
+
+/* BOTONES */
 
 .red-social{
 
@@ -375,11 +396,7 @@ margin-bottom:20px;
 
     text-decoration:none;
 
-    color:white;
-
-    font-size:27px;
-
-    font-weight:700;
+    overflow:hidden;
 
     box-shadow:
         0 8px 22px rgba(0,0,0,.22);
@@ -387,6 +404,20 @@ margin-bottom:20px;
     transition:
         transform .25s ease,
         box-shadow .25s ease;
+
+}
+
+
+/* LOGOS */
+
+.red-social img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
 
 }
 
@@ -399,41 +430,6 @@ margin-bottom:20px;
 
     box-shadow:
         0 12px 28px rgba(0,0,0,.30);
-
-}
-
-
-/* INSTAGRAM */
-
-.red-social.instagram{
-
-    background:linear-gradient(
-        135deg,
-        #833ab4,
-        #e1306c,
-        #fd1d1d,
-        #fcb045
-    );
-
-}
-
-
-/* FACEBOOK */
-
-.red-social.facebook{
-
-    background:#1877F2;
-
-    font-family:Arial,sans-serif;
-
-}
-
-
-/* WHATSAPP */
-
-.red-social.whatsapp{
-
-    background:#25D366;
 
 }
 
@@ -454,14 +450,11 @@ margin-bottom:20px;
 
     }
 
-
     .red-social{
 
         width:48px;
 
         height:48px;
-
-        font-size:22px;
 
     }
 
