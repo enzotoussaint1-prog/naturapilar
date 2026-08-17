@@ -2187,3 +2187,109 @@ setInterval(function() {
     mostrarBanner(bannerActual);
 
 }, 5000);
+
+
+// =========================================
+// RESULTADO DEL PAGO (vuelta desde Mercado Pago)
+// =========================================
+
+function mostrarResultadoPago() {
+
+    const params = new URLSearchParams(window.location.search);
+    const pago = params.get("pago");
+
+    if (!pago) {
+        return;
+    }
+
+    const overlay = document.getElementById("resultado-pago-overlay");
+    const caja = document.getElementById("resultado-pago");
+    const icono = document.getElementById("resultado-pago-icono");
+    const titulo = document.getElementById("resultado-pago-titulo");
+    const mensaje = document.getElementById("resultado-pago-mensaje");
+    const boton = document.getElementById("resultado-pago-boton");
+    const cerrar = document.getElementById("cerrar-resultado-pago");
+
+    if (!overlay || !caja || !titulo || !mensaje) {
+        return;
+    }
+
+    caja.classList.remove("exito", "rechazado", "pendiente");
+
+    if (pago === "exitoso") {
+
+        caja.classList.add("exito");
+        icono.textContent = "✅";
+        titulo.textContent = "¡Gracias por tu compra!";
+        mensaje.textContent =
+            "Tu pago fue aprobado y ya registramos tu pedido. " +
+            "En breve nos comunicamos por WhatsApp para coordinar la entrega.";
+
+        // Se creó el pedido correctamente: vaciamos el carrito
+        carrito = [];
+        guardarCarrito();
+        renderizarCarrito();
+        localStorage.removeItem("carritoAntesDelPago");
+
+    } else if (pago === "pendiente") {
+
+        caja.classList.add("pendiente");
+        icono.textContent = "⏳";
+        titulo.textContent = "Tu pago está pendiente";
+        mensaje.textContent =
+            "Registramos tu pedido y estamos esperando la confirmación " +
+            "de Mercado Pago. Esto puede tardar unos minutos u horas " +
+            "según el medio de pago que hayas elegido. Te avisamos por " +
+            "WhatsApp apenas se confirme.";
+
+        // El pedido ya quedó registrado: vaciamos el carrito
+        carrito = [];
+        guardarCarrito();
+        renderizarCarrito();
+        localStorage.removeItem("carritoAntesDelPago");
+
+    } else if (pago === "fallido") {
+
+        caja.classList.add("rechazado");
+        icono.textContent = "❌";
+        titulo.textContent = "No pudimos procesar tu pago";
+        mensaje.textContent =
+            "El pago fue rechazado o cancelado. Tus productos siguen " +
+            "en el carrito, podés intentar de nuevo con otro medio de " +
+            "pago o escribirnos por WhatsApp si preferís coordinar así.";
+
+        // El pago no se concretó: restauramos el carrito previo al pago
+        const carritoPrevio = localStorage.getItem("carritoAntesDelPago");
+
+        if (carritoPrevio) {
+            carrito = JSON.parse(carritoPrevio);
+            guardarCarrito();
+            renderizarCarrito();
+        }
+
+    } else {
+        return;
+    }
+
+    overlay.classList.add("activo");
+
+    function cerrarModalResultado() {
+        overlay.classList.remove("activo");
+    }
+
+    if (boton) {
+        boton.onclick = cerrarModalResultado;
+    }
+
+    if (cerrar) {
+        cerrar.onclick = cerrarModalResultado;
+    }
+
+    // Limpiamos el parámetro de la URL para que no vuelva a
+    // dispararse el modal si el cliente recarga la página
+    const urlLimpia = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, urlLimpia);
+
+}
+
+mostrarResultadoPago();
