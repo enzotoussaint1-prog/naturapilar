@@ -1897,6 +1897,10 @@ renderizarProductos(resultado);
   });
 
 });    
+// =========================================
+// MODAL - VER DETALLE DEL PRODUCTO
+// =========================================
+
 const modal = document.getElementById("modal-producto");
 
 const detalle = document.getElementById("detalle-producto");
@@ -1904,110 +1908,230 @@ const detalle = document.getElementById("detalle-producto");
 const cerrar = document.querySelector(".cerrar-modal");
 
 
-document.addEventListener("click", function(e){
+// =========================================
+// ABRIR DETALLE
+// =========================================
 
-if(e.target.classList.contains("btn-detalle")){
+document.addEventListener("click", function(e) {
 
+    if (!e.target.classList.contains("btn-detalle")) {
+        return;
+    }
 
-const id = e.target.dataset.id;
+    const id = e.target.dataset.id;
 
+    const producto = productos.find(
+        p => p.id == id
+    );
 
-const producto = productos.find(p => p.id == id);
-
-
-
-detalle.innerHTML = `
-
-<h2>${producto.nombre}</h2>
-
-
-<div class="galeria-detalle">
-
-
-<img 
-id="imagen-detalle"
-class="imagen-principal-detalle"
-src="${producto.imagen}"
-alt="${producto.nombre}">
+    if (!producto) {
+        console.error(
+            "No se encontró el producto:",
+            id
+        );
+        return;
+    }
 
 
-<div class="miniaturas">
+    // =========================================
+    // CONSTRUIR DETALLE
+    // =========================================
+
+    detalle.innerHTML = `
+
+        <div class="detalle-layout">
+
+            <!-- =================================
+                 GALERÍA DE IMÁGENES
+                 ================================= -->
+
+            <div class="galeria-detalle">
+
+                <div class="imagen-principal-contenedor">
+
+                    <img
+                        id="imagen-detalle"
+                        class="imagen-principal-detalle"
+                        src="${producto.imagen}"
+                        alt="${producto.nombre}">
+
+                </div>
 
 
-<img 
-src="${producto.imagen}"
-onclick="cambiarImagen('${producto.imagen}')">
+                <div class="miniaturas">
+
+                    <img
+                        class="miniatura-activa"
+                        src="${producto.imagen}"
+                        onclick="cambiarImagen('${producto.imagen}', this)"
+                        alt="${producto.nombre}">
+
+                    ${
+                        producto.imagen2
+                        ? `
+                            <img
+                                src="${producto.imagen2}"
+                                onclick="cambiarImagen('${producto.imagen2}', this)"
+                                alt="${producto.nombre}">
+                          `
+                        : ""
+                    }
+
+                </div>
+
+            </div>
 
 
-${producto.imagen2 ? `
+            <!-- =================================
+                 INFORMACIÓN DEL PRODUCTO
+                 ================================= -->
 
-<img 
-src="${producto.imagen2}"
-onclick="cambiarImagen('${producto.imagen2}')">
+            <div class="informacion-detalle">
 
-` : ""}
-
-
-</div>
-
-
-</div>
-
-<p>${producto.descripcion}</p>
+                <h2>
+                    ${producto.nombre}
+                </h2>
 
 
-<div class="precios-detalle">
+                <div class="descripcion-detalle">
 
-${bloqueDoblePrecio(producto)}
+                    <p>
+                        ${producto.descripcion}
+                    </p>
 
-</div>
-
-
-<p>
-🔢 Código del producto: ${producto.codigo}
-</p>
+                </div>
 
 
-<button
-    class="btn-comprar"
-    data-id="${producto.id}">
+                <!-- =================================
+                     PRECIOS
+                     ================================= -->
 
-    Agregar al carrito
+                <div class="precios-detalle">
 
-</button>
+                    ${bloqueDoblePrecio(producto)}
 
-`;
-
-
-modal.style.display="block";
+                </div>
 
 
-}
+                <!-- =================================
+                     CÓDIGO
+                     ================================= -->
+
+                <p class="codigo-detalle">
+
+                    🔢 Código del producto:
+                    <strong>${producto.codigo}</strong>
+
+                </p>
+
+
+                <!-- =================================
+                     BOTÓN
+                     ================================= -->
+
+                <button
+                    class="btn-comprar btn-comprar-detalle"
+                    data-id="${producto.id}">
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    // =========================================
+    // MOSTRAR MODAL
+    // =========================================
+
+    modal.style.display = "block";
+
+
+    // Evitar scroll del fondo
+    document.body.classList.add("modal-abierto");
 
 });
 
 
+// =========================================
+// CERRAR MODAL
+// =========================================
 
-cerrar.onclick=function(){
+cerrar.onclick = function() {
 
-modal.style.display="none";
+    modal.style.display = "none";
 
-}
+    document.body.classList.remove(
+        "modal-abierto"
+    );
+
+};
 
 
+// =========================================
+// CERRAR HACIENDO CLICK AFUERA
+// =========================================
 
-window.onclick=function(e){
+window.addEventListener("click", function(e) {
 
-if(e.target==modal){
+    if (e.target === modal) {
 
-modal.style.display="none";
+        modal.style.display = "none";
 
-}
+        document.body.classList.remove(
+            "modal-abierto"
+        );
 
-}
-function cambiarImagen(imagen){
+    }
 
-document.getElementById("imagen-detalle").src = imagen;
+});
+
+
+// =========================================
+// CAMBIAR IMAGEN
+// =========================================
+
+function cambiarImagen(imagen, miniatura) {
+
+    const imagenPrincipal =
+        document.getElementById(
+            "imagen-detalle"
+        );
+
+    if (!imagenPrincipal) return;
+
+
+    imagenPrincipal.src = imagen;
+
+
+    // Quitar selección anterior
+
+    document
+        .querySelectorAll(
+            ".miniaturas img"
+        )
+        .forEach(img => {
+
+            img.classList.remove(
+                "miniatura-activa"
+            );
+
+        });
+
+
+    // Marcar la seleccionada
+
+    if (miniatura) {
+
+        miniatura.classList.add(
+            "miniatura-activa"
+        );
+
+    }
 
 }
 // =========================================
