@@ -700,6 +700,34 @@ WhatsApp: 11 5024-1149
 
 </div>
 
+    <div id="metodo-pago-overlay" class="formulario-overlay">
+    <div class="formulario-compra metodo-pago">
+        <button type="button" id="cerrar-metodo-pago" class="cerrar-formulario">×</button>
+        <h2>¿Cómo querés pagar?</h2>
+        <button type="button" id="elegir-transferencia" class="boton-metodo boton-metodo-transferencia">
+            <span class="boton-metodo-titulo">🏦 Pagar por Transferencia</span>
+            <span class="boton-metodo-total" id="total-metodo-transferencia">$0</span>
+            <span class="boton-metodo-nota">Precio promocional</span>
+        </button>
+        <button type="button" id="elegir-mercadopago" class="boton-metodo boton-metodo-mp">
+            <span class="boton-metodo-titulo">💳 Pagar con Mercado Pago</span>
+            <span class="boton-metodo-total" id="total-metodo-mp">$0</span>
+            <span class="boton-metodo-nota">Tarjetas, dinero en cuenta, etc.</span>
+        </button>
+    </div>
+</div>
+
+<div id="transferencia-overlay" class="formulario-overlay">
+    <div class="formulario-compra transferencia-datos">
+        <button type="button" id="cerrar-transferencia" class="cerrar-formulario">×</button>
+        <h2>Pagar por transferencia</h2>
+        <p class="texto-formulario">Total a transferir: <strong id="total-transferencia">$0</strong></p>
+        <div class="datos-bancarios"><p><strong>Alias:</strong> Natura.valen.pilar</p></div>
+        <p class="texto-formulario">Una vez hecha la transferencia, enviame el comprobante por WhatsApp para confirmar tu pedido.</p>
+        <a id="whatsapp-comprobante" href="#" target="_blank" rel="noopener" class="boton-principal boton-whatsapp-comprobante">Enviar comprobante por WhatsApp</a>
+    </div>
+</div>
+
 <!-- MODAL DETALLE PRODUCTO -->
 
 <div id="modal-producto" class="modal">
