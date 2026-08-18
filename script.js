@@ -201,7 +201,36 @@ function sincronizarCarritoConStock() {
     }
 
 }
+const RECARGO_MERCADOPAGO = 0.05; // 5%
 
+function precioConComisionMP(precio) {
+    const conRecargo = precio * (1 + RECARGO_MERCADOPAGO);
+    return Math.round(conRecargo / 100) * 100; // redondeo a múltiplo de $100
+}
+
+function bloqueDoblePrecio(producto) {
+    const precioTransferencia = producto.precio;
+    const precioMP = precioConComisionMP(producto.precio);
+    const hayOferta = producto.oferta && producto.precioAnterior;
+    const porcentajeOferta = hayOferta
+        ? Math.round(100 - (producto.precio * 100 / producto.precioAnterior))
+        : 0;
+
+    return `
+<div class="precios-metodo">
+    <div class="precio-metodo precio-transferencia">
+        <span class="etiqueta-metodo">Transferencia</span>
+        ${hayOferta ? `<span class="precio-anterior">$${producto.precioAnterior.toLocaleString("es-AR")}</span>` : ""}
+        <span class="valor-metodo">$${precioTransferencia.toLocaleString("es-AR")}</span>
+        <span class="tag-promo">${hayOferta ? `-${porcentajeOferta}% OFF · Precio promocional` : "Precio promocional"}</span>
+    </div>
+    <div class="precio-metodo precio-mercadopago">
+        <span class="etiqueta-metodo">Mercado Pago</span>
+        <span class="valor-metodo">$${precioMP.toLocaleString("es-AR")}</span>
+    </div>
+</div>
+`;
+}
 const contenedorProductos = document.getElementById("contenedor-productos");
 
 function renderizarProductos(lista) {
