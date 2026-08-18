@@ -2101,3 +2101,189 @@ body.modal-abierto {
     }
 
 }
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+
+    /* -----------------------------------------
+       MODAL
+       ----------------------------------------- */
+
+    #modal-producto {
+
+        padding: 12px;
+
+    }
+
+
+    /* -----------------------------------------
+       CAJA DEL MODAL
+       ----------------------------------------- */
+
+    #detalle-producto {
+
+        padding: 20px 16px;
+
+    }
+
+
+    /* -----------------------------------------
+       CAMBIAR A UNA SOLA COLUMNA
+       ----------------------------------------- */
+
+    .detalle-layout {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 14px;
+
+        width: 100%;
+
+    }
+
+
+    /* -----------------------------------------
+       GALERÍA
+       ----------------------------------------- */
+
+    .galeria-detalle {
+
+        width: 100%;
+
+        order: 1;
+
+    }
+
+
+    /* -----------------------------------------
+       FOTO PRINCIPAL
+       ----------------------------------------- */
+
+    .imagen-principal-contenedor {
+
+        width: 100%;
+
+        height: 260px;
+
+        border-radius: 12px;
+
+    }
+
+
+    .imagen-principal-detalle {
+
+        width: 100%;
+
+        height: 100%;
+
+        object-fit: contain;
+
+    }
+
+
+    /* -----------------------------------------
+       MINIATURAS
+       ----------------------------------------- */
+
+    .miniaturas {
+
+        margin-top: 8px;
+
+        gap: 8px;
+
+    }
+
+
+    .miniaturas img {
+
+        width: 52px;
+
+        height: 52px;
+
+    }
+
+
+    /* -----------------------------------------
+       INFORMACIÓN
+       ----------------------------------------- */
+
+    .informacion-detalle {
+
+        width: 100%;
+
+        order: 2;
+
+    }
+
+
+    .informacion-detalle h2 {
+
+        font-size: 22px;
+
+        line-height: 1.2;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .descripcion-detalle {
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .descripcion-detalle p {
+
+        font-size: 14px;
+
+        line-height: 1.4;
+
+    }
+
+
+    /* -----------------------------------------
+       PRECIOS
+       ----------------------------------------- */
+
+    .precios-detalle {
+
+        margin: 8px 0 10px;
+
+    }
+
+
+    /* -----------------------------------------
+       CÓDIGO
+       ----------------------------------------- */
+
+    .codigo-detalle {
+
+        margin: 5px 0 12px;
+
+        font-size: 13px;
+
+    }
+
+
+    /* -----------------------------------------
+       BOTÓN
+       ----------------------------------------- */
+
+    .btn-comprar-detalle {
+
+        width: 100%;
+
+        max-width: none;
+
+        padding: 12px;
+
+    }
+
+}
