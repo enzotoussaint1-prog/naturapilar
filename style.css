@@ -1756,3 +1756,12 @@ border-color:#d45f93;
 .datos-bancarios { background: #fff8f8; border: 1px dashed #d45f93; border-radius: 10px; padding: 12px; margin: 12px 0; }
 .boton-whatsapp-comprobante { display: inline-block; background: #25D366; color: #fff; margin-top: 10px; }
 .boton-whatsapp-comprobante:hover { background: #1ebc59; }
+.boton-abrir-mercadopago {
+    display: inline-block;
+    background: #009ee3;
+    color: #fff;
+    margin-top: 10px;
+}
+.boton-abrir-mercadopago:hover {
+    background: #0087c7;
+}
