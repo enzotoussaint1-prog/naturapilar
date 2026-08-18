@@ -1174,6 +1174,7 @@ continuarCompra.addEventListener(
 
         // Abrir formulario de datos de compra
         cerrarPanelCarrito();
+        modal.style.display = "none";
         abrirMetodoPago();
 
     }
