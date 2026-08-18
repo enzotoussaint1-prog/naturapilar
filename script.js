@@ -1138,6 +1138,10 @@ continuarCompra.addEventListener(
 
         }
 
+        // Cerrar automáticamente el carrito
+        cerrarPanelCarrito();
+
+        // Abrir formulario de datos de compra
         abrirFormularioCompra();
 
     }
