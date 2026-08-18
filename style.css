@@ -2287,3 +2287,46 @@ body.modal-abierto {
     }
 
 }
+/* =========================================
+   AJUSTE FINAL MODAL VER DETALLE - DESKTOP
+========================================= */
+
+@media (min-width: 901px) {
+
+    .modal-contenido {
+        width: 90%;
+        max-width: 950px;
+        max-height: 90vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin: 3vh auto;
+        padding: 30px;
+    }
+
+    .detalle-layout {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns:
+            minmax(0, 0.9fr)
+            minmax(0, 1.1fr);
+        gap: 30px;
+    }
+
+    .galeria-detalle,
+    .informacion-detalle {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .imagen-principal-contenedor {
+        width: 100%;
+        max-width: 420px;
+        height: 390px;
+        margin: 0 auto;
+    }
+
+    .imagen-principal-detalle {
+        max-width: 100%;
+    }
+
+}
