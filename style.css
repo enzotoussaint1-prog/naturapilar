@@ -673,13 +673,13 @@ background:rgba(0,0,0,.6);
 
 background:white;
 
-width:90%;
+width:92%;
 
-max-width:700px;
+max-width:950px;
 
-margin:5% auto;
+margin:3% auto;
 
-padding:30px;
+padding:35px;
 
 border-radius:25px;
 
@@ -1002,55 +1002,66 @@ line-height:1.6;
 ========================= */
 
 
+/* =========================================
+   GALERIA DETALLE PRODUCTO
+========================================= */
+
 .galeria-detalle{
-
-text-align:center;
-
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
 }
 
 
-.imagen-principal-detalle {
-    width: 100%;
-    max-width: 420px;
-    height: 420px;
-    object-fit: contain;
-    padding: 0;
-    background: white;
-    border-radius: 25px;
-    display: block;
-    margin: 0 auto;
+/* IMAGEN PRINCIPAL */
+
+.imagen-principal-detalle{
+    width:100%;
+    max-width:560px;
+    height:560px;
+    object-fit:contain;
+    padding:0;
+    background:white;
+    border-radius:25px;
+    display:block;
+    margin:0 auto;
 }
 
+
+/* MINIATURAS */
 
 .miniaturas{
-
-display:flex;
-justify-content:center;
-gap:15px;
-margin-top:20px;
-
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
 }
 
 
-.miniaturas img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    padding: 5px;
-    background: white;
-    border-radius: 15px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: .3s;
+.miniaturas img{
+    width:85px;
+    height:85px;
+    object-fit:contain;
+    padding:5px;
+    background:white;
+    border-radius:15px;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:.3s;
 }
 
 
 .miniaturas img:hover{
+    transform:scale(1.08);
+    border-color:#d45f93;
+}
 
-transform:scale(1.1);
 
-border-color:#d45f93;
-
+.imagen-secundaria{
+    border:3px solid #d45f93;
 }
 /* =========================================
    CARRITO DE COMPRAS
