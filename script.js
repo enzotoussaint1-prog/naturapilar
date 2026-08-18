@@ -276,31 +276,9 @@ ${producto.oferta ?
 
                 <p>${producto.descripcion}</p>
 
-              <div class="precios">
+                            <div class="precios">
 
-${producto.oferta && producto.precioAnterior ? `
-
-<span class="precio-anterior">
-
-$${producto.precioAnterior.toLocaleString("es-AR")}
-
-</span>
-
-<div class="descuento">
-
--${Math.round(
-100 - (producto.precio * 100 / producto.precioAnterior)
-)}% OFF
-
-</div>
-
-` : ""}
-
-<span class="precio-actual">
-
-$${producto.precio.toLocaleString("es-AR")}
-
-</span>
+${bloqueDoblePrecio(producto)}
 
 </div>
 
@@ -361,29 +339,7 @@ function renderizarPromociones() {
 
 <div class="precios">
 
-${producto.precioAnterior ? `
-
-<span class="precio-anterior">
-
-$${producto.precioAnterior.toLocaleString("es-AR")}
-
-</span>
-
-<div class="descuento">
-
--${Math.round(
-100 - (producto.precio * 100 / producto.precioAnterior)
-)}% OFF
-
-</div>
-
-` : ""}
-
-<span class="precio-actual">
-
-$${producto.precio.toLocaleString("es-AR")}
-
-</span>
+${bloqueDoblePrecio(producto)}
 
 </div>
 
@@ -559,6 +515,45 @@ const totalFormulario =
     document.getElementById(
         "total-formulario"
     );
+const metodoPagoOverlay = document.getElementById("metodo-pago-overlay");
+const cerrarMetodoPago = document.getElementById("cerrar-metodo-pago");
+const elegirMercadoPago = document.getElementById("elegir-mercadopago");
+const elegirTransferencia = document.getElementById("elegir-transferencia");
+const totalMetodoMP = document.getElementById("total-metodo-mp");
+const totalMetodoTransferencia = document.getElementById("total-metodo-transferencia");
+
+function calcularTotalCarrito() {
+    return carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+}
+function calcularTotalConRecargoMP() {
+    return carrito.reduce((acc, item) => acc + (precioConComisionMP(item.precio) * item.cantidad), 0);
+}
+function abrirMetodoPago() {
+    metodoPagoOverlay.classList.add("activo");
+    totalMetodoTransferencia.textContent = "$" + calcularTotalCarrito().toLocaleString("es-AR");
+    totalMetodoMP.textContent = "$" + calcularTotalConRecargoMP().toLocaleString("es-AR");
+}
+function cerrarMetodoPagoFn() { metodoPagoOverlay.classList.remove("activo"); }
+
+cerrarMetodoPago.addEventListener("click", cerrarMetodoPagoFn);
+elegirMercadoPago.addEventListener("click", function() { cerrarMetodoPagoFn(); abrirFormularioCompra(); });
+elegirTransferencia.addEventListener("click", function() { cerrarMetodoPagoFn(); abrirTransferencia(); });
+
+const transferenciaOverlay = document.getElementById("transferencia-overlay");
+const cerrarTransferencia = document.getElementById("cerrar-transferencia");
+const totalTransferencia = document.getElementById("total-transferencia");
+const whatsappComprobante = document.getElementById("whatsapp-comprobante");
+const ALIAS_TRANSFERENCIA = "Natura.valen.pilar";
+
+function abrirTransferencia() {
+    transferenciaOverlay.classList.add("activo");
+    const total = calcularTotalCarrito();
+    totalTransferencia.textContent = "$" + total.toLocaleString("es-AR");
+    const mensaje = encodeURIComponent(`Hola! Te paso el comprobante de mi transferencia por $${total.toLocaleString("es-AR")} (Alias: ${ALIAS_TRANSFERENCIA})`);
+    whatsappComprobante.href = `https://wa.me/5491150241149?text=${mensaje}`;
+}
+function cerrarTransferenciaFn() { transferenciaOverlay.classList.remove("activo"); }
+cerrarTransferencia.addEventListener("click", cerrarTransferenciaFn);
 
 
 // =========================================
@@ -571,14 +566,7 @@ function abrirFormularioCompra() {
         "activo"
     );
 
-    // Mostrar total actual
-
-    const total = carrito.reduce(
-        (acumulado, item) =>
-            acumulado +
-            (item.precio * item.cantidad),
-        0
-    );
+    const total = calcularTotalConRecargoMP();
 
     totalFormulario.textContent =
         "$" +
@@ -1175,7 +1163,7 @@ continuarCompra.addEventListener(
         cerrarPanelCarrito();
 
         // Abrir formulario de datos de compra
-        abrirFormularioCompra();
+        abrirMetodoPago();
 
     }
 );
@@ -1274,7 +1262,7 @@ const notas =
 
                         body: JSON.stringify({
 
-                            carrito: carrito,
+                         carrito: carrito.map(item => ({ ...item, precio: precioConComisionMP(item.precio) })),
 
                             cliente: {
 
@@ -1959,25 +1947,7 @@ onclick="cambiarImagen('${producto.imagen2}')">
 
 <div class="precios-detalle">
 
-${producto.oferta && producto.precioAnterior ? `
-
-<span class="precio-anterior">
-$${producto.precioAnterior.toLocaleString("es-AR")}
-</span>
-
-<span class="descuento">
--${Math.round(
-100 - (producto.precio * 100 / producto.precioAnterior)
-)}% OFF
-</span>
-
-` : ""}
-
-
-<h3>
-$${producto.precio.toLocaleString("es-AR")}
-</h3>
-
+${bloqueDoblePrecio(producto)}
 
 </div>
 
