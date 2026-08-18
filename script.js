@@ -182,6 +182,8 @@ function sincronizarCarritoConStock() {
 
         item.nombre =
             producto.nombre;
+        
+        item.descripcion = producto.descripcion;
 
         item.codigo =
             producto.codigo;
@@ -759,6 +761,8 @@ function agregarAlCarrito(id) {
             id: producto.id,
 
             nombre: producto.nombre,
+
+            descripcion: producto.descripcion,
 
             precio: producto.precio,
 
