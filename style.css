@@ -1011,8 +1011,8 @@ text-align:center;
 
 .imagen-principal-detalle {
     width: 100%;
-    max-width: 350px;
-    height: 350px;
+    max-width: 420px;
+    height: 420px;
     object-fit: contain;
     padding: 12px;
     background: white;
