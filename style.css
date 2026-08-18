@@ -1796,3 +1796,308 @@ line-height:1.6;
     }
 
 }
+/* =========================================
+   MODAL VER DETALLE - BOCETO 1
+   ========================================= */
+
+
+/* Evita que la página de fondo
+   se desplace cuando el modal está abierto */
+
+body.modal-abierto {
+    overflow: hidden;
+}
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL DEL DETALLE
+   ========================================= */
+
+#detalle-producto {
+    width: 100%;
+}
+
+
+/* =========================================
+   DISTRIBUCIÓN DESKTOP
+   ========================================= */
+
+.detalle-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(300px, 0.9fr)
+        minmax(360px, 1.1fr);
+
+    gap: 35px;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   GALERÍA
+   ========================================= */
+
+.galeria-detalle {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* =========================================
+   CONTENEDOR FOTO PRINCIPAL
+   ========================================= */
+
+.imagen-principal-contenedor {
+
+    width: 100%;
+
+    height: 390px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background: #fff;
+
+}
+
+
+/* =========================================
+   FOTO PRINCIPAL
+   ========================================= */
+
+.imagen-principal-detalle {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition: transform .3s ease;
+
+}
+
+
+/* =========================================
+   MINIATURAS
+   ========================================= */
+
+.miniaturas {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 12px;
+
+    width: 100%;
+
+}
+
+
+.miniaturas img {
+
+    width: 65px;
+
+    height: 65px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    border: 2px solid transparent;
+
+    cursor: pointer;
+
+    transition: all .2s ease;
+
+}
+
+
+.miniaturas img:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+.miniaturas img.miniatura-activa {
+
+    border-color: #d81b60;
+
+}
+
+
+/* =========================================
+   INFORMACIÓN
+   ========================================= */
+
+.informacion-detalle {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-width: 0;
+
+}
+
+
+.informacion-detalle h2 {
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size: 28px;
+
+    line-height: 1.15;
+
+    margin: 0 0 15px;
+
+    color: #333;
+
+}
+
+
+/* =========================================
+   DESCRIPCIÓN
+   ========================================= */
+
+.descripcion-detalle {
+
+    margin-bottom: 15px;
+
+}
+
+
+.descripcion-detalle p {
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    margin: 0;
+
+    color: #555;
+
+}
+
+
+/* =========================================
+   PRECIOS
+   ========================================= */
+
+.precios-detalle {
+
+    margin: 10px 0 15px;
+
+}
+
+
+/* =========================================
+   CÓDIGO
+   ========================================= */
+
+.codigo-detalle {
+
+    margin: 5px 0 18px;
+
+    font-size: 14px;
+
+    color: #555;
+
+}
+
+
+.codigo-detalle strong {
+
+    color: #333;
+
+}
+
+
+/* =========================================
+   BOTÓN
+   ========================================= */
+
+.btn-comprar-detalle {
+
+    width: 100%;
+
+    max-width: 320px;
+
+    padding: 13px 20px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .detalle-layout {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 20px;
+
+    }
+
+
+    .imagen-principal-contenedor {
+
+        height: 320px;
+
+    }
+
+
+    .informacion-detalle h2 {
+
+        font-size: 24px;
+
+    }
+
+}
