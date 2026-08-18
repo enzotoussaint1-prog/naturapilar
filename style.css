@@ -1722,3 +1722,17 @@ border-color:#d45f93;
     width: 32px;
     height: 32px;
 }
+/* AJUSTE FINAL DE LOGOS REDES SOCIALES */
+
+.red-social img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    display: block;
+}
+
+/* WhatsApp ligeramente más grande */
+.red-social.whatsapp img {
+    width: 43px;
+    height: 43px;
+}
