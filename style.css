@@ -677,7 +677,11 @@ width:90%;
 
 max-width:700px;
 
-margin:5% auto;
+max-height:90vh;
+
+overflow-y:auto;
+
+margin:3vh auto;
 
 padding:30px;
 
@@ -686,7 +690,6 @@ border-radius:25px;
 position:relative;
 
 }
-
 
 .cerrar-modal{
 
@@ -1782,4 +1785,14 @@ line-height:1.6;
 }
 .boton-abrir-mercadopago:hover {
     background: #0087c7;
+}
+@media(max-width:600px){
+
+    .modal-contenido{
+        width:94%;
+        max-height:92vh;
+        margin:2vh auto;
+        padding:20px;
+    }
+
 }
