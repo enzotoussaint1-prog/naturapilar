@@ -552,8 +552,12 @@ function abrirTransferencia() {
     totalTransferencia.textContent = "$" + total.toLocaleString("es-AR");
 
     const detalle = carrito
-        .map(item => `- ${item.cantidad}x ${item.nombre}`)
-        .join("\n");
+    .map(item =>
+        `- ${item.cantidad}x ${item.nombre}\n` +
+        `  ID: ${item.id}\n` +
+        `  Código: ${item.codigo}`
+    )
+    .join("\n\n");
 
     const mensaje = encodeURIComponent(
         `Hola! Quiero comprar:\n${detalle}\n\nTotal: $${total.toLocaleString("es-AR")} (transferencia, Alias: ${ALIAS_TRANSFERENCIA})\n\nMis datos:\nNombre:\nRetiro o dirección de envío:\n\nTe mando el comprobante 👇`
