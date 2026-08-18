@@ -544,7 +544,7 @@ const transferenciaOverlay = document.getElementById("transferencia-overlay");
 const cerrarTransferencia = document.getElementById("cerrar-transferencia");
 const totalTransferencia = document.getElementById("total-transferencia");
 const whatsappComprobante = document.getElementById("whatsapp-comprobante");
-const ALIAS_TRANSFERENCIA = "Natura.valen.pilar";
+const ALIAS_TRANSFERENCIA = "natura.valen.pilar";
 
 function abrirTransferencia() {
     transferenciaOverlay.classList.add("activo");
