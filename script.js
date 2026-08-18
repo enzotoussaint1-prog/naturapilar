@@ -550,7 +550,15 @@ function abrirTransferencia() {
     transferenciaOverlay.classList.add("activo");
     const total = calcularTotalCarrito();
     totalTransferencia.textContent = "$" + total.toLocaleString("es-AR");
-    const mensaje = encodeURIComponent(`Hola! Te paso el comprobante de mi transferencia por $${total.toLocaleString("es-AR")} (Alias: ${ALIAS_TRANSFERENCIA})`);
+
+    const detalle = carrito
+        .map(item => `- ${item.cantidad}x ${item.nombre}`)
+        .join("\n");
+
+    const mensaje = encodeURIComponent(
+        `Hola! Quiero comprar:\n${detalle}\n\nTotal: $${total.toLocaleString("es-AR")} (transferencia, Alias: ${ALIAS_TRANSFERENCIA})\n\nMis datos:\nNombre:\nRetiro o dirección de envío:\n\nTe mando el comprobante 👇`
+    );
+
     whatsappComprobante.href = `https://wa.me/5491150241149?text=${mensaje}`;
 }
 function cerrarTransferenciaFn() { transferenciaOverlay.classList.remove("activo"); }
