@@ -2436,3 +2436,137 @@ function mostrarResultadoPago() {
 }
 
 mostrarResultadoPago();
+// =========================================
+// SUSCRIPCIÓN A PROMOCIONES
+// =========================================
+
+async function suscribir(datos, origen) {
+
+    try {
+
+        const { error } = await supabaseClient
+            .from("suscriptores")
+            .insert({
+                nombre: datos.nombre,
+                email: datos.email,
+                whatsapp: datos.whatsapp,
+                ciudad: datos.ciudad,
+                origen: origen
+            });
+
+        if (error) {
+
+            if (error.code === "23505") {
+                return { ok: false, mensaje: "Ese email ya está suscripto. ¡Gracias por tu interés! 💚" };
+            }
+
+            console.error("Error al suscribir:", error);
+            return { ok: false, mensaje: "No pudimos guardar tu suscripción. Intentá de nuevo." };
+
+        }
+
+        return { ok: true, mensaje: "¡Listo! Ya estás suscripto 🎉" };
+
+    } catch (err) {
+
+        console.error("Error inesperado al suscribir:", err);
+        return { ok: false, mensaje: "No pudimos guardar tu suscripción. Intentá de nuevo." };
+
+    }
+
+}
+
+
+// --- Formulario fijo (sección) ---
+
+const formularioSuscripcion = document.getElementById("formulario-suscripcion");
+const mensajeSuscripcion = document.getElementById("suscripcion-mensaje");
+
+if (formularioSuscripcion) {
+
+    formularioSuscripcion.addEventListener("submit", async function(e) {
+
+        e.preventDefault();
+
+        const boton = document.getElementById("suscripcion-boton");
+        boton.disabled = true;
+        boton.textContent = "Enviando...";
+
+        const resultado = await suscribir({
+            nombre: document.getElementById("suscripcion-nombre").value,
+            email: document.getElementById("suscripcion-email").value,
+            whatsapp: document.getElementById("suscripcion-whatsapp").value,
+            ciudad: document.getElementById("suscripcion-ciudad").value
+        }, "seccion");
+
+        mensajeSuscripcion.textContent = resultado.mensaje;
+
+        if (resultado.ok) {
+            formularioSuscripcion.reset();
+        }
+
+        boton.disabled = false;
+        boton.textContent = "Quiero recibir promos";
+
+    });
+
+}
+
+
+// --- Popup automático ---
+
+const popupSuscripcionOverlay = document.getElementById("popup-suscripcion-overlay");
+const cerrarPopupSuscripcion = document.getElementById("cerrar-popup-suscripcion");
+const formularioPopupSuscripcion = document.getElementById("formulario-popup-suscripcion");
+const mensajePopupSuscripcion = document.getElementById("popup-suscripcion-mensaje");
+
+function mostrarPopupSuscripcion() {
+
+    if (localStorage.getItem("popupSuscripcionVisto")) return;
+    if (!popupSuscripcionOverlay) return;
+
+    popupSuscripcionOverlay.classList.add("activo");
+    localStorage.setItem("popupSuscripcionVisto", "true");
+
+}
+
+setTimeout(mostrarPopupSuscripcion, 8000);
+
+if (cerrarPopupSuscripcion) {
+
+    cerrarPopupSuscripcion.addEventListener("click", function() {
+        popupSuscripcionOverlay.classList.remove("activo");
+    });
+
+}
+
+if (formularioPopupSuscripcion) {
+
+    formularioPopupSuscripcion.addEventListener("submit", async function(e) {
+
+        e.preventDefault();
+
+        const boton = document.getElementById("popup-suscripcion-boton");
+        boton.disabled = true;
+        boton.textContent = "Enviando...";
+
+        const resultado = await suscribir({
+            nombre: document.getElementById("popup-nombre").value,
+            email: document.getElementById("popup-email").value,
+            whatsapp: document.getElementById("popup-whatsapp").value,
+            ciudad: document.getElementById("popup-ciudad").value
+        }, "popup");
+
+        mensajePopupSuscripcion.textContent = resultado.mensaje;
+
+        if (resultado.ok) {
+            formularioPopupSuscripcion.reset();
+            setTimeout(() => popupSuscripcionOverlay.classList.remove("activo"), 1800);
+        }
+
+        boton.disabled = false;
+        boton.textContent = "Quiero recibir promos";
+
+    });
+
+}
