@@ -2014,3 +2014,48 @@ body.modal-abierto {
     }
 
 }
+.suscripcion {
+    padding: 70px 8%;
+    background: #fff0f5;
+    text-align: center;
+}
+.suscripcion h2 {
+    font-size: 34px;
+    color: #8d4b62;
+    margin-bottom: 12px;
+}
+.suscripcion p {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+.formulario-suscripcion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.formulario-suscripcion input {
+    flex: 1 1 200px;
+    padding: 12px 16px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+}
+.formulario-suscripcion button {
+    flex: 1 1 100%;
+    max-width: 260px;
+    margin: 8px auto 0;
+    background: #d45f93;
+    color: white;
+    border: none;
+    padding: 13px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.formulario-suscripcion button:hover { background: #b94778; }
+.suscripcion-mensaje { margin-top: 15px; font-weight: 600; color: #8d4b62; }
+.popup-suscripcion { text-align: center; }
