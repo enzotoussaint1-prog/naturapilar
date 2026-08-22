@@ -1559,12 +1559,16 @@ const subcategorias = {
         "Deos corporales",
         "Frescor Ekos"
     ],
+    Desodorantes:[
+        "Todos",
+        "Linea tododia",
+        "Linea perfumes"
+    ],
 
     Tododia:[
         "Todos",
         "Jabones",
         "Jabones liquidos",
-        "Desodorantes",
         "Hidratantes",
         "Trio",
         "BodySplash",
@@ -1590,11 +1594,6 @@ const subcategorias3 = {
         "100 ml",
         "50 ml",
         "Concentrada"
-    ],
-    Desodorantes:[
-        "Todos",
-        "Linea tododia",
-        "Linea perfumes"
     ],
 
     Kaiak:[
