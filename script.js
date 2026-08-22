@@ -1556,8 +1556,12 @@ const subcategorias = {
         "Ilia",
         "Kriska",
         "Biografia",
-        "Deos corporales",
         "Frescor Ekos"
+    ],
+    "Deos corporales":[
+        "Todos",
+        "Masculino",
+        "Femenino"
     ],
     Desodorantes:[
         "Todos",
@@ -1608,11 +1612,6 @@ const subcategorias3 = {
         "Femenino"
     ],
     Biografia:[
-        "Todos",
-        "Masculino",
-        "Femenino"
-    ],
-    "Deos corporales":[
         "Todos",
         "Masculino",
         "Femenino"
