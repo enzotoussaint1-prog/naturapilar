@@ -1579,6 +1579,11 @@ const subcategorias = {
         "Cabello",
         "Varios"
     ],
+    Cabello:[
+        "Todos",
+        "Linea tododia",
+        "Linea lumina"
+    ],
     
      Infantiles:[],
     
@@ -1621,7 +1626,7 @@ const subcategorias3 = {
         "75ml",
         "50ml"
     ],
-    Cabello:[
+    "Linea tododia":[
         "Todos",
         "Shampoo y acondicionador",
         "Repuesto 300ml",
