@@ -1576,7 +1576,6 @@ const subcategorias = {
         "Hidratantes",
         "Trio",
         "BodySplash",
-        "Cabello",
         "Varios"
     ],
     Cabello:[
