@@ -1964,21 +1964,21 @@ document.addEventListener("click", function(e) {
                 <div class="miniaturas">
 
                     <img
-                        class="miniatura-activa"
-                        src="${producto.imagen}"
-                        onclick="cambiarImagen('${producto.imagen}', this)"
-                        alt="${producto.nombre}">
+    class="miniatura-activa"
+    src="${producto.imagen}"
+    onclick="cambiarImagen('${producto.imagen}', this)"
+    alt="${producto.nombre}">
 
-                    ${
-                        producto.imagen2
-                        ? `
-                            <img
-                                src="${producto.imagen2}"
-                                onclick="cambiarImagen('${producto.imagen2}', this)"
-                                alt="${producto.nombre}">
-                          `
-                        : ""
-                    }
+${
+    producto.imagen2
+    ? `
+        <img
+            src="${producto.imagen2}"
+            onclick="cambiarImagen('${producto.imagen2}', this)"
+            alt="${producto.nombre}">
+      `
+    : ""
+}
 
                 </div>
 
