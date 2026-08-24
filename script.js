@@ -1565,7 +1565,7 @@ const subcategorias = {
     ],
     Desodorantes:[
         "Todos",
-        "Linea tododia",
+        "Linea Tododia",
         "Linea perfumes"
     ],
 
