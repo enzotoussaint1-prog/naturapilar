@@ -2059,3 +2059,42 @@ body.modal-abierto {
 .formulario-suscripcion button:hover { background: #b94778; }
 .suscripcion-mensaje { margin-top: 15px; font-weight: 600; color: #8d4b62; }
 .popup-suscripcion { text-align: center; }
+.cotizador-envio {
+    margin: 12px 0;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.cotizador-envio label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.cotizador-envio-input {
+    display: flex;
+    gap: 8px;
+}
+
+.cotizador-envio-input input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.cotizador-envio-input button {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    background: #7a9b57;
+    color: white;
+    cursor: pointer;
+}
+
+.resultado-cotizacion {
+    font-size: 0.85rem;
+    margin-top: 8px;
+    color: #444;
+}
