@@ -470,6 +470,83 @@ const contadorCarrito =
 const continuarCompra =
     document.getElementById("continuar-compra");
 // =========================================
+// COTIZADOR DE ENVÍO
+// =========================================
+
+let costoEnvioCalculado = 0;
+
+const inputCpCotizador =
+    document.getElementById("cp-cotizador");
+
+const botonCotizarEnvio =
+    document.getElementById("btn-cotizar-envio");
+
+const resultadoCotizacion =
+    document.getElementById("resultado-cotizacion");
+
+botonCotizarEnvio.addEventListener("click", async function() {
+
+    const codigoPostal = inputCpCotizador.value.trim();
+
+    if (!codigoPostal) {
+        resultadoCotizacion.textContent = "Ingresá tu código postal.";
+        return;
+    }
+
+    if (carrito.length === 0) {
+        resultadoCotizacion.textContent = "Tu carrito está vacío.";
+        return;
+    }
+
+    botonCotizarEnvio.disabled = true;
+    resultadoCotizacion.textContent = "Calculando...";
+
+    try {
+
+        const respuesta = await fetch(
+            `${SUPABASE_URL}/functions/v1/cotizar-envio`,
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    carrito: carrito.map(item => ({
+                        id: item.id,
+                        cantidad: item.cantidad
+                    })),
+                    codigoPostal: codigoPostal
+                })
+            }
+        );
+
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok || resultado.error) {
+            throw new Error(resultado.error || "No se pudo cotizar el envío");
+        }
+
+        if (resultado.costoEnvio === null) {
+            // Todavía no está conectada la API real de MiCorreo
+            resultadoCotizacion.textContent =
+                `Peso estimado: ${resultado.pesoTotalKg.toFixed(2)} kg — ` +
+                `cotización en línea disponible próximamente.`;
+            costoEnvioCalculado = 0;
+        } else {
+            resultadoCotizacion.textContent =
+                `Envío a ${codigoPostal}: $${resultado.costoEnvio.toLocaleString("es-AR")}`;
+            costoEnvioCalculado = resultado.costoEnvio;
+        }
+
+    } catch (error) {
+        console.error("Error cotizando envío:", error);
+        resultadoCotizacion.textContent =
+            "No pudimos calcular el envío. Probá de nuevo.";
+        costoEnvioCalculado = 0;
+    } finally {
+        botonCotizarEnvio.disabled = false;
+    }
+
+});
+// =========================================
 // FORMULARIO DE DATOS DE COMPRA
 // =========================================
 
