@@ -697,31 +697,24 @@ tipoEntrega.addEventListener(
 
         if (this.value === "envio") {
 
-            datosEnvio.style.display =
-                "block";
-
-            direccionCliente.required =
-                true;
-
-            localidadCliente.required =
-                true;
+            datosEnvio.style.display = "block";
+            direccionCliente.required = true;
+            localidadCliente.required = true;
+            provinciaCliente.required = true;
+            cpCliente.required = true;
 
         } else {
 
-            datosEnvio.style.display =
-                "none";
+            datosEnvio.style.display = "none";
+            direccionCliente.required = false;
+            localidadCliente.required = false;
+            provinciaCliente.required = false;
+            cpCliente.required = false;
 
-            direccionCliente.required =
-                false;
-
-            localidadCliente.required =
-                false;
-
-            direccionCliente.value =
-                "";
-
-            localidadCliente.value =
-                "";
+            direccionCliente.value = "";
+            localidadCliente.value = "";
+            provinciaCliente.value = "";
+            cpCliente.value = "";
 
         }
 
