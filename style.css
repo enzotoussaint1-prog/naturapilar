@@ -306,6 +306,7 @@ object-fit:contain;
 padding:12px;
 background:white;
 display:block;
+cursor: pointer;    
 }
 
 .producto h3{
