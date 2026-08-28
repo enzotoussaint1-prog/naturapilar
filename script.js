@@ -242,38 +242,31 @@ const contenedorProductos = document.getElementById("contenedor-productos");
 
 function renderizarProductos(lista) {
 
-    contenedorProductos.innerHTML = "";
     if (!lista || lista.length === 0) {
 
-    contenedorProductos.innerHTML = `
-        <div class="sin-resultados">
-            <h3>No encontramos productos</h3>
-            <p>
-                Probá con otra búsqueda o categoría.
-            </p>
-        </div>
-    `;
+        contenedorProductos.innerHTML = `
+            <div class="sin-resultados">
+                <h3>No encontramos productos</h3>
+                <p>
+                    Probá con otra búsqueda o categoría.
+                </p>
+            </div>
+        `;
 
-    return;
+        return;
 
-}
+    }
 
-    lista.forEach(producto => {
-
-        contenedorProductos.innerHTML += `
-            <article class="producto">
+    contenedorProductos.innerHTML = lista.map(producto => `
+        <article class="producto">
 
 ${producto.oferta ?
-
 `<div class="etiqueta-oferta">
-
 🔥 OFERTA
-
 </div>`
-
 : ""}
 
-                           <img
+       <img
     src="${producto.imagen}"
     alt="${producto.nombre}"
     loading="lazy"
@@ -282,16 +275,14 @@ ${producto.oferta ?
     onmouseover="this.src='${producto.imagen2 || producto.imagen}'; this.dataset.mostrando='2'"
     onmouseout="this.src='${producto.imagen}'; this.dataset.mostrando='1'"
     ${producto.imagen2 ? `onclick="alternarImagenProducto(this, '${producto.imagen}', '${producto.imagen2}')"` : ""}>
-     
+
                 <h3>${producto.nombre}</h3>
 
                 <p>${producto.descripcion}</p>
 
-                            <div class="precios">
-
+                <div class="precios">
 ${bloqueDoblePrecio(producto)}
-
-</div>
+                </div>
 
 <button 
 class="btn-detalle"
@@ -305,11 +296,10 @@ Ver detalle
    Comprar
 </a>
 
-            </article>
-        `;
+        </article>
+    `).join("");
 
-    });
- activarAnimacionesProductos();   
+    activarAnimacionesProductos();
 
 }
 renderizarProductos(productos);
