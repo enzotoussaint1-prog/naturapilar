@@ -455,6 +455,7 @@ margin-bottom:20px;
 header{
 flex-direction:column;
 gap:20px;
+position:static;
 }
 
 nav ul{
