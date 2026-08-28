@@ -1581,7 +1581,13 @@ const buscador = document.getElementById("buscador");
 
 if(buscador){
 
+let temporizadorBusqueda;
+
 buscador.addEventListener("input", () => {
+
+    clearTimeout(temporizadorBusqueda);
+
+    temporizadorBusqueda = setTimeout(() => {
 
     const texto = buscador.value.toLowerCase();
 
@@ -1613,6 +1619,7 @@ buscador.addEventListener("input", () => {
 });
 
     renderizarProductos(resultado);
+    }, 300);    
 
 });
 
