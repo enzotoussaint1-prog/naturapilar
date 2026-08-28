@@ -232,6 +232,12 @@ ${hayOferta ? `<span class="tag-promo">-${porcentajeOferta}% OFF</span>` : ""}
 </div>
 `;
 }
+function alternarImagenProducto(img, principal, secundaria) {
+    if (!secundaria) return;
+    const mostrandoSecundaria = img.dataset.mostrando === "2";
+    img.src = mostrandoSecundaria ? principal : secundaria;
+    img.dataset.mostrando = mostrandoSecundaria ? "1" : "2";
+}
 const contenedorProductos = document.getElementById("contenedor-productos");
 
 function renderizarProductos(lista) {
