@@ -511,26 +511,34 @@ WhatsApp: 11 5024-1149
             </strong>
 
         </div>
-        <div class="cotizador-envio">
+               <div class="cotizador-envio">
 
-    <label for="cp-cotizador">
-        Calculá tu envío
-    </label>
-
-    <div class="cotizador-envio-input">
-        <input
-            type="text"
-            id="cp-cotizador"
-            placeholder="Código postal"
-            inputmode="numeric"
-            maxlength="8">
-
-        <button id="btn-cotizar-envio" type="button">
-            Cotizar
-        </button>
+    <div id="envio-gratis-badge" class="envio-gratis-badge" style="display:none;">
+        🎉 ¡ENVÍO GRATIS! Superaste los $200.000 en compras
     </div>
 
-    <p id="resultado-cotizacion" class="resultado-cotizacion"></p>
+    <div id="cotizador-envio-normal">
+
+        <label for="cp-cotizador">
+            Calculá tu envío
+        </label>
+
+        <div class="cotizador-envio-input">
+            <input
+                type="text"
+                id="cp-cotizador"
+                placeholder="Código postal"
+                inputmode="numeric"
+                maxlength="8">
+
+            <button id="btn-cotizar-envio" type="button">
+                Cotizar
+            </button>
+        </div>
+
+        <p id="resultado-cotizacion" class="resultado-cotizacion"></p>
+
+    </div>
 
 </div>
 
