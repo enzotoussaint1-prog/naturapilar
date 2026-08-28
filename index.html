@@ -575,7 +575,6 @@ WhatsApp: 11 5024-1149
         <form id="formulario-datos-compra">
 
             <div class="campo-formulario">
-                <div class="campo-formulario">
 
                 <label for="nombre-cliente">
                     Nombre completo *
@@ -687,6 +686,56 @@ WhatsApp: 11 5024-1149
                         autocomplete="address-level2"
                         placeholder="Ej: Pilar">
 
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="provincia-cliente">
+                        Provincia *
+                    </label>
+                    <select
+                        id="provincia-cliente"
+                        name="provincia"
+                        autocomplete="address-level1">
+                        <option value="">Seleccioná una opción</option>
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="CABA">CABA</option>
+                        <option value="Catamarca">Catamarca</option>
+                        <option value="Chaco">Chaco</option>
+                        <option value="Chubut">Chubut</option>
+                        <option value="Córdoba">Córdoba</option>
+                        <option value="Corrientes">Corrientes</option>
+                        <option value="Entre Ríos">Entre Ríos</option>
+                        <option value="Formosa">Formosa</option>
+                        <option value="Jujuy">Jujuy</option>
+                        <option value="La Pampa">La Pampa</option>
+                        <option value="La Rioja">La Rioja</option>
+                        <option value="Mendoza">Mendoza</option>
+                        <option value="Misiones">Misiones</option>
+                        <option value="Neuquén">Neuquén</option>
+                        <option value="Río Negro">Río Negro</option>
+                        <option value="Salta">Salta</option>
+                        <option value="San Juan">San Juan</option>
+                        <option value="San Luis">San Luis</option>
+                        <option value="Santa Cruz">Santa Cruz</option>
+                        <option value="Santa Fe">Santa Fe</option>
+                        <option value="Santiago del Estero">Santiago del Estero</option>
+                        <option value="Tierra del Fuego">Tierra del Fuego</option>
+                        <option value="Tucumán">Tucumán</option>
+                    </select>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="cp-cliente">
+                        Código Postal *
+                    </label>
+                    <input
+                        type="text"
+                        id="cp-cliente"
+                        name="codigo_postal"
+                        inputmode="numeric"
+                        pattern="[0-9]{4}"
+                        maxlength="4"
+                        placeholder="Ej: 1629">
                 </div>
 
             </div>
