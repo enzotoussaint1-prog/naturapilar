@@ -1037,7 +1037,7 @@ ${(() => {
     });
 
 
-    totalCarrito.textContent =
+        totalCarrito.textContent =
         "$" + total.toLocaleString("es-AR");
 
 
@@ -1046,6 +1046,20 @@ ${(() => {
 
 
     continuarCompra.disabled = false;
+
+
+    if (total >= UMBRAL_ENVIO_GRATIS) {
+
+        costoEnvioCalculado = 0;
+        envioGratisBadge.style.display = "block";
+        cotizadorEnvioNormal.style.display = "none";
+
+    } else {
+
+        envioGratisBadge.style.display = "none";
+        cotizadorEnvioNormal.style.display = "block";
+
+    }
 
 }
 
