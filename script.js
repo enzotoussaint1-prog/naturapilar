@@ -273,13 +273,15 @@ ${producto.oferta ?
 
 : ""}
 
-                     <img
+                           <img
     src="${producto.imagen}"
     alt="${producto.nombre}"
     loading="lazy"
     decoding="async"
-    onmouseover="this.src='${producto.imagen2 || producto.imagen}'"
-    onmouseout="this.src='${producto.imagen}'">
+    data-mostrando="1"
+    onmouseover="this.src='${producto.imagen2 || producto.imagen}'; this.dataset.mostrando='2'"
+    onmouseout="this.src='${producto.imagen}'; this.dataset.mostrando='1'"
+    ${producto.imagen2 ? `onclick="alternarImagenProducto(this, '${producto.imagen}', '${producto.imagen2}')"` : ""}>
      
                 <h3>${producto.nombre}</h3>
 
