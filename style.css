@@ -2100,3 +2100,19 @@ body.modal-abierto {
     margin-top: 8px;
     color: #444;
 }
+.envio-gratis-badge{
+    background: linear-gradient(135deg, #d45f93, #f2a6c4);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    padding: 14px 12px;
+    border-radius: 40px;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 18px rgba(212,95,147,.35);
+    animation: pulso-envio-gratis 1.6s ease-in-out infinite;
+}
+
+@keyframes pulso-envio-gratis{
+    0%, 100%{ transform: scale(1); }
+    50%{ transform: scale(1.03); }
+}
