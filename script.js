@@ -267,9 +267,11 @@ ${producto.oferta ?
 
 : ""}
 
-       <img
+                     <img
     src="${producto.imagen}"
     alt="${producto.nombre}"
+    loading="lazy"
+    decoding="async"
     onmouseover="this.src='${producto.imagen2 || producto.imagen}'"
     onmouseout="this.src='${producto.imagen}'">
      
