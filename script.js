@@ -919,11 +919,14 @@ function renderizarCarrito() {
             </p>
         `;
 
-        totalCarrito.textContent = "$0";
+                totalCarrito.textContent = "$0";
 
         contadorCarrito.textContent = "0";
 
         continuarCompra.disabled = true;
+
+        envioGratisBadge.style.display = "none";
+        cotizadorEnvioNormal.style.display = "block";
 
         return;
 
