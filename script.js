@@ -475,6 +475,14 @@ const continuarCompra =
 
 let costoEnvioCalculado = 0;
 
+const UMBRAL_ENVIO_GRATIS = 200000;
+
+const envioGratisBadge =
+    document.getElementById("envio-gratis-badge");
+
+const cotizadorEnvioNormal =
+    document.getElementById("cotizador-envio-normal");
+
 const inputCpCotizador =
     document.getElementById("cp-cotizador");
 
