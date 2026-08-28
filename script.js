@@ -1310,6 +1310,12 @@ const direccion =
 
 const localidad =
     formData.get("localidad");
+            
+ const provincia =
+    formData.get("provincia");
+
+const codigoPostal =
+    formData.get("codigo_postal");           
 
 const notas =
     formData.get("notas");
