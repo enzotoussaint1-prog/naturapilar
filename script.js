@@ -588,6 +588,15 @@ const localidadCliente =
     document.getElementById(
         "localidad-cliente"
     );
+const provinciaCliente =
+    document.getElementById(
+        "provincia-cliente"
+    );
+
+const cpCliente =
+    document.getElementById(
+        "cp-cliente"
+    );
 
 const totalFormulario =
     document.getElementById(
