@@ -334,7 +334,7 @@ function renderizarPromociones() {
 
 : ""}
 
-            <img src="${producto.imagen}" alt="${producto.nombre}">
+                        <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy" decoding="async">
 
             <h3>${producto.nombre}</h3>
 
