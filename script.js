@@ -418,7 +418,9 @@ function activarAnimacionesProductos() {
             }
         );
 
-    tarjetasProducto.forEach((producto) => {
+        tarjetasProducto.forEach((producto) => {
+
+        producto.classList.add("producto-animado");
 
         producto.style.opacity = "0";
 
