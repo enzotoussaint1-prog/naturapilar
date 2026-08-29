@@ -2116,3 +2116,10 @@ body.modal-abierto {
     0%, 100%{ transform: scale(1); }
     50%{ transform: scale(1.03); }
 }
+.mensaje-envio-gratis{
+    font-size: 14px;
+    font-weight: 600;
+    color: #d45f93;
+    text-align: center;
+    margin-bottom: 10px;
+}
