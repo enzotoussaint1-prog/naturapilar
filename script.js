@@ -389,7 +389,7 @@ behavior:'smooth'
 function activarAnimacionesProductos() {
 
     const tarjetasProducto =
-        document.querySelectorAll(".producto");
+        document.querySelectorAll(".producto:not(.producto-animado)");
 
     const observador =
         new IntersectionObserver(
