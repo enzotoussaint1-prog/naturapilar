@@ -353,51 +353,7 @@ botonCargarMasProductos.addEventListener(
     "click",
     mostrarSiguienteTandaProductos
 );
-    contenedorProductos.innerHTML = lista.map(producto => `
-        <article class="producto">
 
-${producto.oferta ?
-`<div class="etiqueta-oferta">
-🔥 OFERTA
-</div>`
-: ""}
-
-       <img
-    src="${producto.imagen}"
-    alt="${producto.nombre}"
-    loading="lazy"
-    decoding="async"
-    data-mostrando="1"
-    onmouseover="this.src='${producto.imagen2 || producto.imagen}'; this.dataset.mostrando='2'"
-    onmouseout="this.src='${producto.imagen}'; this.dataset.mostrando='1'"
-    ${producto.imagen2 ? `onclick="alternarImagenProducto(this, '${producto.imagen}', '${producto.imagen2}')"` : ""}>
-
-                <h3>${producto.nombre}</h3>
-
-                <p>${producto.descripcion}</p>
-
-                <div class="precios">
-${bloqueDoblePrecio(producto)}
-                </div>
-
-<button 
-class="btn-detalle"
-data-id="${producto.id}">
-Ver detalle
-</button>
-
-<a href="#"
-   class="btn-comprar"
-   data-id="${producto.id}">
-   Comprar
-</a>
-
-        </article>
-    `).join("");
-
-    activarAnimacionesProductos();
-
-}
 renderizarProductos(productos);
 // -----------------------------
 // PROMOCIONES
