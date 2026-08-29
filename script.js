@@ -483,6 +483,9 @@ const envioGratisBadge =
 const cotizadorEnvioNormal =
     document.getElementById("cotizador-envio-normal");
 
+const mensajeEnvioGratis =
+    document.getElementById("mensaje-envio-gratis");
+
 const inputCpCotizador =
     document.getElementById("cp-cotizador");
 
