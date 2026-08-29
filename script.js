@@ -250,7 +250,11 @@ let productosMostrados = 0;
 
 function renderizarProductos(lista) {
 
-    if (!lista || lista.length === 0) {
+    productosFiltradosActuales = lista || [];
+    productosMostrados = 0;
+    contenedorProductos.innerHTML = "";
+
+    if (productosFiltradosActuales.length === 0) {
 
         contenedorProductos.innerHTML = `
             <div class="sin-resultados">
@@ -261,10 +265,94 @@ function renderizarProductos(lista) {
             </div>
         `;
 
+        botonCargarMasProductos.style.display = "none";
+
         return;
 
     }
 
+    mostrarSiguienteTandaProductos();
+
+}
+
+
+function mostrarSiguienteTandaProductos() {
+
+    const siguienteTanda =
+        productosFiltradosActuales.slice(
+            productosMostrados,
+            productosMostrados + PRODUCTOS_POR_TANDA
+        );
+
+    contenedorProductos.insertAdjacentHTML(
+        "beforeend",
+        siguienteTanda.map(producto => `
+        <article class="producto">
+
+${producto.oferta ?
+`<div class="etiqueta-oferta">
+🔥 OFERTA
+</div>`
+: ""}
+
+       <img
+    src="${producto.imagen}"
+    alt="${producto.nombre}"
+    loading="lazy"
+    decoding="async"
+    data-mostrando="1"
+    onmouseover="this.src='${producto.imagen2 || producto.imagen}'; this.dataset.mostrando='2'"
+    onmouseout="this.src='${producto.imagen}'; this.dataset.mostrando='1'"
+    ${producto.imagen2 ? `onclick="alternarImagenProducto(this, '${producto.imagen}', '${producto.imagen2}')"` : ""}>
+
+                <h3>${producto.nombre}</h3>
+
+                <p>${producto.descripcion}</p>
+
+                <div class="precios">
+${bloqueDoblePrecio(producto)}
+                </div>
+
+<button 
+class="btn-detalle"
+data-id="${producto.id}">
+Ver detalle
+</button>
+
+<a href="#"
+   class="btn-comprar"
+   data-id="${producto.id}">
+   Comprar
+</a>
+
+        </article>
+    `).join("")
+    );
+
+    productosMostrados += siguienteTanda.length;
+
+    activarAnimacionesProductos();
+
+    if (productosMostrados < productosFiltradosActuales.length) {
+
+        botonCargarMasProductos.style.display = "block";
+
+        botonCargarMasProductos.textContent =
+            `Ver más productos (${productosFiltradosActuales.length - productosMostrados} restantes)`;
+
+    } else {
+
+        botonCargarMasProductos.style.display = "none";
+
+    }
+
+}
+
+
+botonCargarMasProductos.addEventListener(
+    "click",
+    mostrarSiguienteTandaProductos
+);
     contenedorProductos.innerHTML = lista.map(producto => `
         <article class="producto">
 
