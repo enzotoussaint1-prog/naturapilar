@@ -1,0 +1,22 @@
+{
+  "name": "Natura Pilar",
+  "short_name": "Natura Pilar",
+  "description": "Perfumería y cosmética Natura. Envíos y venta online.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8f8",
+  "theme_color": "#d45f93",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
