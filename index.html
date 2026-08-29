@@ -17,6 +17,8 @@
 <meta name="twitter:image" content="https://enzotoussaint1-prog.github.io/naturapilar/img/logo.jpeg">
     
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d45f93">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -919,6 +921,13 @@ WhatsApp: 11 5024-1149
 
 <script src="script.js"></script>
 
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js");
+    });
+}
+</script>
 
 </body>
 </html>
