@@ -240,6 +240,14 @@ function alternarImagenProducto(img, principal, secundaria) {
 }
 const contenedorProductos = document.getElementById("contenedor-productos");
 
+const botonCargarMasProductos =
+    document.getElementById("btn-cargar-mas-productos");
+
+const PRODUCTOS_POR_TANDA = 24;
+
+let productosFiltradosActuales = [];
+let productosMostrados = 0;
+
 function renderizarProductos(lista) {
 
     if (!lista || lista.length === 0) {
