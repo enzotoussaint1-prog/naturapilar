@@ -1053,13 +1053,18 @@ ${(() => {
     continuarCompra.disabled = false;
 
 
-    if (total >= UMBRAL_ENVIO_GRATIS) {
+        if (total >= UMBRAL_ENVIO_GRATIS) {
 
         costoEnvioCalculado = 0;
         envioGratisBadge.style.display = "block";
         cotizadorEnvioNormal.style.display = "none";
 
     } else {
+
+        const faltante = UMBRAL_ENVIO_GRATIS - total;
+
+        mensajeEnvioGratis.textContent =
+            `🚚 Te faltan $${faltante.toLocaleString("es-AR")} para tu ENVÍO GRATIS`;
 
         envioGratisBadge.style.display = "none";
         cotizadorEnvioNormal.style.display = "block";
