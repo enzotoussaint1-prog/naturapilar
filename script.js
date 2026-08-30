@@ -290,11 +290,12 @@ function mostrarSiguienteTandaProductos() {
         siguienteTanda.map(producto => `
         <article class="producto">
 
-${producto.oferta ?
-`<div class="etiqueta-oferta">
-🔥 OFERTA
-</div>`
-: ""}
+producto.oferta
+    ? `<span class="etiqueta-oferta">
+        🔥 OFERTA
+        <span class="porcentaje-oferta">-${Math.round(((producto.precioAnterior - producto.precio) / producto.precioAnterior) * 100)}%</span>
+      </span>`
+    : ""}
 
        <img
     src="${producto.imagen}"
