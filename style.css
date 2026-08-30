@@ -2172,3 +2172,68 @@ body.modal-abierto {
     }
 
 }
+.combos{
+    padding: 60px 8%;
+    background: #fff8f8;
+    text-align: center;
+}
+
+.combos h2{
+    margin-bottom: 10px;
+}
+
+.combos > p{
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.grid-combos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.combo-card{
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.combo-card img{
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+.combo-card h3{
+    margin-bottom: 8px;
+}
+
+.combo-lista{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.combo-lista li{
+    padding: 3px 0;
+}
+
+.combo-lista li::before{
+    content: "✓ ";
+    color: #d45f93;
+}
+
+.combo-precio{
+    font-size: 22px;
+    font-weight: 700;
+    color: #d45f93;
+    margin-bottom: 12px;
+}
