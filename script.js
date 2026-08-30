@@ -224,7 +224,6 @@ function bloqueDoblePrecio(producto) {
         ${hayOferta ? `<span class="precio-anterior">$${producto.precioAnterior.toLocaleString("es-AR")}</span>` : ""}
         <span class="valor-metodo">$${precioTransferencia.toLocaleString("es-AR")}</span>
        <span class="tag-promo">5% de descuento</span>
-${hayOferta ? `<span class="tag-promo">-${porcentajeOferta}% OFF</span>` : ""}
     </div>
     <div class="precio-metodo precio-mercadopago">
         <span class="etiqueta-metodo">Mercado Pago</span>
