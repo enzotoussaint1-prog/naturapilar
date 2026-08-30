@@ -515,16 +515,20 @@ function renderizarPromociones() {
         contenedorPromociones.innerHTML += `
 
         <article class="producto">
-        ${producto.oferta ?
-
-`
-<div class="etiqueta-oferta">
-🔥 OFERTA
-</div>
-`
-
-: ""}
-
+        ${producto.oferta && producto.precioAnterior
+    ? `
+        <span class="etiqueta-oferta">
+            🔥 OFERTA
+            <span class="porcentaje-oferta">
+                -${Math.round(
+                    ((producto.precioAnterior - producto.precio) /
+                    producto.precioAnterior) * 100
+                )}%
+            </span>
+        </span>
+    `
+    : ""
+}
                         <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy" decoding="async">
 
             <h3>${producto.nombre}</h3>
