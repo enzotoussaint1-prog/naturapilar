@@ -365,7 +365,7 @@ const COMBOS = [
     {
         titulo: "Kit Tododia Frambuesa y Pimienta Rosa",
         productosIds: [174, 80, 124],
-        imagen: "img/kit-tododia.jpeg"
+        imagen: "img/kit-tododia.png"
     },
     {
         titulo: "Combo Kaiak Masculino",
@@ -380,7 +380,7 @@ const COMBOS = [
     {
         titulo: "Humor Primeiro Femenino Rutina Completa",
         productosIds: [59, 250, 185],
-        imagen: "img/kit-humor.jpeg"
+        imagen: "img/kit-humor.png"
     }
 ];
 
