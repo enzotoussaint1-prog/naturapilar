@@ -405,7 +405,7 @@ function renderizarCombos() {
         return `
             <article class="combo-card">
 
-                <img src="${productosCombo[0].imagen}" alt="${combo.titulo}" loading="lazy">
+                               <img src="${combo.imagen || productosCombo[0].imagen}" alt="${combo.titulo}" loading="lazy">
 
                 <h3>${combo.titulo}</h3>
 
