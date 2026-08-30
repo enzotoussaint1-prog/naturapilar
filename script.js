@@ -1719,6 +1719,18 @@ buscador.addEventListener("input", () => {
 
 const botonesCategoria = document.querySelectorAll(".filtro");
 
+const btnToggleCategorias =
+    document.getElementById("btn-toggle-categorias");
+
+const filtrosCategorias =
+    document.getElementById("filtros-categorias");
+
+btnToggleCategorias.addEventListener("click", function() {
+
+    filtrosCategorias.classList.toggle("abierto");
+
+});
+
 const contenedorSubfiltros = document.getElementById("subfiltros");
 
 const contenedorSubfiltros3 =
