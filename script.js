@@ -368,7 +368,7 @@ const COMBOS = [
         imagen: "img/kit-tododia.png"
     },
     {
-        titulo: "Combo Kaiak Masculino",
+        titulo: "Kit Kaiak Masculino",
         productosIds: [7, 192, 159],
         imagen: ""
     },
@@ -377,10 +377,20 @@ const COMBOS = [
         productosIds: [269, 271, 270],
         imagen: ""
     },
-    {
-        titulo: "Humor Primeiro Femenino Rutina Completa",
+        {
+        titulo: "Kit Humor Primeiro Femenino",
         productosIds: [59, 250, 185],
         imagen: "img/kit-humor.png"
+    },
+    {
+        titulo: "Kit Cereza Negra y Praliné",
+        productosIds: [121, 77, 222],
+        imagen: "img/kit-tododia-praline.png"
+    },
+    {
+        titulo: "Kit Kaiak Clásico Femenino",
+        productosIds: [187, 161],
+        imagen: "kit-kaiak-clasico-femenino.png"
     }
 ];
 
