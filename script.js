@@ -355,6 +355,123 @@ botonCargarMasProductos.addEventListener(
 );
 
 renderizarProductos(productos);
+
+// =========================================
+// COMBOS ARMADOS
+// =========================================
+
+const COMBOS = [
+    {
+        titulo: "Kit Ekos Cacao",
+        productosIds: [225, 242, 230]
+    },
+    {
+        titulo: "Combo Kaiak Masculino",
+        productosIds: [7, 192, 159]
+    },
+    {
+        titulo: "Kit Cabello Lumina",
+        productosIds: [269, 271, 270]
+    },
+    {
+        titulo: "Combo Bienvenida Bebé",
+        productosIds: [281, 280, 282]
+    }
+];
+
+const contenedorCombos = document.getElementById("contenedor-combos");
+
+function renderizarCombos() {
+
+    if (!contenedorCombos) return;
+
+    contenedorCombos.innerHTML = COMBOS.map(combo => {
+
+        const productosCombo = combo.productosIds
+            .map(id => productos.find(p => p.id === id))
+            .filter(p => p);
+
+        if (productosCombo.length === 0) return "";
+
+        const precioTotal = productosCombo.reduce(
+            (acc, p) => acc + p.precio, 0
+        );
+
+        return `
+            <article class="combo-card">
+
+                <img src="${productosCombo[0].imagen}" alt="${combo.titulo}" loading="lazy">
+
+                <h3>${combo.titulo}</h3>
+
+                <ul class="combo-lista">
+                    ${productosCombo.map(p => `<li>${p.nombre}</li>`).join("")}
+                </ul>
+
+                <div class="combo-precio">
+                    $${precioTotal.toLocaleString("es-AR")}
+                </div>
+
+                <button
+                    class="btn-comprar"
+                    onclick="agregarComboAlCarrito([${combo.productosIds.join(",")}])">
+                    Agregar combo al carrito
+                </button>
+
+            </article>
+        `;
+
+    }).join("");
+
+}
+
+
+function agregarComboAlCarrito(idsProductos) {
+
+    let algunoAgotado = false;
+
+    idsProductos.forEach(id => {
+
+        const producto = productos.find(p => p.id == id);
+
+        if (!producto || producto.stock <= 0) {
+            algunoAgotado = true;
+            return;
+        }
+
+        const existente = carrito.find(item => item.id == producto.id);
+
+        if (existente) {
+
+            if (existente.cantidad < producto.stock) {
+                existente.cantidad++;
+            }
+
+        } else {
+
+            carrito.push({
+                id: producto.id,
+                nombre: producto.nombre,
+                descripcion: producto.descripcion,
+                precio: producto.precio,
+                imagen: producto.imagen,
+                codigo: producto.codigo,
+                cantidad: 1
+            });
+
+        }
+
+    });
+
+    guardarCarrito();
+    renderizarCarrito();
+    abrirPanelCarrito();
+
+    if (algunoAgotado) {
+        alert("Uno o más productos del combo están agotados y no se agregaron.");
+    }
+
+}
 // -----------------------------
 // PROMOCIONES
 // -----------------------------
