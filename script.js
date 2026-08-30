@@ -2088,10 +2088,15 @@ renderizarProductos(resultado);
 }
 
 
+btnToggleCategorias.textContent =
+    "📂 Categoría: " + categoria;
+
+filtrosCategorias.classList.remove("abierto");
+
 
   });
 
-});    
+});
 // =========================================
 // MODAL - VER DETALLE DEL PRODUCTO
 // =========================================
