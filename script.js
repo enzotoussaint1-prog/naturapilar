@@ -368,9 +368,9 @@ const COMBOS = [
         imagen: "img/kit-tododia.png"
     },
     {
-        titulo: "Kit Kaiak Masculino",
+        titulo: "Kit Kaiak Clasico Masculino",
         productosIds: [7, 192, 159],
-        imagen: ""
+        imagen: "img/kit-kaiak-masculino.png"
     },
     {
         titulo: "Kit Cabello Lumina",
@@ -390,7 +390,7 @@ const COMBOS = [
     {
         titulo: "Kit Kaiak Clásico Femenino",
         productosIds: [187, 161],
-        imagen: "kit-kaiak-clasico-femenino.png"
+        imagen: "img/kit-kaiak-clasico-femenino.png"
     }
 ];
 
