@@ -364,19 +364,23 @@ renderizarProductos(productos);
 const COMBOS = [
     {
         titulo: "Kit Ekos Cacao",
-        productosIds: [225, 242, 230]
+        productosIds: [225, 242, 230],
+        imagen: ""
     },
     {
         titulo: "Combo Kaiak Masculino",
-        productosIds: [7, 192, 159]
+        productosIds: [7, 192, 159],
+        imagen: ""
     },
     {
         titulo: "Kit Cabello Lumina",
-        productosIds: [269, 271, 270]
+        productosIds: [269, 271, 270],
+        imagen: ""
     },
     {
-        titulo: "Combo Bienvenida Bebé",
-        productosIds: [281, 280, 282]
+        titulo: "Humor Primeiro Femenino Rutina Completa",
+        productosIds: [59, 250, 185],
+        imagen: "img/kit-humor.jpeg"
     }
 ];
 
