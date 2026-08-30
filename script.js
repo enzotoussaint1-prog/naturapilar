@@ -363,9 +363,9 @@ renderizarProductos(productos);
 
 const COMBOS = [
     {
-        titulo: "Kit Ekos Cacao",
-        productosIds: [225, 242, 230],
-        imagen: ""
+        titulo: "Kit Tododia Frambuesa y Pimienta Rosa",
+        productosIds: [174, 80, 124],
+        imagen: "img/kit-tododia.jpeg"
     },
     {
         titulo: "Combo Kaiak Masculino",
