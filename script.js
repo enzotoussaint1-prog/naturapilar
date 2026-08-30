@@ -99,11 +99,12 @@ async function cargarProductosDesdeSupabase() {
 
         // Volvemos a dibujar la tienda
         // utilizando los datos reales de Supabase.
-    sincronizarCarritoConStock();
+       sincronizarCarritoConStock();
         renderizarProductos(productos);
 
         renderizarPromociones();
 
+        renderizarCombos();
 
         console.log(
             "Productos cargados desde Supabase:",
