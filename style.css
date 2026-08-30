@@ -583,27 +583,29 @@ line-height:1.6;
 }
 
 .etiqueta-oferta{
+    position:absolute;
+    top:15px;
+    left:15px;
 
-position:absolute;
+    display:flex;
+    align-items:center;
+    gap:5px;
 
-top:15px;
+    background:#e53935;
+    color:white;
 
-left:15px;
+    padding:8px 14px;
+    border-radius:20px;
 
-background:#e53935;
+    font-size:13px;
+    font-weight:bold;
 
-color:white;
+    z-index:5;
+    white-space:nowrap;
+}
 
-padding:8px 15px;
-
-border-radius:20px;
-
-font-size:13px;
-
-font-weight:bold;
-
-z-index:5;
-
+.etiqueta-oferta .porcentaje-oferta{
+    font-weight:800;
 }
 
 .precios{
