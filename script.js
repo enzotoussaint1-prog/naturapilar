@@ -375,7 +375,7 @@ const COMBOS = [
     {
         titulo: "Kit Cabello Lumina",
         productosIds: [269, 271, 270],
-        imagen: ""
+        imagen: "img/kit-lumina.png"
     },
         {
         titulo: "Kit Humor Primeiro Femenino",
