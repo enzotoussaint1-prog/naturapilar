@@ -2251,3 +2251,8 @@ body.modal-abierto {
     color: #d45f93;
     margin-bottom: 12px;
 }
+.combo-detalle{
+    color: #888;
+    font-size: 12px;
+    font-weight: 400;
+}
