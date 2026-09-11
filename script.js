@@ -1044,10 +1044,6 @@ function renderizarCarrito() {
 
         continuarCompra.disabled = true;
 
-               envioGratisBadge.style.display = "none";
-        cotizadorEnvioNormal.style.display = "block";
-        mensajeEnvioGratis.textContent =
-            "🚚 Envío gratis en compras desde $200.000";
 
         return;
 
