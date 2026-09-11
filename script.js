@@ -641,6 +641,7 @@ function activarAnimacionesProductos() {
 // =========================================
 // CARRITO DE COMPRAS
 // =========================================
+const UMBRAL_ENVIO_GRATIS = 200000;
 
 let carrito = JSON.parse(
     localStorage.getItem("carritoNaturaPilar")
