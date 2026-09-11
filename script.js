@@ -1774,7 +1774,29 @@ buscador.addEventListener("input", () => {
 // FILTROS DINAMICOS
 // -----------------------------
 
-const botonesCategoria = document.querySelectorAll(".filtro");
+// =========================================
+// FILTROS DE PRODUCTOS
+// =========================================
+
+// Normaliza textos para evitar problemas con:
+// mayúsculas, minúsculas, acentos y espacios.
+function normalizarFiltro(texto) {
+
+    return String(texto || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, " ");
+}
+
+
+// =========================================
+// ELEMENTOS DE LOS FILTROS
+// =========================================
+
+const botonesCategoria =
+    document.querySelectorAll(".filtro");
 
 const btnToggleCategorias =
     document.getElementById("btn-toggle-categorias");
@@ -1782,197 +1804,177 @@ const btnToggleCategorias =
 const filtrosCategorias =
     document.getElementById("filtros-categorias");
 
-btnToggleCategorias.addEventListener("click", function() {
-
-    filtrosCategorias.classList.toggle("abierto");
-
-});
-
-const contenedorSubfiltros = document.getElementById("subfiltros");
+const contenedorSubfiltros =
+    document.getElementById("subfiltros");
 
 const contenedorSubfiltros3 =
-document.getElementById("subfiltros3");
-
-const subcategorias = {
-
-    Perfumes:[
-        "Todos",
-        "Kaiak",
-        "Humor",
-        "Luna",
-        "Essencial",
-        "Homen",
-        "Ilia",
-        "Kriska",
-        "Biografia",
-        "Frescor Ekos"
-    ],
-    "Deos corporales":[
-        "Todos",
-        "Masculino",
-        "Femenino"
-    ],
-    Desodorantes:[
-        "Todos",
-        "Linea Tododia",
-        "Linea perfumes"
-    ],
-
-    Tododia:[
-        "Todos",
-        "Jabones",
-        "Jabones liquidos",
-        "Hidratantes",
-        "Trio",
-        "BodySplash",
-        "Varios"
-    ],
-    Cabello:[
-        "Todos",
-        "Linea tododia",
-        "Linea lumina"
-    ],
-    
-     Infantiles:[],
-    
-    "Linea Avon":[],
-    
-    "Cuidado linea perfumes":[]
-
-};
-
-const subcategorias3 = {
-
-    Hidratantes:[
-        "Todos",
-        "400 ml",
-        "Rep.400ml",
-        "200 ml",
-        "100 ml",
-        "50 ml",
-        "Concentrada"
-    ],
-
-    Kaiak:[
-        "Todos",
-        "Masculino",
-        "Femenino"
-    ],
-    
-     Essencial:[
-        "Todos",
-        "Masculino",
-        "Femenino"
-    ],
-    Biografia:[
-        "Todos",
-        "Masculino",
-        "Femenino"
-    ],
-     Luna:[
-        "Todos",
-        "75ml",
-        "50ml"
-    ],
-    "Linea tododia":[
-        "Todos",
-        "Shampoo y acondicionador",
-        "Repuesto 300ml",
-        "Mascara concentrada 250ml",
-        "Repuesto mascara 250ml",
-        "Crema para peinar 180ml"
-    ],
-    Humor:[
-        "Todos",
-        "Masculino",
-        "Femenino",
-        "Unisex",
-        "Mini 25ml"
-    ]
-
-};
+    document.getElementById("subfiltros3");
 
 
-function mostrarSubfiltros(categoria){
+// =========================================
+// ABRIR / CERRAR CATEGORÍAS
+// =========================================
+
+if (btnToggleCategorias && filtrosCategorias) {
+
+    btnToggleCategorias.addEventListener("click", function () {
+
+        filtrosCategorias.classList.toggle("abierto");
+
+    });
+
+}
+
+
+// =========================================
+// MOSTRAR SUBCATEGORÍAS
+// =========================================
+
+function mostrarSubfiltros(categoria) {
 
     contenedorSubfiltros.innerHTML = "";
     contenedorSubfiltros3.innerHTML = "";
 
-    if(!subcategorias[categoria]){
-        return;
-    }
+    const categoriaNormalizada =
+        normalizarFiltro(categoria);
 
-    subcategorias[categoria].forEach(sub => {
 
-        contenedorSubfiltros.innerHTML += `
-            <button 
-                class="subfiltro ${sub === "Todos" ? "activo" : ""}"
-                data-subcategoria="${sub}">
-                ${sub}
-            </button>
-        `;
+    // Productos pertenecientes a la categoría
+    const productosCategoria =
+        productos.filter(producto => {
+
+            return normalizarFiltro(producto.categoria)
+                === categoriaNormalizada;
+
+        });
+
+
+    // Obtener subcategorías reales desde Supabase
+    const subcategoriasDisponibles = [];
+
+    productosCategoria.forEach(producto => {
+
+        const sub =
+            String(producto.subcategoria || "").trim();
+
+        if (!sub) return;
+
+        const yaExiste =
+            subcategoriasDisponibles.some(item =>
+                normalizarFiltro(item) ===
+                normalizarFiltro(sub)
+            );
+
+        if (!yaExiste) {
+
+            subcategoriasDisponibles.push(sub);
+
+        }
+
     });
 
+
+    // Si no hay subcategorías,
+    // no mostramos nada.
+    if (subcategoriasDisponibles.length === 0) {
+
+        return;
+
+    }
+
+
+    // Botón TODOS
+    contenedorSubfiltros.innerHTML += `
+        <button
+            class="subfiltro activo"
+            data-subcategoria="Todos">
+            Todos
+        </button>
+    `;
+
+
+    // Subcategorías encontradas
+    subcategoriasDisponibles.forEach(subcategoria => {
+
+        contenedorSubfiltros.innerHTML += `
+            <button
+                class="subfiltro"
+                data-subcategoria="${subcategoria}">
+                ${subcategoria}
+            </button>
+        `;
+
+    });
+
+
     activarSubfiltros();
+
 }
 
 
-
+// =========================================
+// ACTIVAR SUBFILTROS
+// =========================================
 
 function activarSubfiltros() {
 
     const botonesSub =
         document.querySelectorAll(".subfiltro");
 
+
     botonesSub.forEach(boton => {
 
-        boton.addEventListener("click", () => {
+        boton.addEventListener("click", function () {
 
-            // Quitar activo de todos los subfiltros
-            botonesSub.forEach(btn =>
-                btn.classList.remove("activo")
-            );
+            // Quitar activo de todos
+            botonesSub.forEach(btn => {
 
-            // Activar el seleccionado
+                btn.classList.remove("activo");
+
+            });
+
+
+            // Activar botón seleccionado
             boton.classList.add("activo");
+
 
             const sub =
                 boton.dataset.subcategoria;
 
 
-            // =========================================
-            // OBTENER LA CATEGORÍA PRINCIPAL ACTIVA
-            // =========================================
-
+            // Categoría principal seleccionada
             const botonCategoria =
                 document.querySelector(".filtro.activo");
 
+
             if (!botonCategoria) return;
+
 
             const categoria =
                 botonCategoria.dataset.categoria;
 
 
-            // =========================================
-            // LIMPIAR TERCER NIVEL
-            // =========================================
-
+            // Limpiar tercer nivel
             contenedorSubfiltros3.innerHTML = "";
 
 
-            // =========================================
-            // SI SE SELECCIONA "TODOS"
-            // =========================================
+            // =====================================
+            // SUBCATEGORÍA: TODOS
+            // =====================================
 
             if (sub === "Todos") {
 
-                // Mostrar todos los productos
-                // de la categoría principal
-
                 const resultado =
-                    productos.filter(producto =>
-                        producto.categoria === categoria
-                    );
+                    productos.filter(producto => {
+
+                        return normalizarFiltro(
+                            producto.categoria
+                        ) === normalizarFiltro(
+                            categoria
+                        );
+
+                    });
+
 
                 renderizarProductos(resultado);
 
@@ -1981,64 +1983,288 @@ function activarSubfiltros() {
             }
 
 
-            // =========================================
-            // SI EXISTE TERCER NIVEL
-            // =========================================
+            // =====================================
+            // FILTRAR POR CATEGORÍA + SUBCATEGORÍA
+            // =====================================
 
-            if (subcategorias3[sub]) {
+            const resultado =
+                productos.filter(producto => {
 
-                // Primero mostrar inmediatamente
-                // TODOS los productos de esta
-                // subcategoría.
+                    return (
+                        normalizarFiltro(
+                            producto.categoria
+                        ) === normalizarFiltro(
+                            categoria
+                        )
 
-                const resultado =
-                    productos.filter(producto =>
-                        producto.categoria === categoria &&
-                        producto.subcategoria === sub
+                        &&
+
+                        normalizarFiltro(
+                            producto.subcategoria
+                        ) === normalizarFiltro(
+                            sub
+                        )
                     );
-
-                renderizarProductos(resultado);
-
-
-                // Crear los botones del tercer nivel
-
-                subcategorias3[sub].forEach(nivel3 => {
-
-                    contenedorSubfiltros3.innerHTML += `
-
-                        <button
-                            class="subfiltro3 ${
-                                nivel3 === "Todos"
-                                    ? "activo"
-                                    : ""
-                            }"
-                            data-subcategoria3="${nivel3}">
-
-                            ${nivel3}
-
-                        </button>
-
-                    `;
 
                 });
 
 
-                activarSubfiltros3();
+            renderizarProductos(resultado);
+
+
+            // =====================================
+            // BUSCAR SUBCATEGORÍAS NIVEL 3
+            // =====================================
+
+            mostrarSubfiltros3(
+                categoria,
+                sub
+            );
+
+        });
+
+    });
+
+}
+
+
+// =========================================
+// MOSTRAR SUBCATEGORÍAS NIVEL 3
+// =========================================
+
+function mostrarSubfiltros3(
+    categoria,
+    subcategoria
+) {
+
+    contenedorSubfiltros3.innerHTML = "";
+
+
+    const categoriaNormalizada =
+        normalizarFiltro(categoria);
+
+    const subcategoriaNormalizada =
+        normalizarFiltro(subcategoria);
+
+
+    // Buscar productos que pertenezcan
+    // a la categoría y subcategoría seleccionadas.
+    const productosSubcategoria =
+        productos.filter(producto => {
+
+            return (
+
+                normalizarFiltro(
+                    producto.categoria
+                ) === categoriaNormalizada
+
+                &&
+
+                normalizarFiltro(
+                    producto.subcategoria
+                ) === subcategoriaNormalizada
+
+            );
+
+        });
+
+
+    // Obtener valores reales de subcategoria3
+    const niveles3 = [];
+
+
+    productosSubcategoria.forEach(producto => {
+
+        const nivel3 =
+            String(
+                producto.subcategoria3 || ""
+            ).trim();
+
+
+        if (!nivel3) return;
+
+
+        const yaExiste =
+            niveles3.some(item =>
+
+                normalizarFiltro(item) ===
+                normalizarFiltro(nivel3)
+
+            );
+
+
+        if (!yaExiste) {
+
+            niveles3.push(nivel3);
+
+        }
+
+    });
+
+
+    // Si no existen niveles 3,
+    // no mostramos nada.
+    if (niveles3.length === 0) {
+
+        return;
+
+    }
+
+
+    // Botón TODOS
+    contenedorSubfiltros3.innerHTML += `
+        <button
+            class="subfiltro3 activo"
+            data-subcategoria3="Todos">
+            Todos
+        </button>
+    `;
+
+
+    // Crear botones automáticamente
+    niveles3.forEach(nivel3 => {
+
+        contenedorSubfiltros3.innerHTML += `
+            <button
+                class="subfiltro3"
+                data-subcategoria3="${nivel3}">
+                ${nivel3}
+            </button>
+        `;
+
+    });
+
+
+    activarSubfiltros3();
+
+}
+
+
+// =========================================
+// ACTIVAR SUBFILTROS NIVEL 3
+// =========================================
+
+function activarSubfiltros3() {
+
+    const botones3 =
+        document.querySelectorAll(".subfiltro3");
+
+
+    botones3.forEach(boton => {
+
+        boton.addEventListener("click", function () {
+
+            // Quitar activo
+            botones3.forEach(btn => {
+
+                btn.classList.remove("activo");
+
+            });
+
+
+            // Activar seleccionado
+            boton.classList.add("activo");
+
+
+            const sub3 =
+                boton.dataset.subcategoria3;
+
+
+            // Categoría principal
+            const botonCategoria =
+                document.querySelector(".filtro.activo");
+
+
+            if (!botonCategoria) return;
+
+
+            const categoria =
+                botonCategoria.dataset.categoria;
+
+
+            // Subcategoría principal
+            const botonPadre =
+                document.querySelector(".subfiltro.activo");
+
+
+            if (!botonPadre) return;
+
+
+            const subcategoria =
+                botonPadre.dataset.subcategoria;
+
+
+            // =====================================
+            // NIVEL 3: TODOS
+            // =====================================
+
+            if (sub3 === "Todos") {
+
+                const resultado =
+                    productos.filter(producto => {
+
+                        return (
+
+                            normalizarFiltro(
+                                producto.categoria
+                            ) === normalizarFiltro(
+                                categoria
+                            )
+
+                            &&
+
+                            normalizarFiltro(
+                                producto.subcategoria
+                            ) === normalizarFiltro(
+                                subcategoria
+                            )
+
+                        );
+
+                    });
+
+
+                renderizarProductos(resultado);
 
                 return;
 
             }
 
 
-            // =========================================
-            // SUBCATEGORÍA SIN TERCER NIVEL
-            // =========================================
+            // =====================================
+            // NIVEL 3 ESPECÍFICO
+            // =====================================
 
             const resultado =
-                productos.filter(producto =>
-                    producto.categoria === categoria &&
-                    producto.subcategoria === sub
-                );
+                productos.filter(producto => {
+
+                    return (
+
+                        normalizarFiltro(
+                            producto.categoria
+                        ) === normalizarFiltro(
+                            categoria
+                        )
+
+                        &&
+
+                        normalizarFiltro(
+                            producto.subcategoria
+                        ) === normalizarFiltro(
+                            subcategoria
+                        )
+
+                        &&
+
+                        normalizarFiltro(
+                            producto.subcategoria3
+                        ) === normalizarFiltro(
+                            sub3
+                        )
+
+                    );
+
+                });
 
 
             renderizarProductos(resultado);
@@ -2049,109 +2275,99 @@ function activarSubfiltros() {
 
 }
 
-function activarSubfiltros3(){
 
-const botones3 = document.querySelectorAll(".subfiltro3");
+// =========================================
+// CLIC EN CATEGORÍA PRINCIPAL
+// =========================================
 
-botones3.forEach(boton=>{
+botonesCategoria.forEach(boton => {
 
-boton.addEventListener("click",()=>{
-
-botones3.forEach(btn=>btn.classList.remove("activo"));
-
-boton.classList.add("activo");
-
-const sub3 = boton.dataset.subcategoria3;
-
-const botonPadre = document.querySelector(".subfiltro.activo");
-
-if(!botonPadre) return;
-
-const subPadre = botonPadre.dataset.subcategoria;
-
-let resultado;
-
-if(sub3==="Todos"){
-
-resultado = productos.filter(producto=>
-
-producto.subcategoria===subPadre
-
-);
-
-}else{
-
-resultado = productos.filter(producto=>
-
-producto.subcategoria===subPadre &&
-producto.subcategoria3===sub3
-
-);
-
-}
-
-renderizarProductos(resultado);
-
-});
-
-});
-
-}
+    boton.addEventListener("click", function () {
 
 
+        // Quitar activo de todas
+        botonesCategoria.forEach(btn => {
 
-botonesCategoria.forEach(boton=>{
+            btn.classList.remove("activo");
 
-
-boton.addEventListener("click",()=>{
-
-
-botonesCategoria.forEach(btn=>
-btn.classList.remove("activo")
-);
+        });
 
 
-boton.classList.add("activo");
+        // Activar categoría seleccionada
+        boton.classList.add("activo");
 
 
-const categoria = boton.dataset.categoria;
+        const categoria =
+            boton.dataset.categoria;
 
 
-
-if(categoria === "Todos") {
-
-    contenedorSubfiltros.innerHTML = "";
-
-    contenedorSubfiltros3.innerHTML = "";
-
-    renderizarProductos(productos);
-
-}else{
+        // Limpiar subfiltros anteriores
+        contenedorSubfiltros.innerHTML = "";
+        contenedorSubfiltros3.innerHTML = "";
 
 
-mostrarSubfiltros(categoria);
+        // =====================================
+        // CATEGORÍA: TODOS
+        // =====================================
+
+        if (
+            normalizarFiltro(categoria)
+            === "todos"
+        ) {
+
+            renderizarProductos(productos);
+
+        }
 
 
-const resultado = productos.filter(producto=>
+        // =====================================
+        // CATEGORÍA ESPECÍFICA
+        // =====================================
 
-producto.categoria === categoria
+        else {
 
-);
-
-
-renderizarProductos(resultado);
-
-
-}
+            mostrarSubfiltros(categoria);
 
 
-btnToggleCategorias.textContent =
-    "📂 Categoría: " + categoria;
+            const resultado =
+                productos.filter(producto => {
 
-filtrosCategorias.classList.remove("abierto");
+                    return normalizarFiltro(
+                        producto.categoria
+                    ) === normalizarFiltro(
+                        categoria
+                    );
+
+                });
 
 
-  });
+            renderizarProductos(resultado);
+
+        }
+
+
+        // =====================================
+        // ACTUALIZAR BOTÓN SUPERIOR
+        // =====================================
+
+        if (btnToggleCategorias) {
+
+            btnToggleCategorias.textContent =
+                "📂 Categoría: " + categoria;
+
+        }
+
+
+        // Cerrar menú
+        if (filtrosCategorias) {
+
+            filtrosCategorias.classList.remove(
+                "abierto"
+            );
+
+        }
+
+    });
 
 });
 // =========================================
