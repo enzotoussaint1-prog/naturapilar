@@ -1169,7 +1169,6 @@ ${(() => {
 
         costoEnvioCalculado = 0;
         envioGratisBadge.style.display = "block";
-        cotizadorEnvioNormal.style.display = "none";
 
     } else {
 
