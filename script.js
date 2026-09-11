@@ -1178,7 +1178,6 @@ ${(() => {
             `🚚 Te faltan $${faltante.toLocaleString("es-AR")} para tu ENVÍO GRATIS`;
 
         envioGratisBadge.style.display = "none";
-        cotizadorEnvioNormal.style.display = "block";
 
     }
 
