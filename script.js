@@ -478,7 +478,6 @@ const COMBOS = [
             161: "Desodorante Roll-On"
         }
     }
-    }
 
 ];
 
