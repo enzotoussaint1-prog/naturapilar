@@ -375,7 +375,56 @@ const COMBOS = [
     // COMBOS EXISTENTES
     // =========================================
 
-     // =========================================
+    const COMBOS = [
+
+    // =========================================
+    // COMBOS EXISTENTES
+    // =========================================
+
+    {
+        titulo: "Kit Tododia Frambuesa y Pimienta Rosa",
+        productosIds: [174, 80, 124],
+        imagen: "img/kit-tododia.png"
+    },
+
+    {
+        titulo: "Kit Kaiak Clasico Masculino",
+        productosIds: [7, 192, 159],
+        imagen: "img/kit-kaiak-masculino.png",
+        etiquetas: {
+            159: "Desodorante Roll-On"
+        }
+    },
+
+    {
+        titulo: "Kit Cabello Lumina",
+        productosIds: [269, 271, 270],
+        imagen: "img/kit-lumina.png"
+    },
+
+    {
+        titulo: "Kit Humor Primeiro Femenino",
+        productosIds: [59, 250, 185],
+        imagen: "img/kit-humor.png"
+    },
+
+    {
+        titulo: "Kit Cereza Negra y Praliné",
+        productosIds: [121, 77, 222],
+        imagen: "img/kit-tododia-praline.png"
+    },
+
+    {
+        titulo: "Kit Kaiak Clásico Femenino",
+        productosIds: [187, 161],
+        imagen: "img/kit-kaiak-clasico-femenino.png",
+        etiquetas: {
+            161: "Desodorante Roll-On"
+        }
+    },
+
+
+    // =========================================
     // KITS DÍA DE LA MADRE
     // =========================================
 
@@ -435,47 +484,6 @@ const COMBOS = [
             4: "Frescor Ekos Pitanga Preta",
             229: "Ekos Hidratante 250 ml Pitanga Preta",
             237: "Ekos Crema de manos Pitanga Preta"
-        },
-    
-    {
-        titulo: "Kit Tododia Frambuesa y Pimienta Rosa",
-        productosIds: [174, 80, 124],
-        imagen: "img/kit-tododia.png"
-    },
-
-    {
-        titulo: "Kit Kaiak Clasico Masculino",
-        productosIds: [7, 192, 159],
-        imagen: "img/kit-kaiak-masculino.png",
-        etiquetas: {
-            159: "Desodorante Roll-On"
-        }
-    },
-
-    {
-        titulo: "Kit Cabello Lumina",
-        productosIds: [269, 271, 270],
-        imagen: "img/kit-lumina.png"
-    },
-
-    {
-        titulo: "Kit Humor Primeiro Femenino",
-        productosIds: [59, 250, 185],
-        imagen: "img/kit-humor.png"
-    },
-
-    {
-        titulo: "Kit Cereza Negra y Praliné",
-        productosIds: [121, 77, 222],
-        imagen: "img/kit-tododia-praline.png"
-    },
-
-    {
-        titulo: "Kit Kaiak Clásico Femenino",
-        productosIds: [187, 161],
-        imagen: "img/kit-kaiak-clasico-femenino.png",
-        etiquetas: {
-            161: "Desodorante Roll-On"
         }
     }
 
