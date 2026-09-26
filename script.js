@@ -378,7 +378,8 @@ const COMBOS = [
     {
         titulo: "Kit Kaiak Clasico Masculino",
         productosIds: [7, 192, 159],
-        imagen: "img/kit-kaiak-masculino.png"
+        imagen: "img/kit-kaiak-masculino.png",
+        etiquetas: { 159: "Desodorante Roll-On" }
     },
     {
         titulo: "Kit Cabello Lumina",
@@ -398,7 +399,8 @@ const COMBOS = [
     {
         titulo: "Kit Kaiak Clásico Femenino",
         productosIds: [187, 161],
-        imagen: "img/kit-kaiak-clasico-femenino.png"
+        imagen: "img/kit-kaiak-clasico-femenino.png",
+        etiquetas: { 161: "Desodorante Roll-On" }
     }
 ];
 
