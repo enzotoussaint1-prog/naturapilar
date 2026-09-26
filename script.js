@@ -449,12 +449,13 @@ function renderizarCombos() {
 
                 <h3>${combo.titulo}</h3>
 
-                                <ul class="combo-lista">
+                                                <ul class="combo-lista">
                     ${productosCombo.map(p => {
-                        const detalle = [p.subcategoria, p.subcategoria3]
-                            .filter(Boolean)
-                            .join(" · ");
-                        return `<li>${p.nombre}${detalle ? ` <span class="combo-detalle">(${detalle})</span>` : ""}</li>`;
+                        const etiqueta =
+                            (combo.etiquetas && combo.etiquetas[p.id]) ||
+                            obtenerTipoProducto(p) ||
+                            p.nombre;
+                        return `<li>${etiqueta}</li>`;
                     }).join("")}
                 </ul>
 
