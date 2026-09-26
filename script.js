@@ -370,38 +370,117 @@ renderizarProductos(productos);
 // =========================================
 
 const COMBOS = [
+
+    // =========================================
+    // COMBOS EXISTENTES
+    // =========================================
+
     {
         titulo: "Kit Tododia Frambuesa y Pimienta Rosa",
         productosIds: [174, 80, 124],
         imagen: "img/kit-tododia.png"
     },
+
     {
         titulo: "Kit Kaiak Clasico Masculino",
         productosIds: [7, 192, 159],
         imagen: "img/kit-kaiak-masculino.png",
-        etiquetas: { 159: "Desodorante Roll-On" }
+        etiquetas: {
+            159: "Desodorante Roll-On"
+        }
     },
+
     {
         titulo: "Kit Cabello Lumina",
         productosIds: [269, 271, 270],
         imagen: "img/kit-lumina.png"
     },
-        {
+
+    {
         titulo: "Kit Humor Primeiro Femenino",
         productosIds: [59, 250, 185],
         imagen: "img/kit-humor.png"
     },
+
     {
         titulo: "Kit Cereza Negra y Praliné",
         productosIds: [121, 77, 222],
         imagen: "img/kit-tododia-praline.png"
     },
+
     {
         titulo: "Kit Kaiak Clásico Femenino",
         productosIds: [187, 161],
         imagen: "img/kit-kaiak-clasico-femenino.png",
-        etiquetas: { 161: "Desodorante Roll-On" }
+        etiquetas: {
+            161: "Desodorante Roll-On"
+        }
+    },
+
+
+    // =========================================
+    // KITS DÍA DE LA MADRE
+    // =========================================
+
+    {
+        titulo: "Kit 1 Día de la Madre",
+        productosIds: [174, 80, 124, 300],
+        etiquetas: {
+            174: "Tododia Body Splash Frambuesa y Pimienta Rosa",
+            80: "Tododia Hidratante 400 ml Frambuesa y Pimienta Rosa",
+            124: "Jabón Tododia x2 Frambuesa y Pimienta Rosa",
+            300: "Tododia Desodorante Roll-On Acerola e Hibisco"
+        }
+    },
+
+    {
+        titulo: "Kit 2 Día de la Madre",
+        productosIds: [221, 89, 99],
+        etiquetas: {
+            221: "Tododia Body Splash Flor de Durazno y Jazmín",
+            89: "Tododia Hidratante 400 ml Flor de Durazno y Jazmín",
+            99: "Tododia Crema para manos 50 ml Flor de Durazno y Jazmín"
+        }
+    },
+
+    {
+        titulo: "Kit 3 Día de la Madre",
+        productosIds: [185, 249],
+        etiquetas: {
+            185: "Deo Corporal Meu Primeiro",
+            249: "Jabón Corazón x1 Meu Primeiro"
+        }
+    },
+
+    {
+        titulo: "Kit 4 Día de la Madre",
+        productosIds: [183, 124],
+        etiquetas: {
+            183: "Deo Corporal Próprio",
+            124: "Jabón Tododia x2"
+        }
+    },
+
+    {
+        titulo: "Kit 5 Día de la Madre",
+        productosIds: [223, 251, 250],
+        etiquetas: {
+            223: "Body Splash Humor Meu Primeiro",
+            251: "Hidratante Meu Primeiro",
+            250: "Jabón líquido Meu Primeiro"
+        }
+    },
+
+    {
+        titulo: "Kit 6 Día de la Madre",
+        productosIds: [4, 229, 237],
+        etiquetas: {
+            4: "Frescor Ekos Pitanga Preta",
+            229: "Ekos Hidratante 250 ml Pitanga Preta",
+            237: "Ekos Crema de manos Pitanga Preta"
+        }
     }
+
 ];
 
 function obtenerTipoProducto(p) {
