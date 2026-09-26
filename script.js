@@ -402,6 +402,28 @@ const COMBOS = [
     }
 ];
 
+function obtenerTipoProducto(p) {
+
+    if (p.categoria === "Perfumes") {
+        return "Perfume";
+    }
+
+    if (p.categoria === "Desodorantes") {
+        return "Desodorante";
+    }
+
+    if (p.categoria === "Deos corporales") {
+        return "Deo Corporal";
+    }
+
+    if (p.categoria === "Tododia" && p.subcategoria) {
+        return p.subcategoria + (p.subcategoria3 ? " · " + p.subcategoria3 : "");
+    }
+
+    return null;
+
+}
+
 const contenedorCombos = document.getElementById("contenedor-combos");
 
 function renderizarCombos() {
