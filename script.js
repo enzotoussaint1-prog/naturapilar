@@ -378,8 +378,8 @@ renderizarProductos(productos);
 
     {
         titulo: "Kit 1 Día de la Madre",
-        imagen: "img/kit-1.jpg",
-        imagen2: "img/kit-1D.jpg",
+        imagen: "img/kit-1.JPG",
+        imagen2: "img/kit-1D.JPG",
         productosIds: [174, 80, 124, 300],
         etiquetas: {
             174: "Tododia Body Splash Frambuesa y Pimienta Rosa",
@@ -391,8 +391,8 @@ renderizarProductos(productos);
 
     {
         titulo: "Kit 2 Día de la Madre",
-        imagen: "img/kit-2.jpg",
-        imagen2: "img/kit-2D.jpg",
+        imagen: "img/kit-2.JPG",
+        imagen2: "img/kit-2D.JPG",
         productosIds: [221, 89, 99],
         etiquetas: {
             221: "Tododia Body Splash Flor de Durazno y Jazmín",
@@ -403,8 +403,8 @@ renderizarProductos(productos);
 
     {
         titulo: "Kit 3 Día de la Madre",
-        imagen: "img/kit-3.jpg",
-        imagen2: "img/kit-3D.jpg",
+        imagen: "img/kit-3.JPG",
+        imagen2: "img/kit-3D.JPG",
         productosIds: [223, 251, 250],
         etiquetas: {
             223: "Body Splash Humor Meu Primeiro",
@@ -415,8 +415,8 @@ renderizarProductos(productos);
 
     {
         titulo: "Kit 4 Día de la Madre",
-        imagen: "img/kit-4.jpg",
-        imagen2: "img/kit-4D.jpg",
+        imagen: "img/kit-4.JPG",
+        imagen2: "img/kit-4D.JPG",
         productosIds: [4, 229, 237],
         etiquetas: {
             4: "Frescor Ekos Pitanga Preta",
@@ -427,8 +427,8 @@ renderizarProductos(productos);
         
     {
         titulo: "Kit 5 Día de la Madre",
-        imagen: "img/kit-5.jpg",
-        imagen2: "img/kit-5D.jpg",
+        imagen: "img/kit-5.JPG",
+        imagen2: "img/kit-5D.JPG",
         productosIds: [185, 249],
         etiquetas: {
             185: "Deo Corporal Meu Primeiro",
@@ -438,8 +438,8 @@ renderizarProductos(productos);
 
     {
         titulo: "Kit 6 Día de la Madre",
-        imagen: "img/kit-.jpg",
-        imagen2: "img/kit-6D.jpg",
+        imagen: "img/kit-.JPG",
+        imagen2: "img/kit-6D.JPG",
         productosIds: [183, 124],
         etiquetas: {
             183: "Deo Corporal Próprio",
@@ -449,8 +449,8 @@ renderizarProductos(productos);
 
      {
         titulo: "Kit 7 Día de la Madre",
-        imagen: "img/kit-7.jpg",
-        imagen2: "img/kit-7D.jpg",
+        imagen: "img/kit-7.JPG",
+        imagen2: "img/kit-7D.JPG",
         productosIds: [89, 124],
         etiquetas: {
             89: "Tododia Hidratante 400 ml Flor de Durazno y Jazmín",
