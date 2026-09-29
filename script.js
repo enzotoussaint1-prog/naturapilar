@@ -532,6 +532,13 @@ function renderizarCombos() {
 
 }
 
+function cambiarImagenCombo(boton, indice) {
+    const galeria = boton.closest(".combo-galeria");
+    galeria.querySelectorAll(".combo-img").forEach((img, i) =>
+        img.classList.toggle("activa", i === indice));
+    galeria.querySelectorAll(".punto").forEach((p, i) =>
+        p.classList.toggle("activo", i === indice));
+}
 
 function agregarComboAlCarrito(idsProductos) {
 
