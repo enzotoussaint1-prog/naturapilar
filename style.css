@@ -2295,3 +2295,14 @@ body.modal-abierto {
     opacity: .5;
     cursor: not-allowed;
 }
+
+/* IMÁGENES DE COMBOS: click en cualquier parte para cambiar */
+
+.combo-galeria-doble {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.combo-puntos {
+    pointer-events: none;
+}
