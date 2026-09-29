@@ -492,7 +492,16 @@ function renderizarCombos() {
         return `
             <article class="combo-card">
 
-                               <img src="${combo.imagen || productosCombo[0].imagen}" alt="${combo.titulo}" loading="lazy">
+                               <div class="combo-galeria">
+    <img class="combo-img activa" src="${combo.imagen || productosCombo[0].imagen}" alt="${combo.titulo}" loading="lazy">
+    ${combo.imagen2 ? `
+        <img class="combo-img" src="${combo.imagen2}" alt="${combo.titulo} - detalle" loading="lazy">
+        <div class="combo-puntos">
+            <button type="button" class="punto activo" onclick="cambiarImagenCombo(this, 0)" aria-label="Imagen 1"></button>
+            <button type="button" class="punto" onclick="cambiarImagenCombo(this, 1)" aria-label="Imagen 2"></button>
+        </div>
+    ` : ""}
+</div>
 
                 <h3>${combo.titulo}</h3>
 
