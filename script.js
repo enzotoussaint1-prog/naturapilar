@@ -438,7 +438,7 @@ renderizarProductos(productos);
 
     {
         titulo: "Kit 6 Día de la Madre",
-        imagen: "img/kit-.JPG",
+        imagen: "img/kit-6.JPG",
         imagen2: "img/kit-6D.JPG",
         productosIds: [183, 124],
         etiquetas: {
