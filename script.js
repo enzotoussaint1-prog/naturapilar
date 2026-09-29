@@ -449,10 +449,10 @@ renderizarProductos(productos);
         titulo: "Kit 7 Día de la Madre",
         imagen: "img/kit-7.JPG",
         imagen2: "img/kit-7D.JPG",
-        productosIds: [89, 124],
+        productosIds: [89, 175],
         etiquetas: {
             89: "Tododia Hidratante 400 ml Flor de Durazno y Jazmín",
-            124: "Perfume Kriska Shock"
+            175: "Perfume Kriska Shock"
         }
     }
 
