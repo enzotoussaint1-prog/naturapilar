@@ -452,7 +452,7 @@ renderizarProductos(productos);
         productosIds: [89, 124],
         etiquetas: {
             89: "Tododia Hidratante 400 ml Flor de Durazno y Jazmín",
-            175: "Perfume Kriska Shock"
+            124: "Perfume Kriska Shock"
         }
     }
 
