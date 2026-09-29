@@ -3080,7 +3080,7 @@ function cambiarImagen(imagen, miniatura) {
 // =========================================
 
 const banners = [
-    "img/banner1.jpg",
+    "img/banner1.PNG",
     "img/banner2.jpg",
     "img/banner3.jpg",
     "img/banner4.jpg"
