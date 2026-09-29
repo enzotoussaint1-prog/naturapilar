@@ -745,13 +745,13 @@ function renderizarCombos() {
         return `
             <article class="combo-card">
 
-                <div class="combo-galeria">
+                <div class="combo-galeria${combo.imagen2 ? " combo-galeria-doble" : ""}">
                     <img class="combo-img activa" src="${imagenPrincipal}" alt="${combo.titulo}" loading="lazy">
                     ${combo.imagen2 ? `
                         <img class="combo-img" src="${combo.imagen2}" alt="${combo.titulo} - detalle" loading="lazy">
-                        <div class="combo-puntos">
-                            <button type="button" class="punto activo" onclick="cambiarImagenCombo(this, 0)" aria-label="Imagen 1"></button>
-                            <button type="button" class="punto" onclick="cambiarImagenCombo(this, 1)" aria-label="Imagen 2"></button>
+                        <div class="combo-puntos" aria-hidden="true">
+                            <span class="punto activo"></span>
+                            <span class="punto"></span>
                         </div>
                     ` : ""}
                 </div>
@@ -782,13 +782,76 @@ function renderizarCombos() {
 
 }
 
-function cambiarImagenCombo(boton, indice) {
-    const galeria = boton.closest(".combo-galeria");
-    galeria.querySelectorAll(".combo-img").forEach((img, i) =>
-        img.classList.toggle("activa", i === indice));
+// =========================================
+// IMÁGENES DE LOS COMBOS
+// =========================================
+//
+// Los combos con imagen 2 alternan solos entre las dos imágenes
+// cada INTERVALO_IMAGEN_COMBO milisegundos, y al hacer click en
+// cualquier parte de la imagen se pasa a la otra.
+// Los combos sin imagen 2 no hacen nada.
+
+const INTERVALO_IMAGEN_COMBO = 4000;
+
+function alternarImagenCombo(galeria) {
+
+    const imagenes = galeria.querySelectorAll(".combo-img");
+
+    if (imagenes.length < 2) return;
+
+    let actual = 0;
+
+    imagenes.forEach((img, i) => {
+        if (img.classList.contains("activa")) actual = i;
+    });
+
+    const siguiente = (actual + 1) % imagenes.length;
+
+    imagenes.forEach((img, i) =>
+        img.classList.toggle("activa", i === siguiente));
+
     galeria.querySelectorAll(".punto").forEach((p, i) =>
-        p.classList.toggle("activo", i === indice));
+        p.classList.toggle("activo", i === siguiente));
+
+    // Se reinicia la cuenta para que no cambie
+    // justo después de un click
+
+    galeria.dataset.ultimoCambio = Date.now();
+
 }
+
+// Click en cualquier parte de la imagen
+
+document.addEventListener("click", function(e) {
+
+    const galeria = e.target.closest(".combo-galeria-doble");
+
+    if (!galeria) return;
+
+    alternarImagenCombo(galeria);
+
+});
+
+// Cambio automático
+
+setInterval(function() {
+
+    document.querySelectorAll(".combo-galeria-doble").forEach(galeria => {
+
+        const ultimo = Number(galeria.dataset.ultimoCambio) || 0;
+
+        if (!ultimo) {
+            galeria.dataset.ultimoCambio = Date.now();
+            return;
+        }
+
+        if (Date.now() - ultimo >= INTERVALO_IMAGEN_COMBO) {
+            alternarImagenCombo(galeria);
+        }
+
+    });
+
+}, 1000);
 
 
 // =========================================
