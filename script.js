@@ -1605,6 +1605,13 @@ const notas =
 
                                 localidad:
                                     localidad,
+
+                                provincia:
+                                    provincia,
+
+                                codigoPostal:
+                                    codigoPostal,
+
                                 notas: notas
 
                             }
