@@ -99,7 +99,10 @@ async function cargarProductosDesdeSupabase() {
 
         // Volvemos a dibujar la tienda
         // utilizando los datos reales de Supabase.
-       sincronizarCarritoConStock();
+        sincronizarCarritoConStock();
+
+        renderizarCarrito();
+
         renderizarProductos(productos);
 
         renderizarPromociones();
@@ -128,9 +131,52 @@ async function cargarProductosDesdeSupabase() {
 
 function sincronizarCarritoConStock() {
 
-    let carritoModificado = false;
-
     carrito = carrito.filter(item => {
+
+        // =========================================
+        // COMBOS
+        // =========================================
+
+        if (tipoItem(item) === "combo") {
+
+            // Hasta que los combos no se hayan cargado
+            // desde Supabase no se puede validar nada.
+
+            if (!combosCargados) {
+                return true;
+            }
+
+            const combo =
+                COMBOS.find(c => c.id == item.id);
+
+            // El combo ya no existe, fue desactivado
+            // o alguno de sus productos quedó sin stock
+
+            if (!combo || !comboDisponible(combo)) {
+                return false;
+            }
+
+            // Si hay más unidades que las que permite el stock
+
+            const maximo = unidadesMaximasCombo(combo);
+
+            if (item.cantidad > maximo) {
+                item.cantidad = maximo;
+            }
+
+            // Precio, nombre, imagen y contenido actualizados
+            // por si se modificaron en la tabla de combos
+
+            Object.assign(item, datosItemCombo(combo));
+
+            return true;
+
+        }
+
+
+        // =========================================
+        // PRODUCTOS SUELTOS
+        // =========================================
 
         const producto =
             productos.find(p => p.id == item.id);
@@ -140,22 +186,14 @@ function sincronizarCarritoConStock() {
         // o está inactivo
 
         if (!producto) {
-
-            carritoModificado = true;
-
             return false;
-
         }
 
 
         // Si quedó sin stock
 
         if (producto.stock <= 0) {
-
-            carritoModificado = true;
-
             return false;
-
         }
 
 
@@ -163,12 +201,7 @@ function sincronizarCarritoConStock() {
         // que el stock disponible
 
         if (item.cantidad > producto.stock) {
-
-            item.cantidad =
-                producto.stock;
-
-            carritoModificado = true;
-
+            item.cantidad = producto.stock;
         }
 
 
@@ -183,7 +216,7 @@ function sincronizarCarritoConStock() {
 
         item.nombre =
             producto.nombre;
-        
+
         item.descripcion = producto.descripcion;
 
         item.codigo =
@@ -194,14 +227,10 @@ function sincronizarCarritoConStock() {
 
     });
 
-
-    if (carritoModificado) {
-
-        guardarCarrito();
-
-    }
+    guardarCarrito();
 
 }
+
 const RECARGO_MERCADOPAGO = 0.05; // 5%
 
 function precioConComisionMP(precio) {
@@ -366,97 +395,259 @@ botonCargarMasProductos.addEventListener(
 renderizarProductos(productos);
 
 // =========================================
-// COMBOS ARMADOS
+// COMBOS (se cargan desde Supabase)
 // =========================================
+//
+// Los combos viven en las tablas "combos" y "combo_items".
+// Cada combo queda así en memoria:
+//
+// {
+//   id, titulo, imagen, imagen2, precio,
+//   items: [ { productoId, cantidad, etiqueta } ]
+// }
+//
+// Si cambiás el precio, el título, las imágenes o los productos
+// de un combo en Supabase, la tienda lo toma al cargar la página
+// (y también cuando se vuelve a la pestaña pasado un rato).
 
-    const COMBOS = [
+let COMBOS = [];
+let combosCargados = false;
+let ultimaCargaCombos = 0;
+
+async function cargarCombosDesdeSupabase() {
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("combos")
+                .select(
+                    "id, titulo, imagen, imagen2, precio, orden, " +
+                    "combo_items(producto_id, cantidad, etiqueta, orden)"
+                )
+                .eq("activo", true)
+                .order("orden", { ascending: true })
+                .order("id", { ascending: true });
 
 
-    // =========================================
-    // KITS DÍA DE LA MADRE
-    // =========================================
+        if (error) {
 
-    {
-        titulo: "Kit 1 Día de la Madre",
-        imagen: "img/kit-1.JPG",
-        imagen2: "img/kit-1D.JPG",
-        productosIds: [174, 80, 124, 300],
-        etiquetas: {
-            174: "Tododia Body Splash Frambuesa y Pimienta Rosa",
-            80: "Tododia Hidratante 400 ml Frambuesa y Pimienta Rosa",
-            124: "Jabón Tododia x2 Frambuesa y Pimienta Rosa",
-            300: "Tododia Desodorante Roll-On Acerola e Hibisco"
+            console.error(
+                "Error cargando combos desde Supabase:",
+                error
+            );
+
+            return;
+
         }
-    },
 
-    {
-        titulo: "Kit 2 Día de la Madre",
-        imagen: "img/kit-2.JPG",
-        imagen2: "img/kit-2D.JPG",
-        productosIds: [221, 89, 99],
-        etiquetas: {
-            221: "Tododia Body Splash Flor de Durazno y Jazmín",
-            89: "Tododia Hidratante 400 ml Flor de Durazno y Jazmín",
-            99: "Tododia Crema para manos 50 ml Flor de Durazno y Jazmín"
-        }
-    },
 
-    {
-        titulo: "Kit 3 Día de la Madre",
-        imagen: "img/kit-3.JPG",
-        imagen2: "img/kit-3D.JPG",
-        productosIds: [223, 251, 250],
-        etiquetas: {
-            223: "Body Splash Humor Meu Primeiro",
-            251: "Hidratante Meu Primeiro",
-            250: "Jabón líquido Meu Primeiro"
-        }
-    },
+        COMBOS = (data || [])
 
-    {
-        titulo: "Kit 4 Día de la Madre",
-        imagen: "img/kit-4.JPG",
-        imagen2: "img/kit-4D.JPG",
-        productosIds: [4, 229, 237],
-        etiquetas: {
-            4: "Frescor Ekos Pitanga Preta",
-            229: "Ekos Hidratante 250 ml Pitanga Preta",
-            237: "Ekos Crema de manos Pitanga Preta"
-        }
-    },
-        
-    {
-        titulo: "Kit 5 Día de la Madre",
-        imagen: "img/kit-5.JPG",
-        productosIds: [185, 249],
-        etiquetas: {
-            185: "Deo Corporal Meu Primeiro",
-            249: "Jabón Corazón x1 Meu Primeiro"
-        }
-    },
+            .map(combo => ({
 
-    {
-        titulo: "Kit 6 Día de la Madre",
-        imagen: "img/kit-6.JPG",
-        productosIds: [183, 124],
-        etiquetas: {
-            183: "Deo Corporal Próprio",
-            124: "Jabón Tododia x2"
-        }
-    },
+                id: Number(combo.id),
 
-     {
-        titulo: "Kit 7 Día de la Madre",
-        imagen: "img/kit-7.JPG",
-        imagen2: "img/kit-7D.JPG",
-        productosIds: [89, 175],
-        etiquetas: {
-            89: "Tododia Hidratante 400 ml Flor de Durazno y Jazmín",
-            175: "Perfume Kriska Shock"
-        }
+                titulo: combo.titulo,
+
+                imagen: combo.imagen,
+
+                imagen2: combo.imagen2,
+
+                precio: Number(combo.precio),
+
+                items: (combo.combo_items || [])
+                    .slice()
+                    .sort((a, b) => (a.orden - b.orden))
+                    .map(ci => ({
+                        productoId: Number(ci.producto_id),
+                        cantidad: Number(ci.cantidad) || 1,
+                        etiqueta: ci.etiqueta
+                    }))
+
+            }))
+
+            // Un combo sin productos o sin precio no se muestra
+
+            .filter(combo =>
+                combo.items.length > 0 &&
+                combo.precio > 0
+            );
+
+
+        combosCargados = true;
+
+        ultimaCargaCombos = Date.now();
+
+        // Actualiza precios y contenido de los combos
+        // que ya estaban en el carrito
+
+        sincronizarCarritoConStock();
+
+        renderizarCombos();
+
+        renderizarCarrito();
+
+        console.log(
+            "Combos cargados desde Supabase:",
+            COMBOS.length
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error inesperado cargando combos:",
+            error
+        );
+
     }
 
-];
+}
+
+
+// Al volver a la pestaña (o a la app instalada) se vuelven
+// a leer los combos, así los cambios de precio se ven sin
+// tener que recargar manualmente.
+
+document.addEventListener("visibilitychange", function() {
+
+    if (
+        document.visibilityState === "visible" &&
+        Date.now() - ultimaCargaCombos > 60000
+    ) {
+        cargarCombosDesdeSupabase();
+    }
+
+});
+
+
+// =========================================
+// UTILIDADES DE CARRITO (productos y combos)
+// =========================================
+
+// Los items viejos del carrito (sin "tipo") son productos.
+
+function tipoItem(item) {
+    return item.tipo === "combo" ? "combo" : "producto";
+}
+
+function mismoItem(item, tipo, id) {
+    return tipoItem(item) === tipo && item.id == id;
+}
+
+function buscarEnCarrito(tipo, id) {
+    return carrito.find(item => mismoItem(item, tipo, id));
+}
+
+// Unidades de cada producto que necesita UN combo
+
+function componentesDelCombo(combo) {
+
+    const mapa = new Map();
+
+    combo.items.forEach(i => {
+        mapa.set(
+            i.productoId,
+            (mapa.get(i.productoId) || 0) + i.cantidad
+        );
+    });
+
+    return mapa;
+
+}
+
+// Unidades de un producto que ya están reservadas en el carrito:
+// las sueltas + las que van dentro de combos.
+
+function unidadesEnCarrito(productoId) {
+
+    return carrito.reduce((acc, item) => {
+
+        if (tipoItem(item) === "combo") {
+
+            const combo = COMBOS.find(c => c.id == item.id);
+
+            if (!combo) return acc;
+
+            const porCombo =
+                componentesDelCombo(combo).get(Number(productoId)) || 0;
+
+            return acc + porCombo * item.cantidad;
+
+        }
+
+        return item.id == productoId
+            ? acc + item.cantidad
+            : acc;
+
+    }, 0);
+
+}
+
+// El combo está disponible si todos sus productos
+// existen, están activos y tienen stock suficiente.
+
+function comboDisponible(combo) {
+
+    for (const [productoId, cantidad] of componentesDelCombo(combo)) {
+
+        const producto =
+            productos.find(p => p.id == productoId);
+
+        if (!producto || producto.stock < cantidad) {
+            return false;
+        }
+
+    }
+
+    return true;
+
+}
+
+// Cuántos combos completos se pueden armar con el stock actual
+
+function unidadesMaximasCombo(combo) {
+
+    let maximo = Infinity;
+
+    for (const [productoId, cantidad] of componentesDelCombo(combo)) {
+
+        const producto =
+            productos.find(p => p.id == productoId);
+
+        maximo = Math.min(
+            maximo,
+            producto ? Math.floor(producto.stock / cantidad) : 0
+        );
+
+    }
+
+    return maximo === Infinity ? 0 : maximo;
+
+}
+
+// ¿Se puede sumar un combo más al carrito
+// sin superar el stock (considerando lo que ya hay)?
+
+function puedeAgregarCombo(combo) {
+
+    for (const [productoId, cantidad] of componentesDelCombo(combo)) {
+
+        const producto =
+            productos.find(p => p.id == productoId);
+
+        if (
+            !producto ||
+            unidadesEnCarrito(productoId) + cantidad > producto.stock
+        ) {
+            return false;
+        }
+
+    }
+
+    return true;
+
+}
 
 function obtenerTipoProducto(p) {
 
@@ -480,6 +671,59 @@ function obtenerTipoProducto(p) {
 
 }
 
+function etiquetaItemCombo(item) {
+
+    const producto =
+        productos.find(p => p.id == item.productoId);
+
+    return item.etiqueta ||
+        (producto && obtenerTipoProducto(producto)) ||
+        (producto && producto.nombre) ||
+        "";
+
+}
+
+// Datos que se guardan en el carrito para un combo
+
+function datosItemCombo(combo) {
+
+    const primerProducto =
+        productos.find(p => p.id == combo.items[0].productoId);
+
+    const componentes = combo.items.map(i => ({
+        nombre: etiquetaItemCombo(i),
+        cantidad: i.cantidad
+    }));
+
+    return {
+
+        tipo: "combo",
+
+        nombre: combo.titulo,
+
+        descripcion: componentes
+            .map(c => `${c.cantidad}x ${c.nombre}`)
+            .join(", "),
+
+        precio: combo.precio,
+
+        imagen: combo.imagen ||
+            (primerProducto && primerProducto.imagen) ||
+            "",
+
+        codigo: null,
+
+        componentes: componentes
+
+    };
+
+}
+
+
+// =========================================
+// MOSTRAR COMBOS EN LA TIENDA
+// =========================================
+
 const contenedorCombos = document.getElementById("contenedor-combos");
 
 function renderizarCombos() {
@@ -488,50 +732,47 @@ function renderizarCombos() {
 
     contenedorCombos.innerHTML = COMBOS.map(combo => {
 
-        const productosCombo = combo.productosIds
-            .map(id => productos.find(p => p.id === id))
-            .filter(p => p);
+        const disponible = comboDisponible(combo);
 
-        if (productosCombo.length === 0) return "";
+        const primerProducto =
+            productos.find(p => p.id == combo.items[0].productoId);
 
-        const precioTotal = productosCombo.reduce(
-            (acc, p) => acc + p.precio, 0
-        );
+        const imagenPrincipal =
+            combo.imagen ||
+            (primerProducto && primerProducto.imagen) ||
+            "";
 
         return `
             <article class="combo-card">
 
-                               <div class="combo-galeria">
-    <img class="combo-img activa" src="${combo.imagen || productosCombo[0].imagen}" alt="${combo.titulo}" loading="lazy">
-    ${combo.imagen2 ? `
-        <img class="combo-img" src="${combo.imagen2}" alt="${combo.titulo} - detalle" loading="lazy">
-        <div class="combo-puntos">
-            <button type="button" class="punto activo" onclick="cambiarImagenCombo(this, 0)" aria-label="Imagen 1"></button>
-            <button type="button" class="punto" onclick="cambiarImagenCombo(this, 1)" aria-label="Imagen 2"></button>
-        </div>
-    ` : ""}
-</div>
+                <div class="combo-galeria">
+                    <img class="combo-img activa" src="${imagenPrincipal}" alt="${combo.titulo}" loading="lazy">
+                    ${combo.imagen2 ? `
+                        <img class="combo-img" src="${combo.imagen2}" alt="${combo.titulo} - detalle" loading="lazy">
+                        <div class="combo-puntos">
+                            <button type="button" class="punto activo" onclick="cambiarImagenCombo(this, 0)" aria-label="Imagen 1"></button>
+                            <button type="button" class="punto" onclick="cambiarImagenCombo(this, 1)" aria-label="Imagen 2"></button>
+                        </div>
+                    ` : ""}
+                </div>
 
                 <h3>${combo.titulo}</h3>
 
-                                                <ul class="combo-lista">
-                    ${productosCombo.map(p => {
-                        const etiqueta =
-                            (combo.etiquetas && combo.etiquetas[p.id]) ||
-                            obtenerTipoProducto(p) ||
-                            p.nombre;
-                        return `<li>${etiqueta}</li>`;
-                    }).join("")}
+                <ul class="combo-lista">
+                    ${combo.items.map(i =>
+                        `<li>${i.cantidad > 1 ? i.cantidad + "x " : ""}${etiquetaItemCombo(i)}</li>`
+                    ).join("")}
                 </ul>
 
                 <div class="combo-precio">
-                    $${precioTotal.toLocaleString("es-AR")}
+                    $${combo.precio.toLocaleString("es-AR")}
                 </div>
 
                 <button
                     class="btn-comprar"
-                    onclick="agregarComboAlCarrito([${combo.productosIds.join(",")}])">
-                    Agregar combo al carrito
+                    data-combo-id="${combo.id}"
+                    ${disponible ? "" : "disabled"}>
+                    ${disponible ? "Agregar combo al carrito" : "Combo agotado"}
                 </button>
 
             </article>
@@ -549,52 +790,66 @@ function cambiarImagenCombo(boton, indice) {
         p.classList.toggle("activo", i === indice));
 }
 
-function agregarComboAlCarrito(idsProductos) {
 
-    let algunoAgotado = false;
+// =========================================
+// AGREGAR UN COMBO AL CARRITO
+// (queda como UN solo item, no como productos sueltos)
+// =========================================
 
-    idsProductos.forEach(id => {
+function agregarComboAlCarrito(comboId) {
 
-        const producto = productos.find(p => p.id == id);
+    const combo =
+        COMBOS.find(c => c.id == comboId);
 
-        if (!producto || producto.stock <= 0) {
-            algunoAgotado = true;
-            return;
-        }
+    if (!combo) return;
 
-        const existente = carrito.find(item => item.id == producto.id);
 
-        if (existente) {
+    if (!comboDisponible(combo)) {
 
-            if (existente.cantidad < producto.stock) {
-                existente.cantidad++;
-            }
+        alert("Este combo está agotado.");
 
-        } else {
+        return;
 
-            carrito.push({
-                id: producto.id,
-                nombre: producto.nombre,
-                descripcion: producto.descripcion,
-                precio: producto.precio,
-                imagen: producto.imagen,
-                codigo: producto.codigo,
-                cantidad: 1
-            });
-
-        }
-
-    });
-
-    guardarCarrito();
-    renderizarCarrito();
-    abrirPanelCarrito();
-
-    if (algunoAgotado) {
-        alert("Uno o más productos del combo están agotados y no se agregaron.");
     }
 
+
+    if (!puedeAgregarCombo(combo)) {
+
+        alert("No hay más stock disponible para agregar este combo.");
+
+        renderizarCarrito();
+
+        return;
+
+    }
+
+
+    const existente =
+        buscarEnCarrito("combo", combo.id);
+
+    if (existente) {
+
+        existente.cantidad++;
+
+    } else {
+
+        carrito.push({
+            id: combo.id,
+            ...datosItemCombo(combo),
+            cantidad: 1
+        });
+
+    }
+
+
+    guardarCarrito();
+
+    renderizarCarrito();
+
+    abrirPanelCarrito();
+
 }
+
 // -----------------------------
 // PROMOCIONES
 // -----------------------------
@@ -861,11 +1116,25 @@ function abrirTransferencia() {
     totalTransferencia.textContent = "$" + total.toLocaleString("es-AR");
 
     const detalle = carrito
-    .map(item =>
-        `- ${item.cantidad}x ${item.nombre}\n` +
-        `  ID: ${item.id}\n` +
-        `  Código: ${item.codigo}`
-    )
+    .map(item => {
+
+        if (tipoItem(item) === "combo") {
+
+            const contenido = (item.componentes || [])
+                .map(c => `   • ${c.cantidad}x ${c.nombre}`)
+                .join("\n");
+
+            return `- ${item.cantidad}x COMBO: ${item.nombre}\n` +
+                   `  ID combo: ${item.id}\n` +
+                   `  Incluye:\n${contenido}`;
+
+        }
+
+        return `- ${item.cantidad}x ${item.nombre}\n` +
+               `  ID: ${item.id}\n` +
+               `  Código: ${item.codigo}`;
+
+    })
     .join("\n\n");
 
     const mensaje = encodeURIComponent(
@@ -1044,8 +1313,28 @@ function agregarAlCarrito(id) {
     }
 
 
+    // No permitir superar el stock disponible
+    // (se cuentan también las unidades que van dentro de combos)
+
+    if (unidadesEnCarrito(producto.id) >= producto.stock) {
+
+        alert(
+            `Solo hay ${producto.stock} unidad${
+                producto.stock === 1 ? "" : "es"
+            } disponible${
+                producto.stock === 1 ? "" : "s"
+            }.`
+        );
+
+        renderizarCarrito();
+
+        return;
+
+    }
+
+
     const productoExistente =
-        carrito.find(item => item.id == producto.id);
+        buscarEnCarrito("producto", producto.id);
 
 
     // =========================================
@@ -1053,28 +1342,6 @@ function agregarAlCarrito(id) {
     // =========================================
 
     if (productoExistente) {
-
-        // No permitir superar el stock disponible
-
-        if (
-            productoExistente.cantidad >=
-            producto.stock
-        ) {
-
-            alert(
-                `Solo hay ${producto.stock} unidad${
-                    producto.stock === 1 ? "" : "es"
-                } disponible${
-                    producto.stock === 1 ? "" : "s"
-                }.`
-            );
-
-            renderizarCarrito();
-
-            return;
-
-        }
-
 
         productoExistente.cantidad++;
 
@@ -1088,6 +1355,8 @@ function agregarAlCarrito(id) {
     else {
 
         carrito.push({
+
+            tipo: "producto",
 
             id: producto.id,
 
@@ -1153,6 +1422,10 @@ function renderizarCarrito() {
 
     carrito.forEach(item => {
 
+        const tipo = tipoItem(item);
+
+        const esCombo = tipo === "combo";
+
         const subtotal =
             item.precio * item.cantidad;
 
@@ -1161,9 +1434,31 @@ function renderizarCarrito() {
         cantidadTotal += item.cantidad;
 
 
+        // ¿Se llegó al límite de stock disponible?
+
+        let alLimite = false;
+
+        if (esCombo) {
+
+            const combo =
+                COMBOS.find(c => c.id == item.id);
+
+            alLimite = !!combo && !puedeAgregarCombo(combo);
+
+        } else {
+
+            const producto =
+                productos.find(p => p.id == item.id);
+
+            alLimite = !!producto &&
+                unidadesEnCarrito(producto.id) >= producto.stock;
+
+        }
+
+
         productosCarrito.innerHTML += `
 
-            <div class="item-carrito">
+            <div class="item-carrito${esCombo ? " item-carrito-combo" : ""}">
 
                 <img
                     src="${item.imagen}"
@@ -1171,9 +1466,19 @@ function renderizarCarrito() {
 
                 <div>
 
+                    ${esCombo ? `<span class="item-combo-etiqueta">COMBO</span>` : ""}
+
                     <h3>
                         ${item.nombre}
                     </h3>
+
+                    ${esCombo && item.componentes ? `
+                        <ul class="item-combo-lista">
+                            ${item.componentes.map(c =>
+                                `<li>${c.cantidad > 1 ? c.cantidad + "x " : ""}${c.nombre}</li>`
+                            ).join("")}
+                        </ul>
+                    ` : ""}
 
                     <div class="item-precio">
                         $${item.precio.toLocaleString("es-AR")}
@@ -1184,6 +1489,7 @@ function renderizarCarrito() {
                         <button
                             class="btn-cantidad"
                             data-accion="restar"
+                            data-tipo="${tipo}"
                             data-id="${item.id}">
                             −
                         </button>
@@ -1192,49 +1498,25 @@ function renderizarCarrito() {
     ${item.cantidad}
 </span>
 
-${(() => {
-
-    const producto =
-        productos.find(p => p.id == item.id);
-
-    if (
-        producto &&
-        item.cantidad >= producto.stock
-    ) {
-
-        return `
+${alLimite ? `
             <small class="limite-stock">
                 Límite de stock disponible
             </small>
-        `;
-
-    }
-
-    return "";
-
-})()}
+        ` : ""}
 
                        <button
     class="btn-cantidad"
     data-accion="sumar"
+    data-tipo="${tipo}"
     data-id="${item.id}"
-    ${(() => {
-
-        const producto =
-            productos.find(p => p.id == item.id);
-
-        return producto &&
-               item.cantidad >= producto.stock
-            ? "disabled"
-            : "";
-
-    })()}>
+    ${alLimite ? "disabled" : ""}>
     +
     </button>
 
                         <button
                             class="btn-eliminar"
                             data-accion="eliminar"
+                            data-tipo="${tipo}"
                             data-id="${item.id}">
                             Eliminar
                         </button>
@@ -1269,18 +1551,12 @@ ${(() => {
 // CAMBIAR CANTIDAD
 // =========================================
 
-function cambiarCantidad(id, cambio) {
+function cambiarCantidad(tipo, id, cambio) {
 
     const item =
-        carrito.find(producto => producto.id == id);
+        carrito.find(i => mismoItem(i, tipo, id));
 
     if (!item) return;
-
-
-    const producto =
-        productos.find(p => p.id == id);
-
-    if (!producto) return;
 
 
     // =========================================
@@ -1289,18 +1565,47 @@ function cambiarCantidad(id, cambio) {
 
     if (cambio > 0) {
 
-        if (item.cantidad >= producto.stock) {
+        if (tipo === "combo") {
 
-            alert(
-                `No podés agregar más unidades. ` +
-                `Hay ${producto.stock} disponible${
-                    producto.stock === 1 ? "" : "s"
-                }.`
-            );
+            const combo =
+                COMBOS.find(c => c.id == id);
 
-            renderizarCarrito();
+            if (!combo) return;
 
-            return;
+            if (!puedeAgregarCombo(combo)) {
+
+                alert(
+                    "No podés agregar más unidades de este combo. " +
+                    "No hay más stock disponible."
+                );
+
+                renderizarCarrito();
+
+                return;
+
+            }
+
+        } else {
+
+            const producto =
+                productos.find(p => p.id == id);
+
+            if (!producto) return;
+
+            if (unidadesEnCarrito(producto.id) >= producto.stock) {
+
+                alert(
+                    `No podés agregar más unidades. ` +
+                    `Hay ${producto.stock} disponible${
+                        producto.stock === 1 ? "" : "s"
+                    }.`
+                );
+
+                renderizarCarrito();
+
+                return;
+
+            }
 
         }
 
@@ -1318,7 +1623,7 @@ function cambiarCantidad(id, cambio) {
 
         carrito =
             carrito.filter(
-                producto => producto.id != id
+                i => !mismoItem(i, tipo, id)
             );
 
     }
@@ -1332,14 +1637,14 @@ function cambiarCantidad(id, cambio) {
 
 
 // =========================================
-// ELIMINAR PRODUCTO
+// ELIMINAR PRODUCTO O COMBO
 // =========================================
 
-function eliminarDelCarrito(id) {
+function eliminarDelCarrito(tipo, id) {
 
     carrito =
         carrito.filter(
-            producto => producto.id != id
+            i => !mismoItem(i, tipo, id)
         );
 
 
@@ -1361,6 +1666,16 @@ document.addEventListener("click", function(e) {
     if (!boton) return;
 
     e.preventDefault();
+
+    // Botón "Agregar combo al carrito"
+
+    if (boton.dataset.comboId) {
+
+        agregarComboAlCarrito(boton.dataset.comboId);
+
+        return;
+
+    }
 
     const idProducto = boton.dataset.id;
 
@@ -1412,24 +1727,27 @@ document.addEventListener("click", function(e) {
     const accion =
         boton.dataset.accion;
 
+    const tipo =
+        boton.dataset.tipo || "producto";
+
 
     if (accion === "sumar") {
 
-        cambiarCantidad(id, 1);
+        cambiarCantidad(tipo, id, 1);
 
     }
 
 
     if (accion === "restar") {
 
-        cambiarCantidad(id, -1);
+        cambiarCantidad(tipo, id, -1);
 
     }
 
 
     if (accion === "eliminar") {
 
-        eliminarDelCarrito(id);
+        eliminarDelCarrito(tipo, id);
 
     }
 
@@ -1738,7 +2056,7 @@ renderizarCarrito();
 // CARGAR PRODUCTOS DESDE SUPABASE
 // =========================================
 
-cargarProductosDesdeSupabase();
+cargarProductosDesdeSupabase().then(cargarCombosDesdeSupabase);
 
 // -----------------------------
 // MENÚ ACTIVO
