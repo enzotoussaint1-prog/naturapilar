@@ -405,28 +405,6 @@ renderizarProductos(productos);
         titulo: "Kit 3 Día de la Madre",
         imagen: "img/kit-3.jpg",
         imagen2: "img/kit-3D.jpg",
-        productosIds: [185, 249],
-        etiquetas: {
-            185: "Deo Corporal Meu Primeiro",
-            249: "Jabón Corazón x1 Meu Primeiro"
-        }
-    },
-
-    {
-        titulo: "Kit 4 Día de la Madre",
-        imagen: "img/kit-4.jpg",
-        imagen2: "img/kit-4D.jpg",
-        productosIds: [183, 124],
-        etiquetas: {
-            183: "Deo Corporal Próprio",
-            124: "Jabón Tododia x2"
-        }
-    },
-
-    {
-        titulo: "Kit 5 Día de la Madre",
-        imagen: "img/kit-5.jpg",
-        imagen2: "img/kit-5D.jpg",
         productosIds: [223, 251, 250],
         etiquetas: {
             223: "Body Splash Humor Meu Primeiro",
@@ -436,14 +414,47 @@ renderizarProductos(productos);
     },
 
     {
-        titulo: "Kit 6 Día de la Madre",
-        imagen: "img/kit-6.jpg",
-        imagen2: "img/kit-6D.jpg",
+        titulo: "Kit 4 Día de la Madre",
+        imagen: "img/kit-4.jpg",
+        imagen2: "img/kit-4D.jpg",
         productosIds: [4, 229, 237],
         etiquetas: {
             4: "Frescor Ekos Pitanga Preta",
             229: "Ekos Hidratante 250 ml Pitanga Preta",
             237: "Ekos Crema de manos Pitanga Preta"
+        }
+    },
+        
+    {
+        titulo: "Kit 5 Día de la Madre",
+        imagen: "img/kit-5.jpg",
+        imagen2: "img/kit-5D.jpg",
+        productosIds: [185, 249],
+        etiquetas: {
+            185: "Deo Corporal Meu Primeiro",
+            249: "Jabón Corazón x1 Meu Primeiro"
+        }
+    },
+
+    {
+        titulo: "Kit 6 Día de la Madre",
+        imagen: "img/kit-.jpg",
+        imagen2: "img/kit-6D.jpg",
+        productosIds: [183, 124],
+        etiquetas: {
+            183: "Deo Corporal Próprio",
+            124: "Jabón Tododia x2"
+        }
+    },
+
+     {
+        titulo: "Kit 7 Día de la Madre",
+        imagen: "img/kit-7.jpg",
+        imagen2: "img/kit-7D.jpg",
+        productosIds: [89, 124],
+        etiquetas: {
+            89: "Tododia Hidratante 400 ml Flor de Durazno y Jazmín",
+            175: "Perfume Kriska Shock"
         }
     }
 
