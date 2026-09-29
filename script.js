@@ -428,7 +428,6 @@ renderizarProductos(productos);
     {
         titulo: "Kit 5 Día de la Madre",
         imagen: "img/kit-5.JPG",
-        imagen2: "img/kit-5D.JPG",
         productosIds: [185, 249],
         etiquetas: {
             185: "Deo Corporal Meu Primeiro",
@@ -439,7 +438,6 @@ renderizarProductos(productos);
     {
         titulo: "Kit 6 Día de la Madre",
         imagen: "img/kit-6.JPG",
-        imagen2: "img/kit-6D.JPG",
         productosIds: [183, 124],
         etiquetas: {
             183: "Deo Corporal Próprio",
