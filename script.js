@@ -2390,27 +2390,7 @@ function mostrarSubfiltros(categoria) {
     });
 
 
-    // Botones extra de género, solo para Perfumes
-    if (normalizarFiltro(categoria) === normalizarFiltro("Perfumes")) {
-
-        contenedorSubfiltros.innerHTML += `
-            <button
-                class="subfiltro"
-                data-genero="Masculino">
-                Masculino
-            </button>
-            <button
-                class="subfiltro"
-                data-genero="Femenino">
-                Femenino
-            </button>
-        `;
-
-    }
-
-
-    activarSubfiltros();
-
+       activarSubfiltros();
 }
 
 
