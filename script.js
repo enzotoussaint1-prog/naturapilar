@@ -456,6 +456,11 @@ async function cargarCombosDesdeSupabase() {
 
                 precio: Number(combo.precio),
 
+                precioAnterior:
+                    combo.precio_anterior !== null
+                        ? Number(combo.precio_anterior)
+                        : null,
+
                 items: (combo.combo_items || [])
                     .slice()
                     .sort((a, b) => (a.orden - b.orden))
