@@ -2297,7 +2297,23 @@ if (btnToggleCategorias && filtrosCategorias) {
 // =========================================
 // MOSTRAR SUBCATEGORÍAS
 // =========================================
+function obtenerGeneroPerfume(p) {
 
+    if (p.subcategoria3 === "Masculino" || p.subcategoria3 === "Femenino") {
+        return p.subcategoria3;
+    }
+
+    const lineasMasculinas = ["Homen"];
+    const lineasFemeninas = ["Ilia", "Kriska", "Luna", "Frescor Ekos"];
+
+    if (lineasMasculinas.includes(p.subcategoria)) return "Masculino";
+    if (lineasFemeninas.includes(p.subcategoria)) return "Femenino";
+
+    return null;
+
+}
+
+function mostrarSubfiltros(categoria) {
 function mostrarSubfiltros(categoria) {
 
     contenedorSubfiltros.innerHTML = "";
