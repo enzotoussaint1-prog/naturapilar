@@ -750,6 +750,21 @@ function renderizarCombos() {
         return `
             <article class="combo-card">
 
+${combo.precioAnterior
+    ? `
+        <span class="etiqueta-oferta">
+            🔥 OFERTA
+            <span class="porcentaje-oferta">
+                -${Math.round(
+                    ((combo.precioAnterior - combo.precio) /
+                    combo.precioAnterior) * 100
+                )}%
+            </span>
+        </span>
+    `
+    : ""
+}
+
                 <div class="combo-galeria${combo.imagen2 ? " combo-galeria-doble" : ""}">
                     <img class="combo-img activa" src="${imagenPrincipal}" alt="${combo.titulo}" loading="lazy">
                     ${combo.imagen2 ? `
