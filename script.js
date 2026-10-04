@@ -769,8 +769,12 @@ function renderizarCombos() {
                     ).join("")}
                 </ul>
 
-                               <div class="precios">
-                    ${bloqueDoblePrecio({ precio: combo.precio, precioAnterior: null, oferta: false })}
+                                               <div class="precios">
+                    ${bloqueDoblePrecio({
+                        precio: combo.precio,
+                        precioAnterior: combo.precioAnterior,
+                        oferta: !!combo.precioAnterior
+                    })}
                 </div>
 
                 <button
