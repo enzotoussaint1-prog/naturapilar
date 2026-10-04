@@ -2314,7 +2314,6 @@ function obtenerGeneroPerfume(p) {
 }
 
 function mostrarSubfiltros(categoria) {
-function mostrarSubfiltros(categoria) {
 
     contenedorSubfiltros.innerHTML = "";
     contenedorSubfiltros3.innerHTML = "";
