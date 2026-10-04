@@ -2457,8 +2457,35 @@ function activarSubfiltros() {
                 botonCategoria.dataset.categoria;
 
 
-            // Limpiar tercer nivel
+                       // Limpiar tercer nivel
             contenedorSubfiltros3.innerHTML = "";
+
+
+            // =====================================
+            // FILTRO POR GÉNERO (cruza todas las líneas)
+            // =====================================
+
+            const genero = boton.dataset.genero;
+
+            if (genero) {
+
+                const resultado =
+                    productos.filter(producto =>
+
+                        normalizarFiltro(producto.categoria) ===
+                        normalizarFiltro(categoria)
+
+                        &&
+
+                        obtenerGeneroPerfume(producto) === genero
+
+                    );
+
+                renderizarProductos(resultado);
+
+                return;
+
+            }
 
 
             // =====================================
