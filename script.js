@@ -764,8 +764,8 @@ function renderizarCombos() {
                     ).join("")}
                 </ul>
 
-                <div class="combo-precio">
-                    $${combo.precio.toLocaleString("es-AR")}
+                               <div class="precios">
+                    ${bloqueDoblePrecio({ precio: combo.precio, precioAnterior: null, oferta: false })}
                 </div>
 
                 <button
