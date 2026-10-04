@@ -421,8 +421,8 @@ async function cargarCombosDesdeSupabase() {
         const { data, error } =
             await supabaseClient
                 .from("combos")
-                .select(
-                    "id, titulo, imagen, imagen2, precio, orden, " +
+                                .select(
+                    "id, titulo, imagen, imagen2, precio, precio_anterior, orden, " +
                     "combo_items(producto_id, cantidad, etiqueta, orden)"
                 )
                 .eq("activo", true)
