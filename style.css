@@ -2177,6 +2177,7 @@ body.modal-abierto {
     text-align: left;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .punto.activo{
