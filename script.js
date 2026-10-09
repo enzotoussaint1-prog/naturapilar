@@ -13,7 +13,13 @@ const supabaseClient =
         SUPABASE_URL,
         SUPABASE_KEY
     );
-
+function metaTrack(evento, datos, eventID) {
+    try {
+        if (typeof fbq !== "function") return;
+        if (eventID) fbq("track", evento, datos || {}, { eventID: eventID });
+        else fbq("track", evento, datos || {});
+    } catch (e) { console.warn("Meta Pixel:", e); }
+}
 
 // =========================================
 // CARGAR PRODUCTOS DESDE SUPABASE
