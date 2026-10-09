@@ -1202,7 +1202,40 @@ const cerrarTransferencia = document.getElementById("cerrar-transferencia");
 const totalTransferencia = document.getElementById("total-transferencia");
 const whatsappComprobante = document.getElementById("whatsapp-comprobante");
 const ALIAS_TRANSFERENCIA = "natura.valen.pilar";
+let pedidoTransferencia = null; // { firma, promesa }
 
+function registrarPedidoTransferencia() {
+    const firma = JSON.stringify(carrito.map(i => [tipoItem(i), i.id, i.cantidad]));
+
+    // Si el carrito no cambió, se reutiliza el mismo pedido (evita duplicados)
+    if (pedidoTransferencia && pedidoTransferencia.firma === firma) {
+        return pedidoTransferencia.promesa;
+    }
+
+    const promesa = (async () => {
+        try {
+            const respuesta = await fetch(`${SUPABASE_URL}/functions/v1/crear-pedido-transferencia`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "apikey": SUPABASE_KEY },
+                body: JSON.stringify({
+                    carrito: carrito.map(i => ({ tipo: tipoItem(i), id: i.id, cantidad: i.cantidad }))
+                })
+            });
+            const data = await respuesta.json();
+            if (!respuesta.ok || !data.numero_pedido) throw new Error(data.error || "sin número de pedido");
+            return { id: data.pedido_id, numero: data.numero_pedido };
+        } catch (e) {
+            console.error("No se pudo registrar el pedido por transferencia:", e);
+            return null;
+        }
+    })();
+
+    pedidoTransferencia = { firma, promesa };
+    promesa.then(r => {
+        if (!r && pedidoTransferencia && pedidoTransferencia.promesa === promesa) pedidoTransferencia = null;
+    });
+    return promesa;
+}
 function abrirTransferencia() {
     transferenciaOverlay.classList.add("activo");
     const total = calcularTotalCarrito();
