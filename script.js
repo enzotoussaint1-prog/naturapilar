@@ -935,11 +935,11 @@ function agregarComboAlCarrito(comboId) {
     }
 
 
-    metaTrack("AddToCart", {
-        content_ids: [producto.codigo],
+     metaTrack("AddToCart", {
+        content_ids: ["combo-" + combo.id],
         content_type: "product",
-        content_name: producto.nombre,
-        value: producto.precio,
+        content_name: combo.titulo,
+        value: Number(combo.precio) || 0,
         currency: "ARS"
     });
 
