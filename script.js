@@ -1263,11 +1263,25 @@ function abrirTransferencia() {
     })
     .join("\n\n");
 
+const armarLink = (numeroPedido) => {
     const mensaje = encodeURIComponent(
-        `Hola! Quiero comprar:\n${detalle}\n\nTotal: $${total.toLocaleString("es-AR")} (transferencia, Alias: ${ALIAS_TRANSFERENCIA})\n\nMis datos:\nNombre:\nRetiro o dirección de envío:\n\nTe mando el comprobante 👇`
+        `Hola! Quiero comprar${numeroPedido ? " (Pedido #" + numeroPedido + ")" : ""}:\n${detalle}\n\nTotal: $${total.toLocaleString("es-AR")} (transferencia, Alias: ${ALIAS_TRANSFERENCIA})\n\nMis datos:\nNombre:\nRetiro o dirección de envío:\n\nTe mando el comprobante 👇`
     );
+    return `https://wa.me/5491150241149?text=${mensaje}`;
+};
 
-    whatsappComprobante.href = `https://wa.me/5491150241149?text=${mensaje}`;
+// El link funciona al instante; cuando el pedido se registra, se le agrega el número
+whatsappComprobante.href = armarLink(null);
+
+registrarPedidoTransferencia().then(pedido => {
+    if (!pedido) return;
+    whatsappComprobante.href = armarLink(pedido.numero);
+    metaTrack("Lead", {
+        value: total,
+        currency: "ARS",
+        content_name: "Transferencia"
+    }, "pedido_" + pedido.id);
+});
 }
 function cerrarTransferenciaFn() { transferenciaOverlay.classList.remove("activo"); }
 cerrarTransferencia.addEventListener("click", cerrarTransferenciaFn);
