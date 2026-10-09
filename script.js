@@ -1523,12 +1523,17 @@ function agregarAlCarrito(id) {
     }
 
 
+       metaTrack("AddToCart", {
+        content_ids: [producto.codigo],
+        content_type: "product",
+        content_name: producto.nombre,
+        value: producto.precio,
+        currency: "ARS"
+    });
+
     guardarCarrito();
-
     renderizarCarrito();
-
     abrirPanelCarrito();
-
 }
 
 
