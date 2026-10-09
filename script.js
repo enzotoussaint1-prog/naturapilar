@@ -1193,6 +1193,13 @@ function calcularTotalConRecargoMP() {
     return carrito.reduce((acc, item) => acc + (precioConComisionMP(item.precio) * item.cantidad), 0);
 }
 function abrirMetodoPago() {
+        metaTrack("InitiateCheckout", {
+        value: calcularTotalCarrito(),
+        currency: "ARS",
+        num_items: carrito.reduce((a, i) => a + i.cantidad, 0),
+        content_type: "product",
+        content_ids: carrito.map(i => tipoItem(i) === "combo" ? "combo-" + i.id : i.codigo)
+    });
     metodoPagoOverlay.classList.add("activo");
     totalMetodoTransferencia.textContent = "$" + calcularTotalCarrito().toLocaleString("es-AR");
     totalMetodoMP.textContent = "$" + calcularTotalConRecargoMP().toLocaleString("es-AR");
