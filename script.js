@@ -1289,11 +1289,15 @@ whatsappComprobante.href = armarLink(null);
 registrarPedidoTransferencia().then(pedido => {
     if (!pedido) return;
     whatsappComprobante.href = armarLink(pedido.numero);
-    metaTrack("Lead", {
-        value: total,
-        currency: "ARS",
-        content_name: "Transferencia"
-    }, "pedido_" + pedido.id);
+
+    if (!pedido.leadEnviado) {
+        pedido.leadEnviado = true;
+        metaTrack("Lead", {
+            value: total,
+            currency: "ARS",
+            content_name: "Transferencia"
+        }, "pedido_" + pedido.id);
+    }
 });
 }
 function cerrarTransferenciaFn() { transferenciaOverlay.classList.remove("activo"); }
