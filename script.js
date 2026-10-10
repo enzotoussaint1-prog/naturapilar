@@ -20,7 +20,29 @@ function metaTrack(evento, datos, eventID) {
         else fbq("track", evento, datos || {});
     } catch (e) { console.warn("Meta Pixel:", e); }
 }
+function leerCookie(nombre) {
+    const m = document.cookie.match(new RegExp("(?:^|; )" + nombre + "=([^;]*)"));
+    return m ? decodeURIComponent(m[1]) : null;
+}
 
+function guardarContextoMeta(pedidoId) {
+    if (!pedidoId) return Promise.resolve();
+
+    const envio = fetch(`${SUPABASE_URL}/functions/v1/guardar-contexto-meta`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": SUPABASE_KEY },
+        body: JSON.stringify({
+            pedido_id: pedidoId,
+            fbp: leerCookie("_fbp"),
+            fbc: leerCookie("_fbc"),
+            url: window.location.href
+        }),
+        keepalive: true
+    }).catch(() => {});
+
+    // Nunca demora la compra más de 1,5 segundos
+    return Promise.race([envio, new Promise(r => setTimeout(r, 1500))]);
+}
 // =========================================
 // CARGAR PRODUCTOS DESDE SUPABASE
 // =========================================
