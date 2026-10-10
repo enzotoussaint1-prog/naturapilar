@@ -1258,6 +1258,8 @@ function registrarPedidoTransferencia() {
             });
             const data = await respuesta.json();
             if (!respuesta.ok || !data.numero_pedido) throw new Error(data.error || "sin número de pedido");
+            guardarContextoMeta(data.pedido_id);
+            
             return { id: data.pedido_id, numero: data.numero_pedido };
         } catch (e) {
             console.error("No se pudo registrar el pedido por transferencia:", e);
@@ -2196,7 +2198,8 @@ const notas =
                 "Redirigiendo a Mercado Pago:",
                 data.init_point
             );
-
+            
+            await guardarContextoMeta(data.pedido_id);
 
             window.location.href =
                 data.init_point;
