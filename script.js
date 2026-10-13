@@ -1420,9 +1420,47 @@ function actualizarLinkWhatsappCarrito() {
     const boton = document.querySelector(".boton-whatsapp-carrito");
     if (!boton) return;
 
-    const recortar = (t, max) => {
-        t = String(t || "").trim();
-        return t.length > max ? t.slice(0, max - 1) + "…" : t;
+    const pesos = n => "$" + Number(n || 0).toLocaleString("es-AR");
+
+    // Datos internos de un producto, tomados del catálogo actual
+    // (no se incluye la descripción: es solo para el cliente)
+    const datosProducto = (id, item) => {
+        const p = productos.find(x => x.id == id) || {};
+        return {
+            id: id,
+            codigo: p.codigo || (item && item.codigo) || "-",
+            categoria: p.categoria || "-",
+            subcategorias: [p.subcategoria, p.subcategoria3]
+                .filter(Boolean)
+                .join(" / ") || "-"
+        };
+    };
+
+    // Componentes de un combo con sus datos internos
+    const componentesCombo = (item) => {
+        const combo = COMBOS.find(c => c.id == item.id);
+
+        if (combo) {
+            return combo.items.map(i => {
+                const p = productos.find(x => x.id == i.productoId) || {};
+                const d = datosProducto(i.productoId);
+                return {
+                    cantidad: i.cantidad,
+                    nombre: p.nombre || etiquetaItemCombo(i),
+                    ...d
+                };
+            });
+        }
+
+        // Si los combos todavía no cargaron, se usa lo guardado en el carrito
+        return (item.componentes || []).map(c => ({
+            cantidad: c.cantidad,
+            nombre: c.nombre,
+            id: "-",
+            codigo: "-",
+            categoria: "-",
+            subcategorias: "-"
+        }));
     };
 
     let texto;
@@ -1431,36 +1469,61 @@ function actualizarLinkWhatsappCarrito() {
         texto = "Hola! Quiero hacer una consulta sobre sus productos Natura.\n\nMi consulta:\nNombre:";
     } else {
         const detalle = carrito.map(item => {
+
             if (tipoItem(item) === "combo") {
-                const contenido = (item.componentes || [])
-                    .map(c => `   • ${c.cantidad}x ${c.nombre}`)
+                const contenido = componentesCombo(item)
+                    .map(c =>
+                        `   • ${c.cantidad}x ${c.nombre}\n` +
+                        `      ID: ${c.id} | Código: ${c.codigo}\n` +
+                        `      ${c.categoria} / ${c.subcategorias}`
+                    )
                     .join("\n");
 
                 return `*${item.cantidad}x COMBO: ${item.nombre}*\n` +
+                       `ID combo: ${item.id}\n` +
                        `Incluye:\n${contenido}\n` +
-                       `Precio por transferencia: $${item.precio.toLocaleString("es-AR")} c/u`;
+                       `Transferencia: ${pesos(item.precio)} c/u\n` +
+                       `Mercado Pago: ${pesos(precioConComisionMP(item.precio))} c/u`;
             }
 
+            const d = datosProducto(item.id, item);
+
             return `*${item.cantidad}x ${item.nombre}*\n` +
-                   `${recortar(item.descripcion, 200)}\n` +
-                   `Código: ${item.codigo}\n` +
-                   `Precio por transferencia: $${item.precio.toLocaleString("es-AR")} c/u`;
+                   `ID: ${d.id}\n` +
+                   `Código: ${d.codigo}\n` +
+                   `Categoría: ${d.categoria}\n` +
+                   `Subcategorías: ${d.subcategorias}\n` +
+                   `Transferencia: ${pesos(item.precio)} c/u\n` +
+                   `Mercado Pago: ${pesos(precioConComisionMP(item.precio))} c/u`;
         }).join("\n\n");
 
         texto = `Hola! Quiero consultar por estos productos:\n\n${detalle}\n\n` +
-                `Total por transferencia: $${calcularTotalCarrito().toLocaleString("es-AR")}\n` +
-                `Total con Mercado Pago: $${calcularTotalConRecargoMP().toLocaleString("es-AR")}\n\n` +
+                `Total por transferencia: ${pesos(calcularTotalCarrito())}\n` +
+                `Total con Mercado Pago: ${pesos(calcularTotalConRecargoMP())}\n\n` +
                 `¿Tienen stock disponible?\nNombre:`;
 
         // Si el mensaje quedara demasiado largo para el link, se usa una versión resumida
         if (encodeURIComponent(texto).length > 1800) {
-            const resumen = carrito.map(item =>
-                `- ${item.cantidad}x ${tipoItem(item) === "combo" ? "COMBO: " : ""}${item.nombre}` +
-                (item.codigo ? ` (Código: ${item.codigo})` : "")
-            ).join("\n");
+            const resumen = carrito.map(item => {
+
+                if (tipoItem(item) === "combo") {
+                    const contenido = componentesCombo(item)
+                        .map(c => `${c.cantidad}x ${c.nombre} [ID ${c.id} | ${c.codigo} | ${c.categoria} / ${c.subcategorias}]`)
+                        .join("; ");
+
+                    return `- ${item.cantidad}x COMBO: ${item.nombre} (ID combo ${item.id}) | ${pesos(item.precio)}\n` +
+                           `  ${contenido}`;
+                }
+
+                const d = datosProducto(item.id, item);
+
+                return `- ${item.cantidad}x ${item.nombre} | ID ${d.id} | ${d.codigo} | ` +
+                       `${d.categoria} / ${d.subcategorias} | ${pesos(item.precio)}`;
+            }).join("\n");
 
             texto = `Hola! Quiero consultar por estos productos:\n${resumen}\n\n` +
-                    `Total por transferencia: $${calcularTotalCarrito().toLocaleString("es-AR")}\n\n` +
+                    `Total por transferencia: ${pesos(calcularTotalCarrito())}\n` +
+                    `Total con Mercado Pago: ${pesos(calcularTotalConRecargoMP())}\n\n` +
                     `¿Tienen stock disponible?\nNombre:`;
         }
     }
