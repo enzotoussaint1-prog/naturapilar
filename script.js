@@ -1412,10 +1412,61 @@ function guardarCarrito() {
         "carritoNaturaPilar",
         JSON.stringify(carrito)
     );
-
+    
+actualizarLinkWhatsappCarrito();
 }
 
+function actualizarLinkWhatsappCarrito() {
+    const boton = document.querySelector(".boton-whatsapp-carrito");
+    if (!boton) return;
 
+    const recortar = (t, max) => {
+        t = String(t || "").trim();
+        return t.length > max ? t.slice(0, max - 1) + "…" : t;
+    };
+
+    let texto;
+
+    if (carrito.length === 0) {
+        texto = "Hola! Quiero hacer una consulta sobre sus productos Natura.\n\nMi consulta:\nNombre:";
+    } else {
+        const detalle = carrito.map(item => {
+            if (tipoItem(item) === "combo") {
+                const contenido = (item.componentes || [])
+                    .map(c => `   • ${c.cantidad}x ${c.nombre}`)
+                    .join("\n");
+
+                return `*${item.cantidad}x COMBO: ${item.nombre}*\n` +
+                       `Incluye:\n${contenido}\n` +
+                       `Precio por transferencia: $${item.precio.toLocaleString("es-AR")} c/u`;
+            }
+
+            return `*${item.cantidad}x ${item.nombre}*\n` +
+                   `${recortar(item.descripcion, 200)}\n` +
+                   `Código: ${item.codigo}\n` +
+                   `Precio por transferencia: $${item.precio.toLocaleString("es-AR")} c/u`;
+        }).join("\n\n");
+
+        texto = `Hola! Quiero consultar por estos productos:\n\n${detalle}\n\n` +
+                `Total por transferencia: $${calcularTotalCarrito().toLocaleString("es-AR")}\n` +
+                `Total con Mercado Pago: $${calcularTotalConRecargoMP().toLocaleString("es-AR")}\n\n` +
+                `¿Tienen stock disponible?\nNombre:`;
+
+        // Si el mensaje quedara demasiado largo para el link, se usa una versión resumida
+        if (encodeURIComponent(texto).length > 1800) {
+            const resumen = carrito.map(item =>
+                `- ${item.cantidad}x ${tipoItem(item) === "combo" ? "COMBO: " : ""}${item.nombre}` +
+                (item.codigo ? ` (Código: ${item.codigo})` : "")
+            ).join("\n");
+
+            texto = `Hola! Quiero consultar por estos productos:\n${resumen}\n\n` +
+                    `Total por transferencia: $${calcularTotalCarrito().toLocaleString("es-AR")}\n\n` +
+                    `¿Tienen stock disponible?\nNombre:`;
+        }
+    }
+
+    boton.href = `https://wa.me/5491150241149?text=${encodeURIComponent(texto)}`;
+}
 // =========================================
 // ABRIR CARRITO
 // =========================================
@@ -2213,6 +2264,7 @@ const notas =
 // =========================================
 
 renderizarCarrito();
+actualizarLinkWhatsappCarrito();
 // =========================================
 // CARGAR PRODUCTOS DESDE SUPABASE
 // =========================================
