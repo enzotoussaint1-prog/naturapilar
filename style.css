@@ -205,6 +205,25 @@ gap:35px;
     color:white;
 
 }
+.filtro-combos{
+    font-size:1.2rem;
+    padding:16px 38px;
+    border:2px solid #d45f93;
+    box-shadow:0 8px 22px rgba(212,95,147,.35);
+}
+
+.filtro-combos:hover,
+.filtro-combos.activo{
+    background:#d45f93;
+    color:white;
+}
+
+@media(max-width:900px){
+    .filtro-combos{
+        width:100%;
+        font-size:1.1rem;
+    }
+}
 /* SUBFILTROS */
 
 .subfiltros{
