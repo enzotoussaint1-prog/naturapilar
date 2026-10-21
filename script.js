@@ -112,8 +112,6 @@ async function cargarProductosDesdeSupabase() {
 
         renderizarPromociones();
 
-        renderizarCombos();
-
         console.log(
             "Productos cargados desde Supabase:",
             productos.length
@@ -137,47 +135,6 @@ async function cargarProductosDesdeSupabase() {
 function sincronizarCarritoConStock() {
 
     carrito = carrito.filter(item => {
-
-        // =========================================
-        // COMBOS
-        // =========================================
-
-        if (tipoItem(item) === "combo") {
-
-            // Hasta que los combos no se hayan cargado
-            // desde Supabase no se puede validar nada.
-
-            if (!combosCargados) {
-                return true;
-            }
-
-            const combo =
-                COMBOS.find(c => c.id == item.id);
-
-            // El combo ya no existe, fue desactivado
-            // o alguno de sus productos quedó sin stock
-
-            if (!combo || !comboDisponible(combo)) {
-                return false;
-            }
-
-            // Si hay más unidades que las que permite el stock
-
-            const maximo = unidadesMaximasCombo(combo);
-
-            if (item.cantidad > maximo) {
-                item.cantidad = maximo;
-            }
-
-            // Precio, nombre, imagen y contenido actualizados
-            // por si se modificaron en la tabla de combos
-
-            Object.assign(item, datosItemCombo(combo));
-
-            return true;
-
-        }
-
 
         // =========================================
         // PRODUCTOS SUELTOS
@@ -400,552 +357,18 @@ botonCargarMasProductos.addEventListener(
 renderizarProductos(productos);
 
 // =========================================
-// COMBOS (se cargan desde Supabase)
-// =========================================
-//
-// Los combos viven en las tablas "combos" y "combo_items".
-// Cada combo queda así en memoria:
-//
-// {
-//   id, titulo, imagen, imagen2, precio,
-//   items: [ { productoId, cantidad, etiqueta } ]
-// }
-//
-// Si cambiás el precio, el título, las imágenes o los productos
-// de un combo en Supabase, la tienda lo toma al cargar la página
-// (y también cuando se vuelve a la pestaña pasado un rato).
-
-let COMBOS = [];
-let combosCargados = false;
-let ultimaCargaCombos = 0;
-
-async function cargarCombosDesdeSupabase() {
-
-    try {
-
-        const { data, error } =
-            await supabaseClient
-                .from("combos")
-                                .select(
-                    "id, titulo, imagen, imagen2, precio, precio_anterior, orden, " +
-                    "combo_items(producto_id, cantidad, etiqueta, orden)"
-                )
-                .eq("activo", true)
-                .order("orden", { ascending: true })
-                .order("id", { ascending: true });
-
-
-        if (error) {
-
-            console.error(
-                "Error cargando combos desde Supabase:",
-                error
-            );
-
-            return;
-
-        }
-
-
-        COMBOS = (data || [])
-
-            .map(combo => ({
-
-                id: Number(combo.id),
-
-                titulo: combo.titulo,
-
-                imagen: combo.imagen,
-
-                imagen2: combo.imagen2,
-
-                precio: Number(combo.precio),
-
-                precioAnterior:
-                    combo.precio_anterior !== null
-                        ? Number(combo.precio_anterior)
-                        : null,
-
-                items: (combo.combo_items || [])
-                    .slice()
-                    .sort((a, b) => (a.orden - b.orden))
-                    .map(ci => ({
-                        productoId: Number(ci.producto_id),
-                        cantidad: Number(ci.cantidad) || 1,
-                        etiqueta: ci.etiqueta
-                    }))
-
-            }))
-
-            // Un combo sin productos o sin precio no se muestra
-
-            .filter(combo =>
-                combo.items.length > 0 &&
-                combo.precio > 0
-            );
-
-
-        combosCargados = true;
-
-        ultimaCargaCombos = Date.now();
-
-        // Actualiza precios y contenido de los combos
-        // que ya estaban en el carrito
-
-        sincronizarCarritoConStock();
-
-        renderizarCombos();
-
-        renderizarCarrito();
-
-        console.log(
-            "Combos cargados desde Supabase:",
-            COMBOS.length
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Error inesperado cargando combos:",
-            error
-        );
-
-    }
-
-}
-
-
-// Al volver a la pestaña (o a la app instalada) se vuelven
-// a leer los combos, así los cambios de precio se ven sin
-// tener que recargar manualmente.
-
-document.addEventListener("visibilitychange", function() {
-
-    if (
-        document.visibilityState === "visible" &&
-        Date.now() - ultimaCargaCombos > 60000
-    ) {
-        cargarCombosDesdeSupabase();
-    }
-
-});
-
-
-// =========================================
-// UTILIDADES DE CARRITO (productos y combos)
+// UTILIDADES DE CARRITO
 // =========================================
 
-// Los items viejos del carrito (sin "tipo") son productos.
-
-function tipoItem(item) {
-    return item.tipo === "combo" ? "combo" : "producto";
+function buscarEnCarrito(id) {
+    return carrito.find(item => item.id == id);
 }
 
-function mismoItem(item, tipo, id) {
-    return tipoItem(item) === tipo && item.id == id;
-}
-
-function buscarEnCarrito(tipo, id) {
-    return carrito.find(item => mismoItem(item, tipo, id));
-}
-
-// Unidades de cada producto que necesita UN combo
-
-function componentesDelCombo(combo) {
-
-    const mapa = new Map();
-
-    combo.items.forEach(i => {
-        mapa.set(
-            i.productoId,
-            (mapa.get(i.productoId) || 0) + i.cantidad
-        );
-    });
-
-    return mapa;
-
-}
-
-// Unidades de un producto que ya están reservadas en el carrito:
-// las sueltas + las que van dentro de combos.
+// Unidades de un producto que ya están en el carrito
 
 function unidadesEnCarrito(productoId) {
-
-    return carrito.reduce((acc, item) => {
-
-        if (tipoItem(item) === "combo") {
-
-            const combo = COMBOS.find(c => c.id == item.id);
-
-            if (!combo) return acc;
-
-            const porCombo =
-                componentesDelCombo(combo).get(Number(productoId)) || 0;
-
-            return acc + porCombo * item.cantidad;
-
-        }
-
-        return item.id == productoId
-            ? acc + item.cantidad
-            : acc;
-
-    }, 0);
-
-}
-
-// El combo está disponible si todos sus productos
-// existen, están activos y tienen stock suficiente.
-
-function comboDisponible(combo) {
-
-    for (const [productoId, cantidad] of componentesDelCombo(combo)) {
-
-        const producto =
-            productos.find(p => p.id == productoId);
-
-        if (!producto || producto.stock < cantidad) {
-            return false;
-        }
-
-    }
-
-    return true;
-
-}
-
-// Cuántos combos completos se pueden armar con el stock actual
-
-function unidadesMaximasCombo(combo) {
-
-    let maximo = Infinity;
-
-    for (const [productoId, cantidad] of componentesDelCombo(combo)) {
-
-        const producto =
-            productos.find(p => p.id == productoId);
-
-        maximo = Math.min(
-            maximo,
-            producto ? Math.floor(producto.stock / cantidad) : 0
-        );
-
-    }
-
-    return maximo === Infinity ? 0 : maximo;
-
-}
-
-// ¿Se puede sumar un combo más al carrito
-// sin superar el stock (considerando lo que ya hay)?
-
-function puedeAgregarCombo(combo) {
-
-    for (const [productoId, cantidad] of componentesDelCombo(combo)) {
-
-        const producto =
-            productos.find(p => p.id == productoId);
-
-        if (
-            !producto ||
-            unidadesEnCarrito(productoId) + cantidad > producto.stock
-        ) {
-            return false;
-        }
-
-    }
-
-    return true;
-
-}
-
-function obtenerTipoProducto(p) {
-
-    if (p.categoria === "Perfumes") {
-        return "Perfume";
-    }
-
-    if (p.categoria === "Desodorantes") {
-        return "Desodorante";
-    }
-
-    if (p.categoria === "Deos corporales") {
-        return "Deo Corporal";
-    }
-
-    if (p.categoria === "Tododia" && p.subcategoria) {
-        return p.subcategoria + (p.subcategoria3 ? " · " + p.subcategoria3 : "");
-    }
-
-    return null;
-
-}
-
-function etiquetaItemCombo(item) {
-
-    const producto =
-        productos.find(p => p.id == item.productoId);
-
-    return item.etiqueta ||
-        (producto && obtenerTipoProducto(producto)) ||
-        (producto && producto.nombre) ||
-        "";
-
-}
-
-// Datos que se guardan en el carrito para un combo
-
-function datosItemCombo(combo) {
-
-    const primerProducto =
-        productos.find(p => p.id == combo.items[0].productoId);
-
-    const componentes = combo.items.map(i => ({
-        nombre: etiquetaItemCombo(i),
-        cantidad: i.cantidad
-    }));
-
-    return {
-
-        tipo: "combo",
-
-        nombre: combo.titulo,
-
-        descripcion: componentes
-            .map(c => `${c.cantidad}x ${c.nombre}`)
-            .join(", "),
-
-        precio: combo.precio,
-
-        imagen: combo.imagen ||
-            (primerProducto && primerProducto.imagen) ||
-            "",
-
-        codigo: null,
-
-        componentes: componentes
-
-    };
-
-}
-
-
-// =========================================
-// MOSTRAR COMBOS EN LA TIENDA
-// =========================================
-
-const contenedorCombos = document.getElementById("contenedor-combos");
-
-function renderizarCombos() {
-
-    if (!contenedorCombos) return;
-
-    contenedorCombos.innerHTML = COMBOS.map(combo => {
-
-        const disponible = comboDisponible(combo);
-
-        const primerProducto =
-            productos.find(p => p.id == combo.items[0].productoId);
-
-        const imagenPrincipal =
-            combo.imagen ||
-            (primerProducto && primerProducto.imagen) ||
-            "";
-
-        return `
-            <article class="combo-card">
-
-${combo.precioAnterior
-    ? `
-        <span class="etiqueta-oferta">
-            🔥 OFERTA
-            <span class="porcentaje-oferta">
-                -${Math.round(
-                    ((combo.precioAnterior - combo.precio) /
-                    combo.precioAnterior) * 100
-                )}%
-            </span>
-        </span>
-    `
-    : ""
-}
-
-                <div class="combo-galeria${combo.imagen2 ? " combo-galeria-doble" : ""}">
-                    <img class="combo-img activa" src="${imagenPrincipal}" alt="${combo.titulo}" loading="lazy">
-                    ${combo.imagen2 ? `
-                        <img class="combo-img" src="${combo.imagen2}" alt="${combo.titulo} - detalle" loading="lazy">
-                        <div class="combo-puntos" aria-hidden="true">
-                            <span class="punto activo"></span>
-                            <span class="punto"></span>
-                        </div>
-                    ` : ""}
-                </div>
-
-                <h3>${combo.titulo}</h3>
-
-                <ul class="combo-lista">
-                    ${combo.items.map(i =>
-                        `<li>${i.cantidad > 1 ? i.cantidad + "x " : ""}${etiquetaItemCombo(i)}</li>`
-                    ).join("")}
-                </ul>
-
-                                               <div class="precios">
-                    ${bloqueDoblePrecio({
-                        precio: combo.precio,
-                        precioAnterior: combo.precioAnterior,
-                        oferta: !!combo.precioAnterior
-                    })}
-                </div>
-
-                <button
-                    class="btn-comprar"
-                    data-combo-id="${combo.id}"
-                    ${disponible ? "" : "disabled"}>
-                    ${disponible ? "Agregar combo al carrito" : "Combo agotado"}
-                </button>
-
-            </article>
-        `;
-
-    }).join("");
-
-}
-
-// =========================================
-// IMÁGENES DE LOS COMBOS
-// =========================================
-//
-// Los combos con imagen 2 alternan solos entre las dos imágenes
-// cada INTERVALO_IMAGEN_COMBO milisegundos, y al hacer click en
-// cualquier parte de la imagen se pasa a la otra.
-// Los combos sin imagen 2 no hacen nada.
-
-const INTERVALO_IMAGEN_COMBO = 4000;
-
-function alternarImagenCombo(galeria) {
-
-    const imagenes = galeria.querySelectorAll(".combo-img");
-
-    if (imagenes.length < 2) return;
-
-    let actual = 0;
-
-    imagenes.forEach((img, i) => {
-        if (img.classList.contains("activa")) actual = i;
-    });
-
-    const siguiente = (actual + 1) % imagenes.length;
-
-    imagenes.forEach((img, i) =>
-        img.classList.toggle("activa", i === siguiente));
-
-    galeria.querySelectorAll(".punto").forEach((p, i) =>
-        p.classList.toggle("activo", i === siguiente));
-
-    // Se reinicia la cuenta para que no cambie
-    // justo después de un click
-
-    galeria.dataset.ultimoCambio = Date.now();
-
-}
-
-// Click en cualquier parte de la imagen
-
-document.addEventListener("click", function(e) {
-
-    const galeria = e.target.closest(".combo-galeria-doble");
-
-    if (!galeria) return;
-
-    alternarImagenCombo(galeria);
-
-});
-
-// Cambio automático
-
-setInterval(function() {
-
-    document.querySelectorAll(".combo-galeria-doble").forEach(galeria => {
-
-        const ultimo = Number(galeria.dataset.ultimoCambio) || 0;
-
-        if (!ultimo) {
-            galeria.dataset.ultimoCambio = Date.now();
-            return;
-        }
-
-        if (Date.now() - ultimo >= INTERVALO_IMAGEN_COMBO) {
-            alternarImagenCombo(galeria);
-        }
-
-    });
-
-}, 1000);
-
-
-// =========================================
-// AGREGAR UN COMBO AL CARRITO
-// (queda como UN solo item, no como productos sueltos)
-// =========================================
-
-function agregarComboAlCarrito(comboId) {
-
-    const combo =
-        COMBOS.find(c => c.id == comboId);
-
-    if (!combo) return;
-
-
-    if (!comboDisponible(combo)) {
-
-        alert("Este combo está agotado.");
-
-        return;
-
-    }
-
-
-    if (!puedeAgregarCombo(combo)) {
-
-        alert("No hay más stock disponible para agregar este combo.");
-
-        renderizarCarrito();
-
-        return;
-
-    }
-
-
-    const existente =
-        buscarEnCarrito("combo", combo.id);
-
-    if (existente) {
-
-        existente.cantidad++;
-
-    } else {
-
-        carrito.push({
-            id: combo.id,
-            ...datosItemCombo(combo),
-            cantidad: 1
-        });
-
-    }
-
-
-     metaTrack("AddToCart", {
-        content_ids: ["combo-" + combo.id],
-        content_type: "product",
-        content_name: combo.titulo,
-        value: Number(combo.precio) || 0,
-        currency: "ARS"
-    });
-
-    guardarCarrito();
-    renderizarCarrito();
-    abrirPanelCarrito();
-
+    return carrito.reduce((acc, item) =>
+        item.id == productoId ? acc + item.cantidad : acc, 0);
 }
 
 // -----------------------------
@@ -1091,9 +514,11 @@ function activarAnimacionesProductos() {
 // =========================================
 const UMBRAL_ENVIO_GRATIS = 200000;
 
-let carrito = JSON.parse(
+// Se descartan los items "combo" que pudieran haber quedado guardados
+// de antes: ahora los combos son productos comunes.
+let carrito = (JSON.parse(
     localStorage.getItem("carritoNaturaPilar")
-) || [];
+) || []).filter(item => item.tipo !== "combo");
 
 
 // ELEMENTOS DEL CARRITO
@@ -1197,7 +622,7 @@ function abrirMetodoPago() {
         currency: "ARS",
         num_items: carrito.reduce((a, i) => a + i.cantidad, 0),
         content_type: "product",
-        content_ids: carrito.map(i => tipoItem(i) === "combo" ? "combo-" + i.id : i.codigo)
+        content_ids: carrito.map(i => i.codigo)
     });
     metodoPagoOverlay.classList.add("activo");
     totalMetodoTransferencia.textContent = "$" + calcularTotalCarrito().toLocaleString("es-AR");
@@ -1217,7 +642,7 @@ const ALIAS_TRANSFERENCIA = "natura.valen.pilar";
 let pedidoTransferencia = null; // { firma, promesa }
 
 function registrarPedidoTransferencia() {
-    const firma = JSON.stringify(carrito.map(i => [tipoItem(i), i.id, i.cantidad]));
+    const firma = JSON.stringify(carrito.map(i => [i.id, i.cantidad]));
 
     // Si el carrito no cambió, se reutiliza el mismo pedido (evita duplicados)
     if (pedidoTransferencia && pedidoTransferencia.firma === firma) {
@@ -1230,7 +655,7 @@ function registrarPedidoTransferencia() {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "apikey": SUPABASE_KEY },
                 body: JSON.stringify({
-                    carrito: carrito.map(i => ({ tipo: tipoItem(i), id: i.id, cantidad: i.cantidad }))
+                    carrito: carrito.map(i => ({ id: i.id, cantidad: i.cantidad }))
                 })
             });
             const data = await respuesta.json();
@@ -1255,18 +680,6 @@ function abrirTransferencia() {
 
     const detalle = carrito
     .map(item => {
-
-        if (tipoItem(item) === "combo") {
-
-            const contenido = (item.componentes || [])
-                .map(c => `   • ${c.cantidad}x ${c.nombre}`)
-                .join("\n");
-
-            return `- ${item.cantidad}x COMBO: ${item.nombre}\n` +
-                   `  ID combo: ${item.id}\n` +
-                   `  Incluye:\n${contenido}`;
-
-        }
 
         return `- ${item.cantidad}x ${item.nombre}\n` +
                `  ID: ${item.id}\n` +
@@ -1436,55 +849,12 @@ function actualizarLinkWhatsappCarrito() {
         };
     };
 
-    // Componentes de un combo con sus datos internos
-    const componentesCombo = (item) => {
-        const combo = COMBOS.find(c => c.id == item.id);
-
-        if (combo) {
-            return combo.items.map(i => {
-                const p = productos.find(x => x.id == i.productoId) || {};
-                const d = datosProducto(i.productoId);
-                return {
-                    cantidad: i.cantidad,
-                    nombre: p.nombre || etiquetaItemCombo(i),
-                    ...d
-                };
-            });
-        }
-
-        // Si los combos todavía no cargaron, se usa lo guardado en el carrito
-        return (item.componentes || []).map(c => ({
-            cantidad: c.cantidad,
-            nombre: c.nombre,
-            id: "-",
-            codigo: "-",
-            categoria: "-",
-            subcategorias: "-"
-        }));
-    };
-
     let texto;
 
     if (carrito.length === 0) {
         texto = "Hola! Quiero hacer una consulta sobre sus productos Natura.\n\nMi consulta:\nNombre:";
     } else {
         const detalle = carrito.map(item => {
-
-            if (tipoItem(item) === "combo") {
-                const contenido = componentesCombo(item)
-                    .map(c =>
-                        `   • ${c.cantidad}x ${c.nombre}\n` +
-                        `      ID: ${c.id} | Código: ${c.codigo}\n` +
-                        `      ${c.categoria} / ${c.subcategorias}`
-                    )
-                    .join("\n");
-
-                return `*${item.cantidad}x COMBO: ${item.nombre}*\n` +
-                       `ID combo: ${item.id}\n` +
-                       `Incluye:\n${contenido}\n` +
-                       `Transferencia: ${pesos(item.precio)} c/u\n` +
-                       `Mercado Pago: ${pesos(precioConComisionMP(item.precio))} c/u`;
-            }
 
             const d = datosProducto(item.id, item);
 
@@ -1505,15 +875,6 @@ function actualizarLinkWhatsappCarrito() {
         // Si el mensaje quedara demasiado largo para el link, se usa una versión resumida
         if (encodeURIComponent(texto).length > 1800) {
             const resumen = carrito.map(item => {
-
-                if (tipoItem(item) === "combo") {
-                    const contenido = componentesCombo(item)
-                        .map(c => `${c.cantidad}x ${c.nombre} [ID ${c.id} | ${c.codigo} | ${c.categoria} / ${c.subcategorias}]`)
-                        .join("; ");
-
-                    return `- ${item.cantidad}x COMBO: ${item.nombre} (ID combo ${item.id}) | ${pesos(item.precio)}\n` +
-                           `  ${contenido}`;
-                }
 
                 const d = datosProducto(item.id, item);
 
@@ -1584,7 +945,6 @@ function agregarAlCarrito(id) {
 
 
     // No permitir superar el stock disponible
-    // (se cuentan también las unidades que van dentro de combos)
 
     if (unidadesEnCarrito(producto.id) >= producto.stock) {
 
@@ -1604,7 +964,7 @@ function agregarAlCarrito(id) {
 
 
     const productoExistente =
-        buscarEnCarrito("producto", producto.id);
+        buscarEnCarrito(producto.id);
 
 
     // =========================================
@@ -1625,8 +985,6 @@ function agregarAlCarrito(id) {
     else {
 
         carrito.push({
-
-            tipo: "producto",
 
             id: producto.id,
 
@@ -1697,10 +1055,6 @@ function renderizarCarrito() {
 
     carrito.forEach(item => {
 
-        const tipo = tipoItem(item);
-
-        const esCombo = tipo === "combo";
-
         const subtotal =
             item.precio * item.cantidad;
 
@@ -1711,29 +1065,16 @@ function renderizarCarrito() {
 
         // ¿Se llegó al límite de stock disponible?
 
-        let alLimite = false;
+        const producto =
+            productos.find(p => p.id == item.id);
 
-        if (esCombo) {
-
-            const combo =
-                COMBOS.find(c => c.id == item.id);
-
-            alLimite = !!combo && !puedeAgregarCombo(combo);
-
-        } else {
-
-            const producto =
-                productos.find(p => p.id == item.id);
-
-            alLimite = !!producto &&
-                unidadesEnCarrito(producto.id) >= producto.stock;
-
-        }
+        const alLimite = !!producto &&
+            unidadesEnCarrito(producto.id) >= producto.stock;
 
 
         productosCarrito.innerHTML += `
 
-            <div class="item-carrito${esCombo ? " item-carrito-combo" : ""}">
+            <div class="item-carrito">
 
                 <img
                     src="${item.imagen}"
@@ -1741,19 +1082,9 @@ function renderizarCarrito() {
 
                 <div>
 
-                    ${esCombo ? `<span class="item-combo-etiqueta">COMBO</span>` : ""}
-
                     <h3>
                         ${item.nombre}
                     </h3>
-
-                    ${esCombo && item.componentes ? `
-                        <ul class="item-combo-lista">
-                            ${item.componentes.map(c =>
-                                `<li>${c.cantidad > 1 ? c.cantidad + "x " : ""}${c.nombre}</li>`
-                            ).join("")}
-                        </ul>
-                    ` : ""}
 
                     <div class="item-precio">
                         $${item.precio.toLocaleString("es-AR")}
@@ -1764,7 +1095,6 @@ function renderizarCarrito() {
                         <button
                             class="btn-cantidad"
                             data-accion="restar"
-                            data-tipo="${tipo}"
                             data-id="${item.id}">
                             −
                         </button>
@@ -1782,7 +1112,6 @@ ${alLimite ? `
                        <button
     class="btn-cantidad"
     data-accion="sumar"
-    data-tipo="${tipo}"
     data-id="${item.id}"
     ${alLimite ? "disabled" : ""}>
     +
@@ -1791,7 +1120,6 @@ ${alLimite ? `
                         <button
                             class="btn-eliminar"
                             data-accion="eliminar"
-                            data-tipo="${tipo}"
                             data-id="${item.id}">
                             Eliminar
                         </button>
@@ -1826,10 +1154,9 @@ ${alLimite ? `
 // CAMBIAR CANTIDAD
 // =========================================
 
-function cambiarCantidad(tipo, id, cambio) {
+function cambiarCantidad(id, cambio) {
 
-    const item =
-        carrito.find(i => mismoItem(i, tipo, id));
+    const item = buscarEnCarrito(id);
 
     if (!item) return;
 
@@ -1840,47 +1167,23 @@ function cambiarCantidad(tipo, id, cambio) {
 
     if (cambio > 0) {
 
-        if (tipo === "combo") {
+        const producto =
+            productos.find(p => p.id == id);
 
-            const combo =
-                COMBOS.find(c => c.id == id);
+        if (!producto) return;
 
-            if (!combo) return;
+        if (unidadesEnCarrito(producto.id) >= producto.stock) {
 
-            if (!puedeAgregarCombo(combo)) {
+            alert(
+                `No podés agregar más unidades. ` +
+                `Hay ${producto.stock} disponible${
+                    producto.stock === 1 ? "" : "s"
+                }.`
+            );
 
-                alert(
-                    "No podés agregar más unidades de este combo. " +
-                    "No hay más stock disponible."
-                );
+            renderizarCarrito();
 
-                renderizarCarrito();
-
-                return;
-
-            }
-
-        } else {
-
-            const producto =
-                productos.find(p => p.id == id);
-
-            if (!producto) return;
-
-            if (unidadesEnCarrito(producto.id) >= producto.stock) {
-
-                alert(
-                    `No podés agregar más unidades. ` +
-                    `Hay ${producto.stock} disponible${
-                        producto.stock === 1 ? "" : "s"
-                    }.`
-                );
-
-                renderizarCarrito();
-
-                return;
-
-            }
+            return;
 
         }
 
@@ -1898,7 +1201,7 @@ function cambiarCantidad(tipo, id, cambio) {
 
         carrito =
             carrito.filter(
-                i => !mismoItem(i, tipo, id)
+                i => i.id != id
             );
 
     }
@@ -1912,14 +1215,14 @@ function cambiarCantidad(tipo, id, cambio) {
 
 
 // =========================================
-// ELIMINAR PRODUCTO O COMBO
+// ELIMINAR PRODUCTO
 // =========================================
 
-function eliminarDelCarrito(tipo, id) {
+function eliminarDelCarrito(id) {
 
     carrito =
         carrito.filter(
-            i => !mismoItem(i, tipo, id)
+            i => i.id != id
         );
 
 
@@ -1941,16 +1244,6 @@ document.addEventListener("click", function(e) {
     if (!boton) return;
 
     e.preventDefault();
-
-    // Botón "Agregar combo al carrito"
-
-    if (boton.dataset.comboId) {
-
-        agregarComboAlCarrito(boton.dataset.comboId);
-
-        return;
-
-    }
 
     const idProducto = boton.dataset.id;
 
@@ -2002,27 +1295,23 @@ document.addEventListener("click", function(e) {
     const accion =
         boton.dataset.accion;
 
-    const tipo =
-        boton.dataset.tipo || "producto";
-
-
     if (accion === "sumar") {
 
-        cambiarCantidad(tipo, id, 1);
+        cambiarCantidad(id, 1);
 
     }
 
 
     if (accion === "restar") {
 
-        cambiarCantidad(tipo, id, -1);
+        cambiarCantidad(id, -1);
 
     }
 
 
     if (accion === "eliminar") {
 
-        eliminarDelCarrito(tipo, id);
+        eliminarDelCarrito(id);
 
     }
 
@@ -2332,7 +1621,7 @@ actualizarLinkWhatsappCarrito();
 // CARGAR PRODUCTOS DESDE SUPABASE
 // =========================================
 
-cargarProductosDesdeSupabase().then(cargarCombosDesdeSupabase);
+cargarProductosDesdeSupabase();
 
 // -----------------------------
 // MENÚ ACTIVO
@@ -3571,7 +2860,8 @@ function mostrarResultadoPago() {
         const carritoPrevio = localStorage.getItem("carritoAntesDelPago");
 
         if (carritoPrevio) {
-            carrito = JSON.parse(carritoPrevio);
+            carrito = JSON.parse(carritoPrevio)
+                .filter(item => item.tipo !== "combo");
             guardarCarrito();
             renderizarCarrito();
         }
